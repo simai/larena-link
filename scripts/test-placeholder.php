@@ -2,4 +2,13 @@
 
 declare(strict_types=1);
 
-echo "Larena Link clean pre-codegen baseline test command passed; no package implementation code has started.\n";
+$tests = [
+    __DIR__ . '/../tests/Unit/LinkTargetContractTest.php',
+    __DIR__ . '/../tests/Unit/LinkFailsClosedTest.php',
+];
+
+foreach ($tests as $test) {
+    require $test;
+}
+
+echo "Larena Link contract tests passed.\n";
