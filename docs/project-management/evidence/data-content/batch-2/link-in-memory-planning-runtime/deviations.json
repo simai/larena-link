@@ -1,0 +1,14 @@
+{
+  "schema": "larena.package_deviations.v1",
+  "package": "larena/link",
+  "batch": "data-content/batch-2/link-in-memory-planning-runtime",
+  "known_deviations": [],
+  "known_limitations": [
+    "developer_testable_foundation_only",
+    "no_public_routes",
+    "no_token_storage_runtime",
+    "no_one_time_consumption_runtime",
+    "no_file_manager_integration",
+    "no_production_link_delivery"
+  ]
+}

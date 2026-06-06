@@ -1,0 +1,22 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "package": "larena/link",
+  "batch": "data-content/batch-2/link-in-memory-planning-runtime",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposal_type": "implementation_mapping_update",
+  "feature_refs": [
+    "link.link_resolution",
+    "link.token_policy",
+    "link.share_links",
+    "link.in_memory_planning_runtime"
+  ],
+  "implementation_status": "developer_testable",
+  "evidence_refs": [
+    "docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/"
+  ],
+  "notes": [
+    "Add implementation mapping/evidence index after package commit is accepted.",
+    "Do not promote this planning runtime to production link delivery."
+  ]
+}

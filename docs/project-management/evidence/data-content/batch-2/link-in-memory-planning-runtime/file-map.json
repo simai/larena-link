@@ -1,0 +1,22 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "package": "larena/link",
+  "batch": "data-content/batch-2/link-in-memory-planning-runtime",
+  "runtime_files": [
+    "src/Runtime/ArrayLinkDiagnosticsReport.php",
+    "src/Runtime/ArrayLinkPlan.php",
+    "src/Runtime/ArrayLinkPolicy.php",
+    "src/Runtime/ArrayLinkRequest.php",
+    "src/Runtime/ArrayLinkRevocationPlan.php",
+    "src/Runtime/InMemoryLinkRuntime.php"
+  ],
+  "test_files": [
+    "tests/Unit/InMemoryLinkRuntimeTest.php",
+    "tests/Unit/InMemoryLinkRuntimeFailsClosedTest.php"
+  ],
+  "changed_control_files": [
+    ".larena/launch-context.json",
+    "composer.json"
+  ],
+  "forbidden_surfaces_touched": []
+}
