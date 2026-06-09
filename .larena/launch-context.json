@@ -13,6 +13,7 @@
         "link.in_memory_planning_runtime"
     ],
     "allowed_files": [
+        "scripts/check-metadata-sync.php",
         "module.yaml",
         ".larena/launch-context.json",
         "composer.json",
