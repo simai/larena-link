@@ -1,11 +1,12 @@
 package: larena/link
 title: Larena Link
-status: repository_prepared
+status: coding_started
 cluster: data-content
-batch: batch-0-clean-pre-codegen-baseline
+batch: link-batch-2-in-memory-planning-runtime
 features:
   - link.action_links
   - link.admin_center
+  - link.in_memory_planning_runtime
   - link.link_resolution
   - link.one_time_links
   - link.share_links
@@ -15,4 +16,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/data-content/batch-0/link-clean-baseline/
+  path: docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/
