@@ -30,7 +30,8 @@
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/InMemoryLinkRuntimeFailsClosedTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/InMemoryLinkRuntimeTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkFailsClosedTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkTargetContractTest.php"
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkTargetContractTest.php",
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkPolicyPreviewTest.php"
         ],
         "test:unit": [
             "@test"

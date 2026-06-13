@@ -36,10 +36,12 @@
         "src/Runtime/ArrayLinkRequest.php",
         "src/Runtime/ArrayLinkRevocationPlan.php",
         "src/Runtime/InMemoryLinkRuntime.php",
+        "src/Runtime/PublicLinkPolicyPreview.php",
         "tests/Unit/LinkTargetContractTest.php",
         "tests/Unit/LinkFailsClosedTest.php",
         "tests/Unit/InMemoryLinkRuntimeTest.php",
-        "tests/Unit/InMemoryLinkRuntimeFailsClosedTest.php"
+        "tests/Unit/InMemoryLinkRuntimeFailsClosedTest.php",
+        "tests/Unit/PublicLinkPolicyPreviewTest.php"
     ],
     "forbidden_files": [
         "config/*",
