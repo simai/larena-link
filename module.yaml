@@ -2,10 +2,11 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: link-sharing-safety-package-owned-surface-slice
+batch: file-manager-link-sharing-runtime-package-owned-surface-slice
 features:
   - link.action_links
   - link.admin_center
+  - link.file_manager_link_sharing_runtime_read_model
   - link.in_memory_planning_runtime
   - link.link_sharing_safety_read_model
   - link.link_resolution
@@ -20,4 +21,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/link-sharing-safety-package-owned-surface/
+  path: docs/project-management/evidence/file-manager-link-sharing-runtime-package-owned-surface/

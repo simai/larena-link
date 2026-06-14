@@ -35,7 +35,8 @@
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimePlanningPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDryRunRuntimePreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicContentLinkFlowPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkSharingSafetyPreviewTest.php"
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkSharingSafetyPreviewTest.php",
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/FileManagerLinkSharingRuntimePreviewTest.php"
         ],
         "test:unit": [
             "@test"

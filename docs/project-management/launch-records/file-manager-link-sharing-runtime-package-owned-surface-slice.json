@@ -1,0 +1,51 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "file-manager-link-sharing-runtime-package-owned-surface-slice",
+  "created_at": "2026-06-14T22:26:20Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "file-manager-link-sharing-runtime-package-owned-surface-slice",
+  "target_surface": "file_manager_link_sharing_runtime",
+  "target_command": "larena:file-manager-link-sharing-smoke",
+  "target_schema": "larena.file_manager_link_sharing_runtime_preview.v1",
+  "target_package": "larena/link",
+  "selection": {
+    "public_link_group_count": 35,
+    "selection_basis": "Move only final report assembly into larena/link while keeping entry-app runtime composition unchanged."
+  },
+  "allowed_scope": {
+    "package_files": [
+      ".larena/launch-context.json",
+      "composer.json",
+      "module.yaml",
+      "src/Runtime/FileManagerLinkSharingRuntimePreview.php",
+      "tests/Unit/FileManagerLinkSharingRuntimePreviewTest.php",
+      "docs/project-management/launch-records/file-manager-link-sharing-runtime-package-owned-surface-slice.json",
+      "docs/project-management/evidence/file-manager-link-sharing-runtime-package-owned-surface/"
+    ]
+  },
+  "forbidden_scope": {
+    "package_files": [
+      "config/*",
+      "database/*",
+      "routes/*",
+      "resources/*",
+      "src/Http/*",
+      "src/Providers/*",
+      "src/Persistence/*",
+      "src/Delivery/*",
+      "src/Token/*"
+    ],
+    "behavior": [
+      "public_route_registration",
+      "token_material_generation",
+      "token_storage_or_hashing_runtime",
+      "public_file_download",
+      "delivery_adapter_runtime",
+      "database_mutation",
+      "file_storage_mutation",
+      "release_ready_claim"
+    ]
+  },
+  "status": "coding_started",
+  "preflight_gate_evidence_ref": "source/output/action-gates/action-gate-report-20260614222616.json"
+}
