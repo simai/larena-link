@@ -1,0 +1,61 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "link-sharing-safety-package-owned-surface-slice",
+  "created_at": "2026-06-14T22:18:11Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "link-sharing-safety-package-owned-surface-slice",
+  "target_surface": "link_sharing_safety",
+  "target_command": "larena:link-sharing-smoke",
+  "target_schema": "larena.link_file_sharing_safety_preview.v1",
+  "target_package": "larena/link",
+  "target_repo": "/Users/rim/Documents/GitHub/larena-workspace/packages/link",
+  "selection": {
+    "public_link_group_count": 35,
+    "selection_basis": "After planning, dry-run and content-flow report assembly were made package-owned, link_sharing_safety is the next safe read-only public-link leaf that keeps runtime composition in the entry app and moves only the final safety report contract into larena/link.",
+    "why_safe_next": "The slice has no public route registration, token storage, token generation, delivery adapter runtime, persistent lookup, DB/storage mutation or release-ready behavior."
+  },
+  "allowed_scope": {
+    "entry_app_files": [
+      "app/Larena/LinkSharingSafetyPreview.php",
+      "docs/project-management/launch-records/link-sharing-safety-package-owned-surface-slice.json",
+      "docs/project-management/reports/link-sharing-safety-package-owned-surface-slice-implementation.json",
+      "docs/project-management/handoffs/link-sharing-safety-package-owned-surface-slice-implementation-handoff.json"
+    ],
+    "package_files": [
+      ".larena/launch-context.json",
+      "composer.json",
+      "module.yaml",
+      "src/Runtime/LinkSharingSafetyPreview.php",
+      "tests/Unit/LinkSharingSafetyPreviewTest.php",
+      "docs/project-management/launch-records/link-sharing-safety-package-owned-surface-slice.json",
+      "docs/project-management/evidence/link-sharing-safety-package-owned-surface/"
+    ]
+  },
+  "forbidden_scope": {
+    "package_files": [
+      "config/*",
+      "database/*",
+      "routes/*",
+      "resources/*",
+      "src/Http/*",
+      "src/Providers/*",
+      "src/Persistence/*",
+      "src/Delivery/*",
+      "src/Token/*"
+    ],
+    "behavior": [
+      "public_route_registration",
+      "token_material_generation",
+      "token_storage_or_hashing_runtime",
+      "public_file_download",
+      "delivery_adapter_runtime",
+      "database_mutation",
+      "file_storage_mutation",
+      "queue_or_scheduler",
+      "release_ready_claim",
+      "canonical_graph_update"
+    ]
+  },
+  "status": "coding_started",
+  "preflight_gate_evidence_ref": "source/output/action-gates/action-gate-report-20260614221807.json"
+}

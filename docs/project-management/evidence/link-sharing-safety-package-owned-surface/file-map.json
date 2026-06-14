@@ -1,0 +1,41 @@
+{
+  "schema": "larena.evidence_file_map.v1",
+  "id": "link-sharing-safety-package-owned-surface",
+  "package": "larena/link",
+  "entry_app": "simai/larena",
+  "moved_or_delegated_surface": "link_sharing_safety",
+  "package_files": [
+    "src/Runtime/LinkSharingSafetyPreview.php",
+    "tests/Unit/LinkSharingSafetyPreviewTest.php",
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "docs/project-management/launch-records/link-sharing-safety-package-owned-surface-slice.json",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/README.md",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/implementation-summary.md",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/independent-review.md",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/tests.md",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/smoke.md",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/file-map.json",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/deviations.json",
+    "docs/project-management/evidence/link-sharing-safety-package-owned-surface/graph-sync-proposal.json"
+  ],
+  "entry_app_files": [
+    "app/Larena/LinkSharingSafetyPreview.php",
+    "docs/project-management/launch-records/link-sharing-safety-package-owned-surface-slice.json",
+    "docs/project-management/reports/link-sharing-safety-package-owned-surface-slice-implementation.json",
+    "docs/project-management/handoffs/link-sharing-safety-package-owned-surface-slice-implementation-handoff.json"
+  ],
+  "forbidden_files_not_touched": [
+    "routes/*",
+    "resources/*",
+    "tests/Feature/LinkSharingSafetyPreviewSmokeTest.php",
+    "src/Http/*",
+    "src/Providers/*",
+    "src/Persistence/*",
+    "src/Delivery/*",
+    "src/Token/*",
+    "database/*",
+    "config/*"
+  ]
+}
