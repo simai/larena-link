@@ -1,0 +1,40 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "public-link-cleanup-action-package-owned-surface-slice",
+  "created_at": "2026-06-14T23:29:10Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-cleanup-action-package-owned-surface-slice",
+  "target_surface": "public_link_cleanup_action",
+  "target_command": "larena:public-link-cleanup-action-smoke",
+  "target_schema": "larena.public_link_cleanup_action_foundation.v1",
+  "target_package": "larena/link",
+  "status": "coding_started",
+  "allowed_files": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "src/Runtime/PublicLinkCleanupActionPreview.php",
+    "tests/Unit/PublicLinkCleanupActionPreviewTest.php",
+    "docs/project-management/launch-records/public-link-cleanup-action-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-cleanup-action-package-owned-surface/"
+  ],
+  "forbidden_behavior": [
+    "public_route_registration",
+    "token_storage_or_generation_runtime",
+    "persistent_token_table_creation",
+    "database_migration",
+    "public_file_download",
+    "delivery_adapter_runtime",
+    "production_cleanup_action_execution",
+    "admin_crud",
+    "database_delete",
+    "file_delete",
+    "file_storage_mutation",
+    "queue_or_scheduler",
+    "release_ready_claim",
+    "canonical_graph_update"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-cleanup-action-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-cleanup-action-package-owned-surface/graph-sync-proposal.json",
+  "preflight_gate_evidence_ref": "source/output/action-gates/action-gate-report-20260614232910.json"
+}

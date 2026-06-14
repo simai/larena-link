@@ -1,0 +1,18 @@
+{
+  "schema": "larena.evidence_file_map.v1",
+  "batch": "public-link-cleanup-action-package-owned-surface-slice",
+  "entry_app_files": [
+    "app/Larena/PublicLinkCleanupActionFoundation.php",
+    "docs/project-management/launch-records/public-link-cleanup-action-package-owned-surface-slice.json"
+  ],
+  "package_files": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "src/Runtime/PublicLinkCleanupActionPreview.php",
+    "tests/Unit/PublicLinkCleanupActionPreviewTest.php",
+    "docs/project-management/launch-records/public-link-cleanup-action-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-cleanup-action-package-owned-surface/"
+  ],
+  "forbidden_files_touched": []
+}
