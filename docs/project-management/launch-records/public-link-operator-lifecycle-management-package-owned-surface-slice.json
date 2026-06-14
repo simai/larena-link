@@ -1,0 +1,30 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "public-link-operator-lifecycle-management-package-owned-surface-slice",
+  "created_at": "2026-06-14T22:47:34Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-operator-lifecycle-management-package-owned-surface-slice",
+  "target_surface": "public_link_operator_lifecycle_management",
+  "target_schema": "larena.public_link_operator_lifecycle_management_foundation.v1",
+  "target_package": "larena/link",
+  "entry_app_wrapper": "app/Larena/PublicLinkOperatorLifecycleManagementFoundation.php",
+  "package_runtime": "src/Runtime/PublicLinkOperatorLifecycleManagementPreview.php",
+  "allowed_behavior": [
+    "read_only_operator_registry_report",
+    "operator_action_policy_validation",
+    "non_mutating_report_assembly"
+  ],
+  "forbidden_behavior": [
+    "operator_action_execution",
+    "admin_crud",
+    "public_file_delivery",
+    "delivery_adapter_runtime",
+    "database_migration",
+    "database_mutation",
+    "file_storage_mutation",
+    "release_ready_claim"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-operator-lifecycle-management-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-operator-lifecycle-management-package-owned-surface/graph-sync-proposal.json",
+  "status": "coding_started"
+}

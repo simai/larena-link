@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-token-storage-contract-package-owned-surface-slice
+batch: public-link-operator-lifecycle-management-package-owned-surface-slice
 features:
   - link.action_links
   - link.admin_center
@@ -14,6 +14,7 @@ features:
   - link.public_link_dry_run_runtime_read_model
   - link.public_link_runtime_planning_read_model
   - link.public_link_token_storage_contract_read_model
+  - link.public_link_operator_lifecycle_management_read_model
   - link.one_time_links
   - link.share_links
   - link.target_registry
@@ -22,4 +23,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/public-link-token-storage-contract-package-owned-surface/
+  path: docs/project-management/evidence/public-link-operator-lifecycle-management-package-owned-surface/

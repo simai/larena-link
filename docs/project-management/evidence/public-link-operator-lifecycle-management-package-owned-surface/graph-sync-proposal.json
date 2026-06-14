@@ -1,0 +1,22 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "id": "public-link-operator-lifecycle-management-package-owned-surface",
+  "status": "proposed",
+  "canonical_update_allowed": false,
+  "package": "larena/link",
+  "surface": "public_link_operator_lifecycle_management",
+  "proposal": {
+    "type": "package_owned_presentation_reduction_evidence",
+    "summary": "Record that public_link_operator_lifecycle_management registry/action-policy report assembly is now package-owned in larena/link while entry-app composition remains unchanged.",
+    "owner_review_required": true
+  },
+  "guards": {
+    "public_route_enabled": false,
+    "admin_crud_enabled": false,
+    "operator_action_execution": false,
+    "delivery_adapter_enabled": false,
+    "database_mutation": false,
+    "file_storage_mutation": false,
+    "release_ready": false
+  }
+}
