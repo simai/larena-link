@@ -1,0 +1,19 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "batch": "public-link-regenerate-action-package-owned-surface-slice",
+  "status": "proposal_only",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposed_edges": [
+    {
+      "from": "public_link_regenerate_action",
+      "to": "larena/link",
+      "relationship": "package_owned_read_model"
+    }
+  ],
+  "notes": [
+    "Package now owns report assembly for the regenerate action preview.",
+    "Entry app still owns planning dependency composition and local testing fingerprint fixtures.",
+    "No canonical graph write is performed by this package batch."
+  ]
+}

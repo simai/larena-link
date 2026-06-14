@@ -1,0 +1,18 @@
+{
+  "schema": "larena.evidence_file_map.v1",
+  "batch": "public-link-regenerate-action-package-owned-surface-slice",
+  "entry_app_files": [
+    "app/Larena/PublicLinkRegenerateActionFoundation.php",
+    "docs/project-management/launch-records/public-link-regenerate-action-package-owned-surface-slice.json"
+  ],
+  "package_files": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "src/Runtime/PublicLinkRegenerateActionPreview.php",
+    "tests/Unit/PublicLinkRegenerateActionPreviewTest.php",
+    "docs/project-management/launch-records/public-link-regenerate-action-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-regenerate-action-package-owned-surface/"
+  ],
+  "forbidden_files_touched": []
+}
