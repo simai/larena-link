@@ -1,0 +1,24 @@
+{
+  "schema": "larena.package_graph_sync_proposal.v1",
+  "batch": "public-link-guarded-delivery-readiness-package-owned-surface-slice",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposal_only": true,
+  "target_package": "larena/link",
+  "proposed_facts": [
+    {
+      "id": "link.public_link_guarded_delivery_readiness_read_model",
+      "status": "implemented_in_package",
+      "owner": "larena/link",
+      "entry_app_role": "dependency_fixture_composition_and_compatibility_wire",
+      "production_delivery": false,
+      "file_content_response": false,
+      "release_ready": false
+    }
+  ],
+  "blocked_until_owner_approval": [
+    "canonical graph/spec update",
+    "production lookup or delivery runtime",
+    "public route migration into package"
+  ]
+}

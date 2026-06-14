@@ -1,0 +1,12 @@
+{
+  "schema": "larena.package_evidence_deviations.v1",
+  "batch": "public-link-guarded-delivery-readiness-package-owned-surface-slice",
+  "deviations": [
+    {
+      "id": "entry-app-composes-persistent-lookup",
+      "status": "accepted",
+      "reason": "Persistent lookup remains in the entry app for this slice so package-owned report assembly does not introduce package-to-entry-app dependency or production persistence behavior.",
+      "follow_up": "Move persistent lookup under a dedicated guarded launch record before enabling production lookup or delivery runtime."
+    }
+  ]
+}

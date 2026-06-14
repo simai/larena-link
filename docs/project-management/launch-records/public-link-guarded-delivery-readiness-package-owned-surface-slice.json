@@ -1,0 +1,43 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "public-link-guarded-delivery-readiness-package-owned-surface-slice",
+  "created_at": "2026-06-14T23:42:14Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-guarded-delivery-readiness-package-owned-surface-slice",
+  "target_surface": "public_link_guarded_delivery_readiness",
+  "target_command": "larena:public-link-guarded-delivery-readiness-smoke",
+  "target_schema": "larena.public_link_guarded_delivery_readiness_foundation.v1",
+  "target_package": "larena/link",
+  "status": "coding_started",
+  "allowed_files": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "src/Runtime/PublicLinkGuardedDeliveryReadinessPreview.php",
+    "tests/Unit/PublicLinkGuardedDeliveryReadinessPreviewTest.php",
+    "docs/project-management/launch-records/public-link-guarded-delivery-readiness-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-guarded-delivery-readiness-package-owned-surface/"
+  ],
+  "forbidden_behavior": [
+    "public_route_registration",
+    "token_storage_or_generation_runtime",
+    "persistent_token_table_creation",
+    "database_migration",
+    "public_file_download",
+    "file_content_response",
+    "delivery_adapter_runtime",
+    "production_delivery_runtime",
+    "one_time_consumption_runtime",
+    "admin_crud",
+    "database_write",
+    "database_delete",
+    "file_delete",
+    "file_storage_mutation",
+    "queue_or_scheduler",
+    "release_ready_claim",
+    "canonical_graph_update"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-guarded-delivery-readiness-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-guarded-delivery-readiness-package-owned-surface/graph-sync-proposal.json",
+  "preflight_gate_evidence_ref": "source/output/action-gates/action-gate-report-20260614234214.json"
+}

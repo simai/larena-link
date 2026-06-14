@@ -1,0 +1,31 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "batch": "public-link-guarded-delivery-readiness-package-owned-surface-slice",
+  "root_files": [
+    "app/Larena/PublicLinkGuardedDeliveryReadinessFoundation.php",
+    "docs/project-management/launch-records/public-link-guarded-delivery-readiness-package-owned-surface-slice.json",
+    "docs/project-management/reports/public-link-guarded-delivery-readiness-package-owned-surface-slice-implementation.json",
+    "docs/project-management/handoffs/public-link-guarded-delivery-readiness-package-owned-surface-slice-implementation-handoff.json"
+  ],
+  "package_files": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "src/Runtime/PublicLinkGuardedDeliveryReadinessPreview.php",
+    "tests/Unit/PublicLinkGuardedDeliveryReadinessPreviewTest.php",
+    "docs/project-management/launch-records/public-link-guarded-delivery-readiness-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-guarded-delivery-readiness-package-owned-surface/"
+  ],
+  "forbidden_files_not_changed": [
+    "routes/*",
+    "resources/*",
+    "config/*",
+    "database/*",
+    "src/Http/*",
+    "src/Delivery/*",
+    "src/Persistence/*",
+    "src/Token/*",
+    "src/Admin/*",
+    "src/Actions/*"
+  ]
+}
