@@ -1,0 +1,30 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "id": "public-link-runtime-planning-package-owned-surface",
+  "status": "proposed",
+  "canonical_update_allowed": false,
+  "package": "larena/link",
+  "surface": "public_link_runtime_planning",
+  "proposal": {
+    "type": "package_owned_presentation_reduction_evidence",
+    "summary": "Record that public_link_runtime_planning report assembly is now package-owned in larena/link while entry-app preview wire remains unchanged.",
+    "owner_review_required": true
+  },
+  "evidence_refs": [
+    "docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/README.md",
+    "docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/implementation-summary.md",
+    "docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/tests.md",
+    "docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/smoke.md",
+    "docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/file-map.json",
+    "docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/deviations.json"
+  ],
+  "guards": {
+    "public_route_enabled": false,
+    "token_storage_enabled": false,
+    "token_material_generated": false,
+    "delivery_adapter_enabled": false,
+    "database_mutation": false,
+    "file_storage_mutation": false,
+    "release_ready": false
+  }
+}

@@ -2,12 +2,13 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: link-batch-2-in-memory-planning-runtime
+batch: public-link-runtime-planning-package-owned-surface-slice
 features:
   - link.action_links
   - link.admin_center
   - link.in_memory_planning_runtime
   - link.link_resolution
+  - link.public_link_runtime_planning_read_model
   - link.one_time_links
   - link.share_links
   - link.target_registry
@@ -16,4 +17,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/
+  path: docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/

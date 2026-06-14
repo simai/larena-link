@@ -1,0 +1,188 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "public-link-runtime-planning-package-owned-surface-slice",
+  "status": "ready_to_code",
+  "created_at": "2026-06-14T20:01:53Z",
+  "mutates_state": false,
+  "production_runtime": false,
+  "release_ready": false,
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-runtime-planning-package-owned-surface-slice",
+  "target_surface": "public_link_runtime_planning",
+  "target_route": "/larena/internal/public-link-runtime-planning",
+  "target_route_name": "larena.internal.public-link-runtime-planning",
+  "source_owner": "larena/app",
+  "target_package": "larena/link",
+  "target_repo": "/Users/rim/Documents/GitHub/larena-workspace/packages/link",
+  "source_specs": [
+    "graph/specs/architecture/larena-entry-app-presentation-debt-inventory.json",
+    "graph/specs/architecture/larena-cockpit-decision-layer-and-presentation-governance.json",
+    "graph/specs/architecture/larena-developer-preview-ownership-model.json",
+    "docs/project-management/launch-records/public-link-package-owned-token-delivery-split.json"
+  ],
+  "source_inventory_reading": {
+    "tracked_file_count": 128,
+    "unclassified_file_count": 0,
+    "settings_property_group_count": 0,
+    "public_link_group_count": 35,
+    "selection_basis": "public_link is the largest remaining cockpit debt group after settings_property reached zero."
+  },
+  "selected_features": [
+    "public_link.package_owned_presentation_reduction",
+    "public_link.public_link_runtime_planning",
+    "public_link.pure_link_policy_read_model",
+    "public_link.entry_app_preview_route_or_command_wire"
+  ],
+  "selection_reason": [
+    "The settings/property/admin presentation debt track is complete and the cockpit inventory now points to public_link as the largest remaining debt group.",
+    "The selected surface is an internal developer preview that already proves a planning-only public-link runtime contract.",
+    "The surface delegates package-owned policy preview logic to larena/link and keeps public route registration, token storage, delivery adapter and file mutation disabled.",
+    "The next implementation can be kept to a narrow package-owned read-model/report slice without enabling public runtime behavior.",
+    "Dry-run, persistent lookup, delivery adapter, one-time consumption and admin mutation surfaces are deferred because they sit closer to runtime delivery or mutation behavior."
+  ],
+  "candidate_assessment": {
+    "public_link_runtime_planning": "selected_first_package_owned_read_model_slice",
+    "public_link_dry_run_runtime": "deferred_until_runtime_planning_read_model_is_package_owned",
+    "public_link_delivery_contract_hardening": "deferred_because_it_is_closer_to_delivery_contract_scope",
+    "public_link_persistent_lookup": "blocked_until_storage_contract_and_security_tests_are_ready",
+    "public_link_guarded_real_delivery_adapter": "blocked_until_real_delivery_adapter_launch_record_and_ops_gate",
+    "public_link_one_time_consumption_lifecycle": "blocked_until_token_storage_and_consumption_contracts_are_package_owned",
+    "public_link_guarded_admin_mutation_planning": "blocked_until_public_link_read_model_reduction_and_mutation_safety_launch_record"
+  },
+  "current_entry_app_files": [
+    "app/Larena/PublicLinkRuntimePlanningPreview.php",
+    "app/Http/Controllers/Larena/Internal/PublicLink/PublicLinkRuntimePlanningReviewController.php",
+    "resources/views/larena/public-link-runtime-planning-review.blade.php",
+    "routes/console/public-link.php",
+    "routes/larena/public-link-preview.php",
+    "tests/Feature/PublicLinkRuntimePlanningPreviewSmokeTest.php"
+  ],
+  "current_package_files": [
+    "../larena-workspace/packages/link/src/Runtime/PublicLinkPolicyPreview.php"
+  ],
+  "package_owned_files_allowed_for_next_batch": [
+    "../larena-workspace/packages/link/.larena/launch-context.json",
+    "../larena-workspace/packages/link/src/Runtime/PublicLinkRuntimePlanningPreview.php",
+    "../larena-workspace/packages/link/tests/Unit/PublicLinkRuntimePlanningPreviewTest.php",
+    "../larena-workspace/packages/link/docs/project-management/launch-records/public-link-runtime-planning-package-owned-surface-slice.json",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/README.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/implementation-summary.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/smoke.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/tests.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/file-map.json",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/deviations.json",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/graph-sync-proposal.json"
+  ],
+  "entry_app_files_allowed_for_next_batch": [
+    "app/Larena/PublicLinkRuntimePlanningPreview.php",
+    "tests/Feature/PublicLinkRuntimePlanningPreviewSmokeTest.php",
+    "docs/project-management/launch-records/public-link-runtime-planning-package-owned-surface-slice.json",
+    "docs/project-management/reports/public-link-runtime-planning-package-owned-surface-slice.json",
+    "docs/project-management/handoffs/public-link-runtime-planning-package-owned-surface-slice-handoff.json",
+    "docs/project-management/reports/public-link-runtime-planning-package-owned-surface-slice-implementation.json",
+    "docs/project-management/handoffs/public-link-runtime-planning-package-owned-surface-slice-implementation-handoff.json",
+    "graph/specs/architecture/larena-entry-app-presentation-debt-inventory.json",
+    "graph/specs/architecture/larena-developer-preview-ownership-model.json",
+    "graph/generated/reports/developer-cockpit.json",
+    "graph/generated/reports/developer-cockpit.md"
+  ],
+  "entry_app_files_read_only_unless_explicitly_needed": [
+    "app/Http/Controllers/Larena/Internal/PublicLink/PublicLinkRuntimePlanningReviewController.php",
+    "resources/views/larena/public-link-runtime-planning-review.blade.php",
+    "routes/console/public-link.php",
+    "routes/larena/public-link-preview.php"
+  ],
+  "forbidden_files": [
+    ".env",
+    ".env.*",
+    "config/*",
+    "database/migrations/*",
+    "public/*",
+    "storage/*",
+    "routes/web.php",
+    "routes/larena/public.php",
+    "app/Providers/*",
+    "bootstrap/providers.php",
+    "../larena-workspace/packages/link/config/*",
+    "../larena-workspace/packages/link/database/*",
+    "../larena-workspace/packages/link/routes/*",
+    "../larena-workspace/packages/link/resources/*",
+    "../larena-workspace/packages/link/src/Http/*",
+    "../larena-workspace/packages/link/src/Providers/*",
+    "../larena-workspace/packages/link/src/Persistence/*",
+    "../larena-workspace/packages/link/src/Delivery/*",
+    "../larena-workspace/packages/link/src/Token/*",
+    "../larena-workspace/packages/file-manager/*",
+    "../larena-workspace/packages/filesystem/*",
+    "../larena-workspace/packages/access/*",
+    "../larena-workspace/packages/audit/*"
+  ],
+  "allowed_behavior": [
+    "move only pure planning read-model/report assembly into larena/link runtime code",
+    "preserve the current internal route URL, route name and JSON schema",
+    "preserve local/testing-only developer-preview status",
+    "keep entry-app route, controller and Blade view as preview wire unless a separate package-resource launch record authorizes view ownership",
+    "add package unit coverage for the package-owned planning report",
+    "update entry-app smoke coverage only to point at the package-owned read model"
+  ],
+  "forbidden_behavior": [
+    "public route registration",
+    "public file download",
+    "real public URL generation",
+    "token material generation",
+    "raw token output",
+    "token persistence",
+    "one-time consumption runtime",
+    "real delivery adapter",
+    "database migration",
+    "database write",
+    "file storage mutation",
+    "queue or scheduler runtime",
+    "release-ready claim",
+    "bulk migration of other public_link surfaces"
+  ],
+  "required_tests": [
+    "composer run quality:gate in /Users/rim/Documents/GitHub/larena-workspace/packages/link",
+    "php artisan test --filter=PublicLinkRuntimePlanningPreviewSmokeTest",
+    "composer run cockpit:check",
+    "composer run validate:cockpit-governance",
+    "composer run validate:entry-app-presentation-debt-inventory",
+    "composer run validate:developer-preview-ownership-model",
+    "git diff --check"
+  ],
+  "required_evidence_files": [
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/README.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/implementation-summary.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/smoke.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/tests.md",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/file-map.json",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/deviations.json",
+    "../larena-workspace/packages/link/docs/project-management/evidence/public-link-runtime-planning-package-owned-surface/graph-sync-proposal.json",
+    "docs/project-management/reports/public-link-runtime-planning-package-owned-surface-slice-implementation.json",
+    "docs/project-management/handoffs/public-link-runtime-planning-package-owned-surface-slice-implementation-handoff.json"
+  ],
+  "runtime_safety": {
+    "ready_to_code": true,
+    "mutates_state": false,
+    "database_write_allowed": false,
+    "file_write_allowed": false,
+    "token_storage_allowed": false,
+    "token_generation_allowed": false,
+    "public_route_allowed": false,
+    "public_ui_allowed": false,
+    "real_delivery_adapter_allowed": false,
+    "route_promotion_allowed": false,
+    "production_runtime_allowed": false,
+    "release_ready_claim_allowed": false
+  },
+  "stop_conditions": [
+    "route URL or route name changes",
+    "machine JSON schema changes without explicit smoke-test update",
+    "raw token, token material or real public URL appears in output, logs or evidence",
+    "package read model introduces entry-app dependency",
+    "database, storage, route, provider, public resource or delivery adapter files become necessary",
+    "package quality gate cannot run cleanly",
+    "scope expands into dry-run, persistent lookup, delivery or mutation surfaces"
+  ],
+  "next_transition": "public_link_runtime_planning_package_owned_surface_slice_execution"
+}
