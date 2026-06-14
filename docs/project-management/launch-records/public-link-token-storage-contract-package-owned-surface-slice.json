@@ -1,0 +1,33 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "public-link-token-storage-contract-package-owned-surface-slice",
+  "created_at": "2026-06-14T22:37:02Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-token-storage-contract-package-owned-surface-slice",
+  "target_surface": "public_link_token_storage_contract",
+  "target_schema": "larena.public_link_token_storage_contract_foundation.v1",
+  "target_package": "larena/link",
+  "entry_app_wrapper": "app/Larena/PublicLinkTokenStorageContractFoundation.php",
+  "package_runtime": "src/Runtime/PublicLinkTokenStorageContractPreview.php",
+  "allowed_behavior": [
+    "hash_only_contract_preview",
+    "redacted_fingerprint_preview",
+    "non_persistent_lookup_fixture",
+    "non_mutating_report_assembly"
+  ],
+  "forbidden_behavior": [
+    "raw_token_output",
+    "token_material_generation",
+    "persistent_token_table",
+    "database_migration",
+    "production_lookup",
+    "public_file_delivery",
+    "one_time_consumption_runtime",
+    "database_mutation",
+    "file_storage_mutation",
+    "release_ready_claim"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-token-storage-contract-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-token-storage-contract-package-owned-surface/graph-sync-proposal.json",
+  "status": "coding_started"
+}
