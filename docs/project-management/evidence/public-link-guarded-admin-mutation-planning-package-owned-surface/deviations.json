@@ -1,0 +1,11 @@
+{
+  "schema": "larena.evidence_deviations.v1",
+  "id": "public-link-guarded-admin-mutation-planning-package-owned-surface",
+  "status": "none",
+  "deviations": [],
+  "notes": [
+    "Entry app operator dependency composition remains by launch-record design.",
+    "Package routes, admin CRUD, persistence, delivery adapters, queue/scheduler runtime and action execution remain forbidden for this slice.",
+    "All mutation actions remain blocked pending future launch records."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "public-link-guarded-admin-mutation-planning-package-owned-surface-slice",
+  "created_at": "2026-06-14T23:00:16Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-guarded-admin-mutation-planning-package-owned-surface-slice",
+  "target_surface": "public_link_guarded_admin_mutation_planning",
+  "target_schema": "larena.public_link_guarded_admin_mutation_planning_foundation.v1",
+  "target_package": "larena/link",
+  "entry_app_wrapper": "app/Larena/PublicLinkGuardedAdminMutationPlanningFoundation.php",
+  "package_runtime": "src/Runtime/PublicLinkGuardedAdminMutationPlanningPreview.php",
+  "allowed_behavior": [
+    "read_only_mutation_plan_registry_report",
+    "future_launch_record_requirement_validation",
+    "rollback_access_audit_negative_test_requirement_validation",
+    "non_mutating_report_assembly"
+  ],
+  "forbidden_behavior": [
+    "operator_action_execution",
+    "admin_crud",
+    "public_file_delivery",
+    "delivery_adapter_runtime",
+    "database_migration",
+    "database_mutation",
+    "file_storage_mutation",
+    "queue_or_scheduler",
+    "release_ready_claim"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-guarded-admin-mutation-planning-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-guarded-admin-mutation-planning-package-owned-surface/graph-sync-proposal.json",
+  "status": "coding_started"
+}
