@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-guarded-admin-mutation-planning-package-owned-surface-slice
+batch: public-link-revoke-action-package-owned-surface-slice
 features:
   - link.action_links
   - link.admin_center
@@ -16,6 +16,7 @@ features:
   - link.public_link_token_storage_contract_read_model
   - link.public_link_operator_lifecycle_management_read_model
   - link.public_link_guarded_admin_mutation_planning_read_model
+  - link.public_link_revoke_action_read_model
   - link.one_time_links
   - link.share_links
   - link.target_registry
@@ -24,4 +25,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/public-link-guarded-admin-mutation-planning-package-owned-surface/
+  path: docs/project-management/evidence/public-link-revoke-action-package-owned-surface/

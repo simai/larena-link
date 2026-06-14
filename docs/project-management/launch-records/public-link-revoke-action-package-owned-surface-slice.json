@@ -1,0 +1,34 @@
+{
+  "schema": "larena.launch_record.v1",
+  "id": "public-link-revoke-action-package-owned-surface-slice",
+  "created_at": "2026-06-14T23:09:33Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-revoke-action-package-owned-surface-slice",
+  "target_surface": "public_link_revoke_action",
+  "target_schema": "larena.public_link_revoke_action_foundation.v1",
+  "target_package": "larena/link",
+  "entry_app_wrapper": "app/Larena/PublicLinkRevokeActionFoundation.php",
+  "package_runtime": "src/Runtime/PublicLinkRevokeActionPreview.php",
+  "allowed_behavior": [
+    "local_testing_revoke_preview_report",
+    "request_contract_validation",
+    "before_after_snapshot_validation",
+    "rollback_plan_validation",
+    "negative_guard_validation",
+    "non_persistent_report_assembly"
+  ],
+  "forbidden_behavior": [
+    "production_revoke_action_execution",
+    "admin_crud",
+    "public_file_delivery",
+    "delivery_adapter_runtime",
+    "database_migration",
+    "database_mutation",
+    "file_storage_mutation",
+    "queue_or_scheduler",
+    "release_ready_claim"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-revoke-action-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-revoke-action-package-owned-surface/graph-sync-proposal.json",
+  "status": "coding_started"
+}
