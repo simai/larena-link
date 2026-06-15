@@ -1,0 +1,26 @@
+{
+  "schema": "larena.package_surface_file_map.v1",
+  "surface": "public_link_guarded_admin_mutation_planning",
+  "package_files": [
+    "src/Contracts/PublicLinkGuardedAdminMutationPlanningReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkGuardedAdminMutationPlanningReviewController.php",
+    "routes/internal.php",
+    "resources/views/internal/public-link-guarded-admin-mutation-planning-review.blade.php",
+    "tests/Feature/PublicLinkGuardedAdminMutationPlanningRouteBoundaryTest.php"
+  ],
+  "entry_app_files_to_remove_after_package_commit": [
+    "app/Http/Controllers/Larena/Internal/PublicLink/PublicLinkGuardedAdminMutationPlanningController.php",
+    "resources/views/larena/public-link-guarded-admin-mutation-planning-review.blade.php"
+  ],
+  "entry_app_files_to_update_after_package_commit": [
+    "app/Providers/AppServiceProvider.php",
+    "routes/larena/public-link-preview.php",
+    "tests/Feature/PublicLinkGuardedAdminMutationPlanningFoundationTest.php",
+    "composer.lock",
+    "graph/specs/architecture/larena-entry-app-presentation-debt-inventory.json",
+    "graph/specs/architecture/larena-developer-preview-ownership-model.json",
+    "graph/specs/architecture/larena-settings-property-package-owned-presentation-reduction-pattern.json",
+    "graph/generated/reports/developer-cockpit.json",
+    "graph/generated/reports/developer-cockpit.md"
+  ]
+}

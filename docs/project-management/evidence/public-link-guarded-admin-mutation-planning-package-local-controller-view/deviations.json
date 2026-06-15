@@ -1,0 +1,9 @@
+{
+  "schema": "larena.package_surface_deviations.v1",
+  "surface": "public_link_guarded_admin_mutation_planning",
+  "deviations": [],
+  "notes": [
+    "The package controller depends on an entry-app report source contract because the report still composes entry-app planning fixtures.",
+    "The route is local/testing only and remains under the existing /larena/internal URL."
+  ]
+}
