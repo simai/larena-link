@@ -7,6 +7,7 @@ use Larena\Link\Http\Controllers\Internal\PublicContentLinkFlowReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkDryRunRuntimeReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkRuntimeHardeningReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkRuntimePlanningReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkTokenStorageContractReviewController;
 
 Route::middleware('web')
     ->prefix('larena/internal')
@@ -20,6 +21,9 @@ Route::middleware('web')
 
         Route::get('/public-link-runtime-hardening', [PublicLinkRuntimeHardeningReviewController::class, 'review'])
             ->name('public-link-runtime-hardening');
+
+        Route::get('/public-link-token-storage-contract', [PublicLinkTokenStorageContractReviewController::class, 'review'])
+            ->name('public-link-token-storage-contract');
 
         Route::get('/public-link-runtime-planning', [PublicLinkRuntimePlanningReviewController::class, 'review'])
             ->name('public-link-runtime-planning');

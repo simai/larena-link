@@ -1,0 +1,26 @@
+{
+  "schema": "larena.package_file_map.v1",
+  "package": "larena/link",
+  "batch": "public-link-token-storage-contract-package-local-controller-view-slice",
+  "files": {
+    "contracts": [
+      "src/Contracts/PublicLinkTokenStorageContractReportSource.php"
+    ],
+    "controllers": [
+      "src/Http/Controllers/Internal/PublicLinkTokenStorageContractReviewController.php"
+    ],
+    "routes": [
+      "routes/internal.php"
+    ],
+    "views": [
+      "resources/views/internal/public-link-token-storage-contract-review.blade.php"
+    ],
+    "tests": [
+      "tests/Feature/PublicLinkTokenStorageContractRouteBoundaryTest.php"
+    ],
+    "evidence": [
+      "docs/project-management/launch-records/public-link-token-storage-contract-package-local-controller-view-slice.json",
+      "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/"
+    ]
+  }
+}
