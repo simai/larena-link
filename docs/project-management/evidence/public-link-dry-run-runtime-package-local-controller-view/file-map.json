@@ -1,0 +1,11 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "status": "ready",
+  "files": {
+    "contract": "src/Contracts/PublicLinkDryRunRuntimeReportSource.php",
+    "controller": "src/Http/Controllers/Internal/PublicLinkDryRunRuntimeReviewController.php",
+    "route_file": "routes/internal.php",
+    "view": "resources/views/internal/public-link-dry-run-runtime-review.blade.php",
+    "test": "tests/Feature/PublicLinkDryRunRuntimeRouteBoundaryTest.php"
+  }
+}

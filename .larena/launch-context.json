@@ -1,7 +1,7 @@
 {
     "schema": "larena.package_launch_context.v1",
     "package": "larena/link",
-    "launch_record_ref": "docs/project-management/launch-records/public-content-link-flow-package-local-controller-view-slice.json",
+    "launch_record_ref": "docs/project-management/launch-records/public-link-dry-run-runtime-package-local-controller-view-slice.json",
     "specs_repo": "simai/larena-specs",
     "specs_commit": "74ba552dcde34fd48af5dfc01a8f8896afd51c17",
     "base_commit": "e1e6bdd7117caca293e1ba8050739039746175c0",
@@ -50,7 +50,9 @@
         "link.public_link_runtime_planning_internal_route",
         "public_link_runtime_planning.package_owned_controller_view",
         "link.public_content_link_flow_internal_route",
-        "public_content_link_flow.package_owned_controller_view"
+        "public_content_link_flow.package_owned_controller_view",
+        "link.public_link_dry_run_runtime_internal_route",
+        "public_link_dry_run_runtime.package_owned_controller_view"
     ],
     "allowed_files": [
         "scripts/check-metadata-sync.php",
@@ -317,7 +319,20 @@
         "docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/implementation-summary.md",
         "docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/independent-review.md",
         "docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/smoke.md",
-        "docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/tests.md"
+        "docs/project-management/evidence/data-content/batch-2/link-in-memory-planning-runtime/tests.md",
+        "src/Contracts/PublicLinkDryRunRuntimeReportSource.php",
+        "src/Http/Controllers/Internal/PublicLinkDryRunRuntimeReviewController.php",
+        "resources/views/internal/public-link-dry-run-runtime-review.blade.php",
+        "tests/Feature/PublicLinkDryRunRuntimeRouteBoundaryTest.php",
+        "docs/project-management/launch-records/public-link-dry-run-runtime-package-local-controller-view-slice.json",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/README.md",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/deviations.json",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/file-map.json",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/graph-sync-proposal.json",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/implementation-summary.md",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/independent-review.md",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/smoke.md",
+        "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/tests.md"
     ],
     "forbidden_files": [
         "config/*",
@@ -346,8 +361,8 @@
         "migration_or_route_change",
         "restore_legacy_runtime_code_to_active_tree"
     ],
-    "evidence_path": "docs/project-management/evidence/public-content-link-flow-package-local-controller-view/",
-    "graph_sync_proposal_path": "docs/project-management/evidence/public-content-link-flow-package-local-controller-view/graph-sync-proposal.json",
+    "evidence_path": "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/",
+    "graph_sync_proposal_path": "docs/project-management/evidence/public-link-dry-run-runtime-package-local-controller-view/graph-sync-proposal.json",
     "status": "coding_started",
     "coding_started": true,
     "repository_enforcement_installed": true,

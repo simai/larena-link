@@ -52,9 +52,10 @@
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkMutationLadderReviewPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDeliveryContractHardeningPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/LinkServiceProviderRegistrationTest.php",
+    "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
+    "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
+    "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkDryRunRuntimeRouteBoundaryTest.php",
+    "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/LinkServiceProviderRegistrationTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRuntimePlanningRouteBoundaryTest.php"
         ],
         "test:unit": [
