@@ -1,0 +1,36 @@
+{
+  "schema": "larena.package_graph_sync_proposal.v1",
+  "batch": "public-link-delivery-contract-hardening-package-owned-surface-slice",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposal_only": true,
+  "target_package": "larena/link",
+  "proposed_facts": [
+    {
+      "id": "link.public_link_delivery_contract_hardening_read_model",
+      "status": "implemented_in_package",
+      "owner": "larena/link",
+      "entry_app_role": "source_report_composition_and_compatibility_wire",
+      "public_delivery_contract_only": true,
+      "production_public_delivery": false,
+      "real_delivery_adapter_invocation": false,
+      "file_streaming": false,
+      "file_content_response": false,
+      "file_download": false,
+      "destructive_cleanup": false,
+      "queue_or_scheduler": false,
+      "public_ui": false,
+      "release_ready": false
+    }
+  ],
+  "blocked_until_owner_approval": [
+    "canonical graph/spec update",
+    "production public delivery",
+    "real adapter invocation",
+    "file streaming",
+    "file content response",
+    "destructive cleanup runtime",
+    "queue or scheduler runtime",
+    "public route migration into package"
+  ]
+}
