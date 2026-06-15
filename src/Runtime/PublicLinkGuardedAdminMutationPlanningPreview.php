@@ -7,6 +7,18 @@ namespace Larena\Link\Runtime;
 final class PublicLinkGuardedAdminMutationPlanningPreview
 {
     /**
+     * @return array<string, mixed>
+     */
+    public static function preview(?string $outputPath = null): array
+    {
+        return self::run(
+            PublicLinkOperatorLifecycleManagementPreview::preview(),
+            self::mutationPlans(),
+            $outputPath,
+        );
+    }
+
+    /**
      * @param array<string, mixed> $operator
      * @param list<array<string, mixed>> $plans
      * @return array<string, mixed>
@@ -137,6 +149,133 @@ final class PublicLinkGuardedAdminMutationPlanningPreview
         }
 
         return $report;
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function mutationPlans(): array
+    {
+        return [
+            [
+                'action' => 'revoke_link',
+                'owner_package' => 'larena/link',
+                'state' => 'blocked_future_launch_required',
+                'human_label' => 'Revoke public link',
+                'purpose' => 'Disable future public delivery for a selected public link after operator review.',
+                'required_launch_record' => 'public-link-revoke-action-foundation',
+                'allowed_first_batch' => [
+                    'request shape',
+                    'access check',
+                    'audit intent/result events',
+                    'rollback descriptor',
+                    'local/testing state transition proof',
+                ],
+                'forbidden_first_batch' => [
+                    'public file delivery',
+                    'raw token exposure',
+                    'bulk revocation',
+                    'production route mutation',
+                ],
+                'access_scope_ref' => 'access.scope:public-link.admin.revoke',
+                'audit_event_refs' => [
+                    'audit.event:public_link.revoke.requested',
+                    'audit.event:public_link.revoke.result',
+                ],
+                'rollback_evidence' => [
+                    'before_state_snapshot',
+                    'after_state_snapshot',
+                    'restore_previous_revocation_state_plan',
+                ],
+                'required_negative_tests' => [
+                    'cannot_revoke_without_launch_record',
+                    'cannot_revoke_without_access_scope',
+                    'cannot_expose_raw_token',
+                    'cannot_mutate_unknown_token',
+                ],
+                'mutates_state_now' => false,
+                'requires_future_launch_record' => true,
+            ],
+            [
+                'action' => 'regenerate_link',
+                'owner_package' => 'larena/link',
+                'state' => 'blocked_future_launch_required',
+                'human_label' => 'Regenerate public link',
+                'purpose' => 'Replace public link credentials while preserving safe audit and rollback context.',
+                'required_launch_record' => 'public-link-regenerate-action-foundation',
+                'allowed_first_batch' => [
+                    'request shape',
+                    'old/new fingerprint planning',
+                    'access check',
+                    'audit intent/result events',
+                    'rollback descriptor',
+                ],
+                'forbidden_first_batch' => [
+                    'raw token storage',
+                    'raw token logging',
+                    'production delivery enablement',
+                    'unbounded regeneration loop',
+                ],
+                'access_scope_ref' => 'access.scope:public-link.admin.regenerate',
+                'audit_event_refs' => [
+                    'audit.event:public_link.regenerate.requested',
+                    'audit.event:public_link.regenerate.result',
+                ],
+                'rollback_evidence' => [
+                    'old_fingerprint_snapshot',
+                    'new_fingerprint_snapshot',
+                    'restore_previous_token_hash_plan',
+                ],
+                'required_negative_tests' => [
+                    'cannot_regenerate_without_launch_record',
+                    'cannot_return_raw_token_in_preview',
+                    'cannot_regenerate_without_access_scope',
+                    'cannot_overwrite_active_link_without_audit',
+                ],
+                'mutates_state_now' => false,
+                'requires_future_launch_record' => true,
+            ],
+            [
+                'action' => 'cleanup_links',
+                'owner_package' => 'larena/link',
+                'state' => 'blocked_future_launch_required',
+                'human_label' => 'Cleanup expired or consumed public links',
+                'purpose' => 'Plan safe cleanup for expired, consumed or revoked public link records without enabling scheduler/runtime deletion.',
+                'required_launch_record' => 'public-link-cleanup-action-foundation',
+                'allowed_first_batch' => [
+                    'candidate query shape',
+                    'dry-run count report',
+                    'retention policy reference',
+                    'audit summary event plan',
+                    'rollback descriptor',
+                ],
+                'forbidden_first_batch' => [
+                    'scheduler execution',
+                    'queue execution',
+                    'production deletion',
+                    'file deletion',
+                    'bulk mutation without dry-run evidence',
+                ],
+                'access_scope_ref' => 'access.scope:public-link.admin.cleanup',
+                'audit_event_refs' => [
+                    'audit.event:public_link.cleanup.requested',
+                    'audit.event:public_link.cleanup.result',
+                ],
+                'rollback_evidence' => [
+                    'candidate_set_snapshot',
+                    'deleted_set_snapshot',
+                    'restore_or_replay_plan',
+                ],
+                'required_negative_tests' => [
+                    'cannot_cleanup_without_launch_record',
+                    'cannot_cleanup_without_retention_policy',
+                    'cannot_cleanup_active_links',
+                    'cannot_run_scheduler_in_preview',
+                ],
+                'mutates_state_now' => false,
+                'requires_future_launch_record' => true,
+            ],
+        ];
     }
 
     /**

@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Larena\Link\Runtime\PublicLinkGuardedAdminMutationPlanningPreview;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -12,6 +15,21 @@ function assert_true(bool $condition, string $message): void
         fwrite(STDERR, $message . "\n");
         exit(1);
     }
+}
+
+function boot_preview_database(): void
+{
+    $capsule = new Capsule();
+    $capsule->addConnection([
+        'driver' => 'sqlite',
+        'database' => ':memory:',
+        'prefix' => '',
+    ]);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    DB::swap($capsule->getDatabaseManager());
+    Schema::swap($capsule->getConnection()->getSchemaBuilder());
 }
 
 $operator = [
@@ -107,5 +125,24 @@ assert_true($report['safe_trace']['graph_sync_canonical_update'] === false, 'Gra
 assert_true(in_array('no_mutation_actions', $report['known_limitations'], true), 'Mutation limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+
+$composedOutputPath = sys_get_temp_dir() . '/larena-link-admin-mutation-planning-composed-' . bin2hex(random_bytes(4)) . '.json';
+boot_preview_database();
+$composedReport = PublicLinkGuardedAdminMutationPlanningPreview::preview($composedOutputPath);
+
+assert_true($composedReport['schema'] === 'larena.public_link_guarded_admin_mutation_planning_foundation.v1', 'Composed schema mismatch.');
+assert_true($composedReport['status'] === 'passed', 'Composed guarded admin mutation planning preview must pass.');
+assert_true(count($composedReport['mutation_plan_registry']) === 3, 'Composed mutation registry must contain three plans.');
+assert_true($composedReport['checks']['operator_lifecycle_dependency']['status'] === 'passed', 'Composed operator dependency check must pass.');
+assert_true($composedReport['checks']['mutation_plan_registry']['status'] === 'passed', 'Composed mutation plan registry check must pass.');
+assert_true($composedReport['checks']['mutation_execution_block']['status'] === 'passed', 'Composed mutation execution block must pass.');
+assert_true($composedReport['safe_trace']['mutation_actions_allowed'] === false, 'Composed mutation actions must stay disabled.');
+assert_true($composedReport['safe_trace']['database_write_executed'] === false, 'Composed database writes must stay disabled.');
+assert_true($composedReport['safe_trace']['queue_or_scheduler_executed'] === false, 'Composed queue/scheduler must stay disabled.');
+assert_true($composedReport['safe_trace']['file_download_executed'] === false, 'Composed file download must stay disabled.');
+assert_true($composedReport['safe_trace']['file_content_returned'] === false, 'Composed file content must stay disabled.');
+assert_true($composedReport['safe_trace']['release_ready'] === false, 'Composed preview must not claim release readiness.');
+assert_true(!str_contains(json_encode($composedReport, JSON_THROW_ON_ERROR), '-preview-token'), 'Composed preview must not expose raw tokens.');
+assert_true(is_file($composedOutputPath), 'Composed preview must write JSON evidence when output path is provided.');
 
 echo "PublicLinkGuardedAdminMutationPlanningPreviewTest passed.\n";
