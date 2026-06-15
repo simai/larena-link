@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-token-storage-contract-package-local-controller-view-slice
+batch: public-link-persistent-lookup-package-local-controller-view-slice
 features:
   - link.action_links
   - link.admin_center
@@ -31,6 +31,7 @@ features:
   - link.public_link_dry_run_runtime_internal_route
   - link.public_link_runtime_hardening_internal_route
   - link.public_link_token_storage_contract_internal_route
+  - link.public_link_persistent_lookup_internal_route
   - link.one_time_links
   - link.share_links
   - link.target_registry
@@ -39,4 +40,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/
+  path: docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/

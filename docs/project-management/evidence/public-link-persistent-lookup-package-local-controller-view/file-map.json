@@ -1,0 +1,26 @@
+{
+  "schema": "larena.package_file_map.v1",
+  "package": "larena/link",
+  "batch": "public-link-persistent-lookup-package-local-controller-view-slice",
+  "files": {
+    "contracts": [
+      "src/Contracts/PublicLinkPersistentLookupReportSource.php"
+    ],
+    "controllers": [
+      "src/Http/Controllers/Internal/PublicLinkPersistentLookupReviewController.php"
+    ],
+    "routes": [
+      "routes/internal.php"
+    ],
+    "views": [
+      "resources/views/internal/public-link-persistent-lookup-review.blade.php"
+    ],
+    "tests": [
+      "tests/Feature/PublicLinkPersistentLookupRouteBoundaryTest.php"
+    ],
+    "evidence": [
+      "docs/project-management/launch-records/public-link-persistent-lookup-package-local-controller-view-slice.json",
+      "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/"
+    ]
+  }
+}

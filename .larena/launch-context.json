@@ -1,7 +1,7 @@
 {
     "schema": "larena.package_launch_context.v1",
     "package": "larena/link",
-    "launch_record_ref": "docs/project-management/launch-records/public-link-token-storage-contract-package-local-controller-view-slice.json",
+    "launch_record_ref": "docs/project-management/launch-records/public-link-persistent-lookup-package-local-controller-view-slice.json",
     "specs_repo": "simai/larena-specs",
     "specs_commit": "74ba552dcde34fd48af5dfc01a8f8896afd51c17",
     "base_commit": "e1e6bdd7117caca293e1ba8050739039746175c0",
@@ -56,7 +56,9 @@
         "link.public_link_runtime_hardening_internal_route",
         "public_link_runtime_hardening.package_owned_controller_view",
         "link.public_link_token_storage_contract_internal_route",
-        "public_link_token_storage_contract.package_owned_controller_view"
+        "public_link_token_storage_contract.package_owned_controller_view",
+        "link.public_link_persistent_lookup_internal_route",
+        "public_link_persistent_lookup.package_owned_controller_view"
     ],
     "allowed_files": [
         "scripts/check-metadata-sync.php",
@@ -362,7 +364,20 @@
         "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/implementation-summary.md",
         "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/independent-review.md",
         "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/smoke.md",
-        "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/tests.md"
+        "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/tests.md",
+        "src/Contracts/PublicLinkPersistentLookupReportSource.php",
+        "src/Http/Controllers/Internal/PublicLinkPersistentLookupReviewController.php",
+        "resources/views/internal/public-link-persistent-lookup-review.blade.php",
+        "tests/Feature/PublicLinkPersistentLookupRouteBoundaryTest.php",
+        "docs/project-management/launch-records/public-link-persistent-lookup-package-local-controller-view-slice.json",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/README.md",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/deviations.json",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/file-map.json",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/graph-sync-proposal.json",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/implementation-summary.md",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/independent-review.md",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/smoke.md",
+        "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/tests.md"
     ],
     "forbidden_files": [
         "config/*",
@@ -391,8 +406,8 @@
         "migration_or_route_change",
         "restore_legacy_runtime_code_to_active_tree"
     ],
-    "evidence_path": "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/",
-    "graph_sync_proposal_path": "docs/project-management/evidence/public-link-token-storage-contract-package-local-controller-view/graph-sync-proposal.json",
+    "evidence_path": "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/",
+    "graph_sync_proposal_path": "docs/project-management/evidence/public-link-persistent-lookup-package-local-controller-view/graph-sync-proposal.json",
     "status": "coding_started",
     "coding_started": true,
     "repository_enforcement_installed": true,
