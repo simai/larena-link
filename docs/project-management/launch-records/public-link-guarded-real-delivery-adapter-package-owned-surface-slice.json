@@ -9,7 +9,7 @@
   "target_schema": "larena.public_link_guarded_real_delivery_adapter_foundation.v1",
   "source_launch_record_ref": "docs/project-management/launch-records/public-link-guarded-real-delivery-adapter-foundation.json",
   "selection": {
-    "public_link_group_count": 35,
+    "public_link_group_count": 9,
     "selection_basis": "public_link_guarded_real_delivery_adapter is the next safe package-owned candidate after public_link_one_time_consumption_lifecycle. This slice moves only guarded adapter metadata/report assembly and validation into larena/link.",
     "why_safe_next": "The surface keeps real_file_delivery_allowed=false, file_streaming_allowed=false, file_content_response_allowed=false, persistent_consumed_at_write_allowed=false, production_runtime_allowed=false and release_ready_claim_allowed=false. It does not invoke a delivery adapter or stream a file body."
   },
@@ -42,6 +42,7 @@
   ],
   "entry_app_contract": {
     "allowed_entry_app_file": "app/Larena/PublicLinkGuardedRealDeliveryAdapterFoundation.php",
+    "entry_app_wrapper_removal_expected": true,
     "preserve_internal_route_controller_view": true,
     "preserve_public_route_behavior": true,
     "preserve_json_schema": true,
@@ -71,6 +72,8 @@
     "php -l tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php",
     "composer run quality:gate",
     "php artisan test --filter=PublicLinkGuardedRealDeliveryAdapterFoundationTest",
+    "php artisan test --filter=PublicLinkRuntimeHardeningFoundationTest",
+    "php artisan test --filter=PublicLinkDeliveryContractHardeningFoundationTest",
     "composer run cockpit:check",
     "composer run validate:cockpit-governance",
     "composer run validate:entry-app-presentation-debt-inventory",

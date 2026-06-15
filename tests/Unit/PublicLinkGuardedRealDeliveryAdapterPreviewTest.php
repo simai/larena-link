@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Larena\Link\Runtime\PublicLinkGuardedRealDeliveryAdapterPreview;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -12,6 +15,21 @@ function assert_true(bool $condition, string $message): void
         fwrite(STDERR, $message . "\n");
         exit(1);
     }
+}
+
+function boot_preview_database(): void
+{
+    $capsule = new Capsule();
+    $capsule->addConnection([
+        'driver' => 'sqlite',
+        'database' => ':memory:',
+        'prefix' => '',
+    ]);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    DB::swap($capsule->getDatabaseManager());
+    Schema::swap($capsule->getConnection()->getSchemaBuilder());
 }
 
 $lifecycle = [
@@ -171,6 +189,22 @@ assert_true(in_array('adapter_metadata_only', $report['known_limitations'], true
 assert_true(in_array('no_file_streaming', $report['known_limitations'], true), 'Streaming limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+
+$composedOutputPath = sys_get_temp_dir() . '/larena-link-guarded-real-delivery-composed-' . bin2hex(random_bytes(4)) . '.json';
+boot_preview_database();
+$composed = PublicLinkGuardedRealDeliveryAdapterPreview::preview('active-preview-token', $composedOutputPath);
+
+assert_true($composed['schema'] === 'larena.public_link_guarded_real_delivery_adapter_foundation.v1', 'Unexpected composed schema.');
+assert_true($composed['status'] === 'passed', 'Composed guarded real delivery adapter preview must pass.');
+assert_true($composed['adapter_decision']['adapter_state'] === 'adapter_ready_preview', 'Composed adapter must be preview-ready.');
+assert_true($composed['adapter_decision']['stream_now'] === false, 'Composed adapter must not stream now.');
+assert_true($composed['adapter_decision']['adapter_stream_invoked'] === false, 'Composed adapter stream must not be invoked.');
+assert_true($composed['adapter_decision']['file_content_returned'] === false, 'Composed adapter must not return file content.');
+assert_true($composed['adapter_decision']['persistent_consumed_at_write'] === false, 'Composed adapter must not write consumed_at.');
+assert_true($composed['safe_trace']['production_delivery'] === false, 'Composed adapter must keep production delivery disabled.');
+assert_true($composed['safe_trace']['release_ready'] === false, 'Composed adapter must not claim release readiness.');
+assert_true(!str_contains(json_encode($composed, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Composed raw token leaked into report.');
+assert_true(is_file($composedOutputPath), 'Composed preview must write JSON evidence when output path is provided.');
 
 $consumedState = [
     'state' => 'blocked_already_consumed',

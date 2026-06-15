@@ -7,6 +7,30 @@ namespace Larena\Link\Runtime;
 final class PublicLinkGuardedRealDeliveryAdapterPreview
 {
     /**
+     * @return array<string, mixed>
+     */
+    public static function preview(string $candidateToken = 'active-preview-token', ?string $outputPath = null): array
+    {
+        $lifecycle = PublicLinkOneTimeConsumptionLifecyclePreview::preview($candidateToken);
+        $lifecycleState = is_array($lifecycle['lifecycle_state'] ?? null)
+            ? $lifecycle['lifecycle_state']
+            : [];
+        $consumptionPlan = is_array($lifecycle['consumption_plan'] ?? null)
+            ? $lifecycle['consumption_plan']
+            : [];
+
+        return self::run(
+            $candidateToken,
+            $lifecycle,
+            $lifecycleState,
+            $consumptionPlan,
+            PublicLinkTokenStorageContractPreview::fingerprint($candidateToken),
+            self::negativeLifecycles(),
+            $outputPath,
+        );
+    }
+
+    /**
      * @param array<string, mixed> $lifecycle
      * @param array<string, mixed> $lifecycleState
      * @param array<string, mixed> $consumptionPlan
@@ -257,6 +281,38 @@ final class PublicLinkGuardedRealDeliveryAdapterPreview
             && self::adapterStateFor($negativeLifecycles, 'revoked_link') === 'adapter_blocked_revoked'
             && self::adapterStateFor($negativeLifecycles, 'missing_access') === 'adapter_blocked_missing_access'
             && self::adapterStateFor($negativeLifecycles, 'unknown_token') === 'adapter_blocked_unknown';
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeLifecycles(): array
+    {
+        $cases = [
+            'already_consumed' => 'consumed-preview-token',
+            'expired_link' => 'expired-preview-token',
+            'revoked_link' => 'revoked-preview-token',
+            'missing_access' => 'missing-access-preview-token',
+            'unknown_token' => 'unknown-preview-token',
+        ];
+        $reports = [];
+
+        foreach ($cases as $caseId => $candidate) {
+            $lifecycle = PublicLinkOneTimeConsumptionLifecyclePreview::preview($candidate);
+
+            $reports[] = [
+                'case_id' => $caseId,
+                'fingerprint' => PublicLinkTokenStorageContractPreview::fingerprint($candidate),
+                'lifecycle_state' => is_array($lifecycle['lifecycle_state'] ?? null)
+                    ? $lifecycle['lifecycle_state']
+                    : [],
+                'consumption_plan' => is_array($lifecycle['consumption_plan'] ?? null)
+                    ? $lifecycle['consumption_plan']
+                    : [],
+            ];
+        }
+
+        return $reports;
     }
 
     /**
