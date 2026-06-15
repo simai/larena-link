@@ -1,0 +1,22 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "package": "larena/link",
+  "batch": "public-content-link-flow-package-local-controller-view-slice",
+  "package_files": [
+    "composer.json",
+    "composer.lock",
+    "module.yaml",
+    ".larena/launch-context.json",
+    "src/Contracts/PublicContentLinkFlowReportSource.php",
+    "src/Http/Controllers/Internal/PublicContentLinkFlowReviewController.php",
+    "routes/internal.php",
+    "resources/views/internal/public-content-link-flow-review.blade.php",
+    "tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php"
+  ],
+  "entry_app_files": [
+    "app/Providers/AppServiceProvider.php",
+    "routes/larena/public-link-preview.php",
+    "app/Http/Controllers/Larena/Internal/PublicLink/PublicContentLinkFlowReviewController.php",
+    "resources/views/larena/public-content-link-flow-review.blade.php"
+  ]
+}
