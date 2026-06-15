@@ -7,6 +7,7 @@ use Larena\Link\Http\Controllers\Internal\PublicContentLinkFlowReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkDryRunRuntimeReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkControlledDeliverySimulationReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedDeliveryReadinessReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkOneTimeConsumptionLifecycleReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkPersistentLookupReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkRuntimeHardeningReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkRuntimePlanningReviewController;
@@ -30,6 +31,9 @@ Route::middleware('web')
 
         Route::get('/public-link-controlled-delivery-simulation', [PublicLinkControlledDeliverySimulationReviewController::class, 'review'])
             ->name('public-link-controlled-delivery-simulation');
+
+        Route::get('/public-link-one-time-consumption-lifecycle', [PublicLinkOneTimeConsumptionLifecycleReviewController::class, 'review'])
+            ->name('public-link-one-time-consumption-lifecycle');
 
         Route::get('/public-link-persistent-lookup', [PublicLinkPersistentLookupReviewController::class, 'review'])
             ->name('public-link-persistent-lookup');

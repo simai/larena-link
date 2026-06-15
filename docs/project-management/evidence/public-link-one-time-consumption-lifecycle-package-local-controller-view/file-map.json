@@ -1,0 +1,28 @@
+{
+  "schema": "larena.package_surface_file_map.v1",
+  "batch": "public-link-one-time-consumption-lifecycle-package-local-controller-view-slice",
+  "target_surface": "public_link_one_time_consumption_lifecycle",
+  "package_files_added": [
+    "src/Contracts/PublicLinkOneTimeConsumptionLifecycleReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkOneTimeConsumptionLifecycleReviewController.php",
+    "resources/views/internal/public-link-one-time-consumption-lifecycle-review.blade.php",
+    "tests/Feature/PublicLinkOneTimeConsumptionLifecycleRouteBoundaryTest.php",
+    "docs/project-management/launch-records/public-link-one-time-consumption-lifecycle-package-local-controller-view-slice.json",
+    "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/"
+  ],
+  "package_files_changed": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "routes/internal.php"
+  ],
+  "entry_app_files_removed": [
+    "app/Http/Controllers/Larena/Internal/PublicLink/PublicLinkOneTimeConsumptionLifecycleController.php",
+    "resources/views/larena/public-link-one-time-consumption-lifecycle-review.blade.php"
+  ],
+  "entry_app_files_changed": [
+    "app/Providers/AppServiceProvider.php",
+    "routes/larena/public-link-preview.php",
+    "tests/Feature/PublicLinkOneTimeConsumptionLifecycleFoundationTest.php"
+  ]
+}
