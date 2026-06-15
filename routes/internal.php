@@ -8,6 +8,7 @@ use Larena\Link\Http\Controllers\Internal\PublicLinkDryRunRuntimeReviewControlle
 use Larena\Link\Http\Controllers\Internal\PublicLinkControlledDeliverySimulationReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedDeliveryReadinessReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedRealDeliveryAdapterReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkOperatorLifecycleManagementReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkOneTimeConsumptionLifecycleReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkPersistentLookupReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkRuntimeHardeningReviewController;
@@ -32,6 +33,9 @@ Route::middleware('web')
 
         Route::get('/public-link-guarded-real-delivery-adapter', [PublicLinkGuardedRealDeliveryAdapterReviewController::class, 'review'])
             ->name('public-link-guarded-real-delivery-adapter');
+
+        Route::get('/public-link-operator-lifecycle-management', [PublicLinkOperatorLifecycleManagementReviewController::class, 'review'])
+            ->name('public-link-operator-lifecycle-management');
 
         Route::get('/public-link-controlled-delivery-simulation', [PublicLinkControlledDeliverySimulationReviewController::class, 'review'])
             ->name('public-link-controlled-delivery-simulation');
