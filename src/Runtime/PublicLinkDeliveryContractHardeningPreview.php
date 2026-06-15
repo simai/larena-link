@@ -9,6 +9,26 @@ final class PublicLinkDeliveryContractHardeningPreview
     /**
      * @param array<string, mixed> $runtime
      * @param array<string, mixed> $adapter
+     * @param array<string, mixed> $planning
+     * @return array<string, mixed>
+     */
+    public static function preview(
+        array $runtime,
+        array $adapter,
+        array $planning,
+        ?string $outputPath = null
+    ): array {
+        return self::run(
+            $runtime,
+            $adapter,
+            PublicLinkMutationLadderReviewPreview::preview($planning),
+            $outputPath,
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $runtime
+     * @param array<string, mixed> $adapter
      * @param array<string, mixed> $mutation
      * @return array<string, mixed>
      */
