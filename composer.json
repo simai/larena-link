@@ -46,7 +46,8 @@
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedDeliveryReadinessPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkControlledDeliverySimulationPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkOneTimeConsumptionLifecyclePreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php"
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php",
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkMutationLadderReviewPreviewTest.php"
         ],
         "test:unit": [
             "@test"

@@ -1,0 +1,34 @@
+{
+  "schema": "larena.package_graph_sync_proposal.v1",
+  "batch": "public-link-mutation-ladder-review-package-owned-surface-slice",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposal_only": true,
+  "target_package": "larena/link",
+  "proposed_facts": [
+    {
+      "id": "link.public_link_mutation_ladder_review_read_model",
+      "status": "implemented_in_package",
+      "owner": "larena/link",
+      "entry_app_role": "source_report_composition_and_compatibility_wire",
+      "consolidated_review_only": true,
+      "new_mutation_behavior": false,
+      "production_mutation": false,
+      "file_deletion": false,
+      "file_streaming": false,
+      "file_content_response": false,
+      "queue_or_scheduler": false,
+      "production_runtime": false,
+      "release_ready": false
+    }
+  ],
+  "blocked_until_owner_approval": [
+    "canonical graph/spec update",
+    "production mutation execution",
+    "file deletion runtime",
+    "file streaming",
+    "public delivery runtime",
+    "queue or scheduler runtime",
+    "public route migration into package"
+  ]
+}
