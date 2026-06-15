@@ -3,6 +3,10 @@
   "batch": "public-link-cleanup-action-package-owned-surface-slice",
   "entry_app_files": [
     "app/Larena/PublicLinkCleanupActionFoundation.php",
+    "app/Larena/PublicLinkMutationLadderReviewFoundation.php",
+    "app/Providers/AppServiceProvider.php",
+    "routes/console/public-link.php",
+    "tests/Feature/PublicLinkCleanupActionFoundationTest.php",
     "docs/project-management/launch-records/public-link-cleanup-action-package-owned-surface-slice.json"
   ],
   "package_files": [

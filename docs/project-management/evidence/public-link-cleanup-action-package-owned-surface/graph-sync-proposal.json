@@ -8,12 +8,12 @@
     {
       "from": "public_link_cleanup_action",
       "to": "larena/link",
-      "relationship": "package_owned_read_model"
+      "relationship": "package_owned_read_model_and_composition"
     }
   ],
   "notes": [
-    "Package now owns report assembly for the cleanup action preview.",
-    "Entry app still owns planning dependency composition and local dry-run cleanup fixtures.",
+    "Package now owns report assembly and local dry-run fixture composition for the cleanup action preview.",
+    "Entry app still owns only the upstream guarded admin mutation planning dependency composition and wiring.",
     "No canonical graph write is performed by this package batch."
   ]
 }

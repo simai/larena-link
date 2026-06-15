@@ -16,11 +16,12 @@ git diff --check
 ## Result
 
 - package quality gate: passed;
+- package unit coverage includes `PublicLinkCleanupActionPreview::preview()`;
 - root smoke `PublicLinkCleanupActionFoundationTest`: passed, 4 tests,
   78 assertions;
 - cockpit check: passed;
 - cockpit governance: passed with known cockpit-density warnings and no errors;
-- entry-app presentation debt inventory: passed, `public_link=35`;
+- entry-app presentation debt inventory target after root commit: `public_link=15`;
 - developer preview ownership model: passed;
 - developer preview architecture: passed, architecture acceptance score 100;
 - root/package `git diff --check`: passed.

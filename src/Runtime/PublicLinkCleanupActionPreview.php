@@ -8,6 +8,29 @@ final class PublicLinkCleanupActionPreview
 {
     /**
      * @param array<string, mixed> $planning
+     * @return array<string, mixed>
+     */
+    public static function preview(array $planning, ?string $outputPath = null): array
+    {
+        $request = self::request();
+        $candidateSet = self::candidateSetSnapshot($request);
+        $wouldClean = self::wouldCleanSnapshot($candidateSet);
+        $rollback = self::rollbackPlan($candidateSet, $wouldClean);
+        $negativeGuards = self::negativeGuards();
+
+        return self::run(
+            $planning,
+            $request,
+            $candidateSet,
+            $wouldClean,
+            $rollback,
+            $negativeGuards,
+            $outputPath,
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $planning
      * @param array<string, mixed> $request
      * @param array<string, mixed> $candidateSet
      * @param array<string, mixed> $wouldClean
@@ -176,6 +199,169 @@ final class PublicLinkCleanupActionPreview
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    private static function request(): array
+    {
+        return [
+            'action' => 'cleanup_links',
+            'launch_record_ref' => 'docs/project-management/launch-records/public-link-cleanup-action-foundation.json',
+            'confirmation' => 'public_link_cleanup_preview',
+            'operator_ref' => 'local.testing.operator',
+            'retention_policy_ref' => 'retention.policy:public_links.expired_consumed_revoked.preview',
+            'dry_run' => true,
+            'access_scope_ref' => 'access.scope:public-link.admin.cleanup',
+            'audit_event_ref' => 'audit.event:public_link.cleanup.requested',
+            'mutates_state_now' => true,
+            'production_mutation' => false,
+            'scheduler_or_queue_execution' => false,
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $request
+     * @return array<string, mixed>
+     */
+    private static function candidateSetSnapshot(array $request): array
+    {
+        return [
+            'snapshot_id' => 'cleanup_candidate_set_preview',
+            'retention_policy_ref' => $request['retention_policy_ref'],
+            'candidate_query_shape' => [
+                'include_lifecycle_states' => ['expired', 'consumed', 'revoked'],
+                'exclude_lifecycle_states' => ['active'],
+                'requires_retention_policy' => true,
+                'requires_operator_review' => true,
+            ],
+            'cleanup_candidates' => [
+                [
+                    'link_ref' => 'public-link:expired-preview',
+                    'lifecycle_state' => 'expired',
+                    'reason' => 'expired_before_retention_cutoff',
+                    'token_fingerprint' => self::fingerprint('expired-preview-token'),
+                ],
+                [
+                    'link_ref' => 'public-link:consumed-preview',
+                    'lifecycle_state' => 'consumed',
+                    'reason' => 'one_time_link_consumed_before_retention_cutoff',
+                    'token_fingerprint' => self::fingerprint('consumed-preview-token'),
+                ],
+                [
+                    'link_ref' => 'public-link:revoked-preview',
+                    'lifecycle_state' => 'revoked',
+                    'reason' => 'revoked_before_retention_cutoff',
+                    'token_fingerprint' => self::fingerprint('revoked-preview-token'),
+                ],
+            ],
+            'excluded_active_links' => [
+                [
+                    'link_ref' => 'public-link:active-preview',
+                    'lifecycle_state' => 'active',
+                    'reason' => 'active_links_must_not_be_cleaned',
+                    'token_fingerprint' => self::fingerprint('active-preview-token'),
+                ],
+            ],
+            'access_scope_ref' => 'access.scope:public-link.admin.cleanup',
+            'audit_event_ref' => 'audit.event:public_link.cleanup.candidate_snapshot',
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $candidateSet
+     * @return array<string, mixed>
+     */
+    private static function wouldCleanSnapshot(array $candidateSet): array
+    {
+        return [
+            'snapshot_id' => 'cleanup_would_clean_preview',
+            'from_snapshot' => $candidateSet['snapshot_id'],
+            'would_clean_refs' => array_column($candidateSet['cleanup_candidates'], 'link_ref'),
+            'excluded_refs' => array_column($candidateSet['excluded_active_links'], 'link_ref'),
+            'would_delete_records' => count($candidateSet['cleanup_candidates']),
+            'would_delete_files' => 0,
+            'database_delete_executed' => false,
+            'file_delete_executed' => false,
+            'scheduler_executed' => false,
+            'queue_executed' => false,
+            'audit_event_ref' => 'audit.event:public_link.cleanup.result',
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $candidateSet
+     * @param array<string, mixed> $wouldClean
+     * @return array<string, mixed>
+     */
+    private static function rollbackPlan(array $candidateSet, array $wouldClean): array
+    {
+        return [
+            'rollback_id' => 'replay_cleanup_candidate_set_preview',
+            'candidate_set_snapshot' => $candidateSet['snapshot_id'],
+            'would_clean_snapshot' => $wouldClean['snapshot_id'],
+            'rollback_strategy' => 'replay_candidate_set_and_restore_records_from_snapshot',
+            'restore_candidate_refs' => array_column($candidateSet['cleanup_candidates'], 'link_ref'),
+            'excluded_active_refs' => array_column($candidateSet['excluded_active_links'], 'link_ref'),
+            'rollback_executed_now' => false,
+            'evidence_required' => [
+                'candidate_set_snapshot',
+                'would_clean_snapshot',
+                'restore_or_replay_plan',
+            ],
+        ];
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeGuards(): array
+    {
+        return [
+            [
+                'guard' => 'missing_launch_record',
+                'status' => 'blocked',
+                'reason' => 'launch_record_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'missing_retention_policy',
+                'status' => 'blocked',
+                'reason' => 'retention_policy_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'cleanup_active_links',
+                'status' => 'blocked',
+                'reason' => 'active_links_must_not_be_cleaned',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'scheduler_execution_in_preview',
+                'status' => 'blocked',
+                'reason' => 'scheduler_must_not_run_in_preview',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'queue_execution_in_preview',
+                'status' => 'blocked',
+                'reason' => 'queue_must_not_run_in_preview',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'file_deletion',
+                'status' => 'blocked',
+                'reason' => 'file_deletion_not_allowed_in_cleanup_preview',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'production_delete_claim',
+                'status' => 'blocked',
+                'reason' => 'production_delete_requires_future_launch_record',
+                'mutates_state' => false,
+            ],
+        ];
+    }
+
+    /**
      * @param array<string, mixed> $request
      */
     private static function requestContractPass(array $request): bool
@@ -243,6 +429,11 @@ final class PublicLinkCleanupActionPreview
         }
 
         return count($guards) >= 7;
+    }
+
+    private static function fingerprint(string $token): string
+    {
+        return 'sha256:' . hash('sha256', $token);
     }
 
     /**

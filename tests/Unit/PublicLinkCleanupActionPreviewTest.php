@@ -108,6 +108,8 @@ $negativeGuards = [
 
 $outputPath = sys_get_temp_dir() . '/larena-link-cleanup-action-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkCleanupActionPreview::run($planning, $request, $candidateSet, $wouldClean, $rollback, $negativeGuards, $outputPath);
+$previewOutputPath = sys_get_temp_dir() . '/larena-link-cleanup-action-preview-' . bin2hex(random_bytes(4)) . '.json';
+$previewReport = PublicLinkCleanupActionPreview::preview($planning, $previewOutputPath);
 
 assert_true($report['schema'] === 'larena.public_link_cleanup_action_foundation.v1', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Cleanup action preview must pass.');
@@ -134,5 +136,13 @@ assert_true(in_array('no_production_cleanup', $report['known_limitations'], true
 assert_true(in_array('no_file_deletion', $report['known_limitations'], true), 'File deletion limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+assert_true($previewReport['schema'] === 'larena.public_link_cleanup_action_foundation.v1', 'Preview helper schema mismatch.');
+assert_true($previewReport['status'] === 'passed', 'Preview helper must pass.');
+assert_true($previewReport['checks']['candidate_set_snapshot']['candidate_count'] === 3, 'Preview helper must expose cleanup candidates.');
+assert_true($previewReport['checks']['candidate_set_snapshot']['excluded_active_count'] === 1, 'Preview helper must protect active links.');
+assert_true($previewReport['safe_trace']['dry_run_only'] === true, 'Preview helper must stay dry-run only.');
+assert_true($previewReport['safe_trace']['production_database_delete'] === false, 'Preview helper must not delete production records.');
+assert_true(!str_contains(json_encode($previewReport, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Preview helper must not expose active raw token.');
+assert_true(is_file($previewOutputPath), 'Preview helper must write JSON evidence when output path is provided.');
 
 echo "PublicLinkCleanupActionPreviewTest passed.\n";

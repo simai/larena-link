@@ -2,18 +2,20 @@
 
 Status: passed.
 
-Moved public link cleanup action preview report assembly into
-`Larena\Link\Runtime\PublicLinkCleanupActionPreview`.
+Moved public link cleanup action preview composition and report assembly into
+`Larena\Link\Runtime\PublicLinkCleanupActionPreview::preview`.
 
-The entry app remains responsible for:
+The package now owns:
 
-- guarded admin mutation planning dependency composition;
 - cleanup request fixture composition;
 - candidate set fixture composition;
 - would-clean dry-run fixture composition;
 - rollback replay fixture composition;
 - negative guard fixture composition;
-- existing internal command, route, controller and view contracts.
+- final preview report assembly and evidence writing.
+
+The entry app remains responsible only for the upstream guarded admin mutation
+planning dependency and existing internal command/provider/test wiring.
 
 Forbidden scope was not intentionally enabled:
 
@@ -29,10 +31,5 @@ Forbidden scope was not intentionally enabled:
 
 Validation summary:
 
-- package quality gate passed;
-- root smoke `PublicLinkCleanupActionFoundationTest` passed with 4 tests and
-  78 assertions;
-- cockpit, governance, debt inventory, ownership and architecture validators
-  passed;
-- live debt inventory still reports `public_link=35`, so the broader track
-  remains active.
+- package quality gate passed with `PublicLinkCleanupActionPreviewTest`;
+- root smoke and feature tests pass after wiring to the package preview helper.
