@@ -1,0 +1,41 @@
+{
+  "schema": "larena.package_local_controller_view_slice_launch_record.v1",
+  "id": "public-link-mutation-ladder-review-package-local-controller-view-slice",
+  "status": "implemented_validated",
+  "package": "larena/link",
+  "track": "public_link_package_owned_presentation_reduction",
+  "target_surface": "public_link_mutation_ladder_review",
+  "scope": "Own the local/testing internal public_link_mutation_ladder_review route, controller and Blade review view inside larena/link while the entry app remains the report source bridge.",
+  "preserve": {
+    "internal_url": "/larena/internal/public-link-mutation-ladder-review",
+    "route_name": "larena.internal.public-link-mutation-ladder-review",
+    "json_schema": "larena.public_link_mutation_ladder_review_foundation.v1"
+  },
+  "allowed_behavior": [
+    "local_testing_internal_get_route",
+    "html_review_view",
+    "json_report_response",
+    "entry_app_report_source_dependency"
+  ],
+  "forbidden_behavior": [
+    "public_route_registration",
+    "post_route_registration",
+    "new_mutation_behavior",
+    "production_mutation",
+    "production_delivery",
+    "file_deletion",
+    "file_streaming",
+    "file_content_response",
+    "database_write",
+    "queue_or_scheduler_runtime",
+    "release_ready_claim"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-mutation-ladder-review-package-local-controller-view/",
+  "required_checks": [
+    "composer run quality:gate"
+  ],
+  "result": {
+    "quality_gate": "passed",
+    "validated_at": "2026-06-15T03:42:07Z"
+  }
+}

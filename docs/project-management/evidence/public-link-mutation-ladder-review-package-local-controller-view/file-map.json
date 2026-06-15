@@ -1,0 +1,15 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "package": "larena/link",
+  "slice": "public-link-mutation-ladder-review-package-local-controller-view",
+  "files": [
+    "src/Contracts/PublicLinkMutationLadderReviewReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkMutationLadderReviewController.php",
+    "resources/views/internal/public-link-mutation-ladder-review.blade.php",
+    "routes/internal.php",
+    "tests/Feature/PublicLinkMutationLadderReviewRouteBoundaryTest.php",
+    "composer.json",
+    "module.yaml",
+    ".larena/launch-context.json"
+  ]
+}

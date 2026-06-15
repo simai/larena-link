@@ -10,6 +10,7 @@ use Larena\Link\Http\Controllers\Internal\PublicLinkControlledDeliverySimulation
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedDeliveryReadinessReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedAdminMutationPlanningReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedRealDeliveryAdapterReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkMutationLadderReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkOperatorLifecycleManagementReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkOneTimeConsumptionLifecycleReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkPersistentLookupReviewController;
@@ -52,6 +53,9 @@ Route::middleware('web')
 
         Route::get('/public-link-cleanup-action', [PublicLinkCleanupActionReviewController::class, 'review'])
             ->name('public-link-cleanup-action');
+
+        Route::get('/public-link-mutation-ladder-review', [PublicLinkMutationLadderReviewController::class, 'review'])
+            ->name('public-link-mutation-ladder-review');
 
         Route::get('/public-link-controlled-delivery-simulation', [PublicLinkControlledDeliverySimulationReviewController::class, 'review'])
             ->name('public-link-controlled-delivery-simulation');

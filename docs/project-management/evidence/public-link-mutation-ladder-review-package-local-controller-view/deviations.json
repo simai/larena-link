@@ -1,0 +1,6 @@
+{
+  "schema": "larena.package_evidence_deviations.v1",
+  "package": "larena/link",
+  "slice": "public-link-mutation-ladder-review-package-local-controller-view",
+  "deviations": []
+}
