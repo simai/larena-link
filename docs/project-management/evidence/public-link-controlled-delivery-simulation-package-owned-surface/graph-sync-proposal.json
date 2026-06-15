@@ -1,0 +1,25 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "batch": "public-link-controlled-delivery-simulation-package-owned-surface-slice",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposal_only": true,
+  "target_package": "larena/link",
+  "proposed_facts": [
+    {
+      "id": "link.public_link_controlled_delivery_simulation_read_model",
+      "status": "implemented_in_package",
+      "owner": "larena/link",
+      "entry_app_role": "readiness_fixture_composition_and_compatibility_wire",
+      "simulated_response_only": true,
+      "production_delivery": false,
+      "file_content_response": false,
+      "release_ready": false
+    }
+  ],
+  "blocked_until_owner_approval": [
+    "canonical graph/spec update",
+    "production delivery runtime",
+    "public route migration into package"
+  ]
+}

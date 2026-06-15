@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-guarded-delivery-readiness-package-owned-surface-slice
+batch: public-link-controlled-delivery-simulation-package-owned-surface-slice
 features:
   - link.action_links
   - link.admin_center
@@ -20,6 +20,7 @@ features:
   - link.public_link_regenerate_action_read_model
   - link.public_link_cleanup_action_read_model
   - link.public_link_guarded_delivery_readiness_read_model
+  - link.public_link_controlled_delivery_simulation_read_model
   - link.one_time_links
   - link.share_links
   - link.target_registry
@@ -28,4 +29,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/public-link-guarded-delivery-readiness-package-owned-surface/
+  path: docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/

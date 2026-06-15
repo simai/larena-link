@@ -1,0 +1,44 @@
+{
+  "schema": "larena.package_launch_record.v1",
+  "id": "public-link-controlled-delivery-simulation-package-owned-surface-slice",
+  "created_at": "2026-06-15T00:02:00Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-controlled-delivery-simulation-package-owned-surface-slice",
+  "package": "larena/link",
+  "target_surface": "public_link_controlled_delivery_simulation",
+  "target_schema": "larena.public_link_controlled_delivery_simulation_foundation.v1",
+  "status": "coding_started",
+  "allowed_files": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "src/Runtime/PublicLinkControlledDeliverySimulationPreview.php",
+    "tests/Unit/PublicLinkControlledDeliverySimulationPreviewTest.php",
+    "docs/project-management/launch-records/public-link-controlled-delivery-simulation-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/"
+  ],
+  "forbidden_behavior": [
+    "public_route_registration",
+    "token_storage_or_generation_runtime",
+    "persistent_token_table_creation",
+    "database_migration",
+    "public_file_download",
+    "file_content_response",
+    "delivery_adapter_runtime",
+    "production_delivery_runtime",
+    "one_time_consumption_runtime",
+    "admin_crud",
+    "database_write",
+    "database_delete",
+    "file_delete",
+    "file_storage_mutation",
+    "queue_or_scheduler",
+    "release_ready_claim",
+    "canonical_graph_update"
+  ],
+  "required_package_commands": [
+    "PATH=/Applications/ServBay/package/bin:$PATH /Applications/ServBay/package/bin/php -d memory_limit=512M /Applications/ServBay/package/bin/composer run quality:gate"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/graph-sync-proposal.json"
+}
