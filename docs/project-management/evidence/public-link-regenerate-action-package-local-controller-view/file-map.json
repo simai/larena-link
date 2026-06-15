@@ -1,0 +1,15 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "package": "larena/link",
+  "slice": "public-link-regenerate-action-package-local-controller-view",
+  "files": [
+    "src/Contracts/PublicLinkRegenerateActionReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkRegenerateActionReviewController.php",
+    "resources/views/internal/public-link-regenerate-action-review.blade.php",
+    "routes/internal.php",
+    "tests/Feature/PublicLinkRegenerateActionRouteBoundaryTest.php",
+    "composer.json",
+    "module.yaml",
+    ".larena/launch-context.json"
+  ]
+}
