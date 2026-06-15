@@ -1,0 +1,24 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "package": "larena/link",
+  "batch": "public-link-runtime-planning-package-local-controller-view-slice",
+  "package_files": [
+    "composer.json",
+    "composer.lock",
+    "module.yaml",
+    ".larena/launch-context.json",
+    "src/Contracts/PublicLinkRuntimePlanningReportSource.php",
+    "src/Providers/LinkServiceProvider.php",
+    "src/Http/Controllers/Internal/PublicLinkRuntimePlanningReviewController.php",
+    "routes/internal.php",
+    "resources/views/internal/public-link-runtime-planning-review.blade.php",
+    "tests/Feature/LinkServiceProviderRegistrationTest.php",
+    "tests/Feature/PublicLinkRuntimePlanningRouteBoundaryTest.php"
+  ],
+  "entry_app_files": [
+    "app/Providers/AppServiceProvider.php",
+    "routes/larena/public-link-preview.php",
+    "app/Http/Controllers/Larena/Internal/PublicLink/PublicLinkRuntimePlanningReviewController.php",
+    "resources/views/larena/public-link-runtime-planning-review.blade.php"
+  ]
+}

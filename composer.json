@@ -10,6 +10,9 @@
         }
     ],
     "require": {
+        "illuminate/http": "^13.0",
+        "illuminate/support": "^13.0",
+        "illuminate/view": "^13.0",
         "php": "^8.3"
     },
     "autoload": {
@@ -49,7 +52,9 @@
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkMutationLadderReviewPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDeliveryContractHardeningPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php"
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/LinkServiceProviderRegistrationTest.php",
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRuntimePlanningRouteBoundaryTest.php"
         ],
         "test:unit": [
             "@test"
@@ -70,8 +75,18 @@
         ],
         "larena:metadata:check": "php scripts/check-metadata-sync.php"
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Larena\\Link\\Providers\\LinkServiceProvider"
+            ]
+        }
+    },
     "config": {
         "sort-packages": true,
+        "platform": {
+            "php": "8.3.31"
+        },
         "allow-plugins": {}
     },
     "minimum-stability": "stable",
