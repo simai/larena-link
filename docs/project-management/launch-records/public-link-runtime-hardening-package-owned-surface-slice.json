@@ -1,0 +1,77 @@
+{
+  "schema": "larena.package_owned_surface_slice_launch_record.v1",
+  "id": "public-link-runtime-hardening-package-owned-surface-slice",
+  "status": "coding_started",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-runtime-hardening-package-owned-surface-slice",
+  "target_surface": "public_link_runtime_hardening",
+  "target_package": "larena/link",
+  "target_schema": "larena.public_link_runtime_hardening_foundation.v1",
+  "source_launch_record_ref": "docs/project-management/launch-records/public-link-runtime-hardening-foundation.json",
+  "selection": {
+    "public_link_group_count": 35,
+    "selection_basis": "public_link_runtime_hardening is the next safe package-owned candidate after public_link_delivery_contract_hardening.",
+    "why_safe_next": "The source launch record keeps production_runtime_allowed=false, release_ready_claim_allowed=false, route_can_return_file=false, token persistence disabled and file delivery blocked. Existing persistent lookup local-testing mutation markers are preserved but not introduced by this package-owned report slice."
+  },
+  "allowed_package_files": [
+    "src/Runtime/PublicLinkRuntimeHardeningPreview.php",
+    "tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "docs/project-management/launch-records/public-link-runtime-hardening-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/README.md",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/implementation-summary.md",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/smoke.md",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/tests.md",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/file-map.json",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/deviations.json",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/graph-sync-proposal.json",
+    "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/independent-review.md"
+  ],
+  "entry_app_contract": {
+    "allowed_entry_app_file": "app/Larena/PublicLinkRuntimeHardeningFoundation.php",
+    "preserve_internal_route_controller_view": true,
+    "preserve_public_route_behavior": true,
+    "preserve_json_schema": true,
+    "entry_app_keeps_runtime_composition": [
+      "dry_run_report",
+      "token_storage_contract_report",
+      "persistent_lookup_report",
+      "guarded_delivery_readiness_report",
+      "controlled_delivery_simulation_report",
+      "one_time_consumption_lifecycle_report",
+      "guarded_real_delivery_adapter_report"
+    ]
+  },
+  "forbidden_behavior": [
+    "raw_token_output",
+    "new_token_persistence_runtime",
+    "token_material_generation",
+    "production_runtime",
+    "public_file_delivery",
+    "file_streaming",
+    "file_content_response",
+    "file_download",
+    "one_time_consumption_runtime",
+    "real_file_mutation",
+    "queue_or_scheduler",
+    "release_ready_claim",
+    "canonical_graph_update"
+  ],
+  "required_checks": [
+    "php -l src/Runtime/PublicLinkRuntimeHardeningPreview.php",
+    "php -l tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
+    "composer run quality:gate",
+    "php artisan test --filter=PublicLinkRuntimeHardeningFoundationTest",
+    "composer run cockpit:check",
+    "composer run validate:cockpit-governance",
+    "composer run validate:entry-app-presentation-debt-inventory",
+    "composer run validate:developer-preview-ownership-model",
+    "composer run validate:developer-preview-architecture",
+    "git diff --check"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/graph-sync-proposal.json",
+  "next_transition": "public_link_runtime_hardening_package_owned_surface_slice_execution"
+}

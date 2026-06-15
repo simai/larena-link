@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-delivery-contract-hardening-package-owned-surface-slice
+batch: public-link-runtime-hardening-package-owned-surface-slice
 features:
   - link.action_links
   - link.admin_center
@@ -25,6 +25,7 @@ features:
   - link.public_link_guarded_real_delivery_adapter_read_model
   - link.public_link_mutation_ladder_review_read_model
   - link.public_link_delivery_contract_hardening_read_model
+  - link.public_link_runtime_hardening_read_model
   - link.one_time_links
   - link.share_links
   - link.target_registry
@@ -33,4 +34,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/public-link-delivery-contract-hardening-package-owned-surface/
+  path: docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/

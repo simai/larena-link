@@ -1,0 +1,21 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "status": "verified",
+  "files": {
+    "runtime": [
+      "src/Runtime/PublicLinkRuntimeHardeningPreview.php"
+    ],
+    "tests": [
+      "tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php"
+    ],
+    "metadata": [
+      ".larena/launch-context.json",
+      "composer.json",
+      "module.yaml"
+    ],
+    "evidence": [
+      "docs/project-management/launch-records/public-link-runtime-hardening-package-owned-surface-slice.json",
+      "docs/project-management/evidence/public-link-runtime-hardening-package-owned-surface/"
+    ]
+  }
+}

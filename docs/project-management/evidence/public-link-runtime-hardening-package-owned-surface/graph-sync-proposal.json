@@ -1,0 +1,36 @@
+{
+  "schema": "larena.package_graph_sync_proposal.v1",
+  "batch": "public-link-runtime-hardening-package-owned-surface-slice",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposal_only": true,
+  "target_package": "larena/link",
+  "proposed_facts": [
+    {
+      "id": "link.public_link_runtime_hardening_read_model",
+      "status": "implemented_in_package",
+      "owner": "larena/link",
+      "entry_app_role": "source_report_composition_and_compatibility_wire",
+      "route_can_return_file": false,
+      "raw_token_output": false,
+      "new_token_persistence_runtime": false,
+      "token_material_generation": false,
+      "production_runtime": false,
+      "public_file_delivery": false,
+      "file_streaming": false,
+      "file_content_response": false,
+      "one_time_consumption_runtime": false,
+      "real_file_mutation": false,
+      "release_ready": false
+    }
+  ],
+  "blocked_until_owner_approval": [
+    "canonical graph/spec update",
+    "production runtime",
+    "public file delivery",
+    "file streaming",
+    "token persistence runtime",
+    "one-time consumption runtime",
+    "public route migration into package"
+  ]
+}
