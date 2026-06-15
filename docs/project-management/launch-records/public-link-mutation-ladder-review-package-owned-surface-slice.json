@@ -1,7 +1,8 @@
 {
   "schema": "larena.package_owned_surface_slice_launch_record.v1",
   "id": "public-link-mutation-ladder-review-package-owned-surface-slice",
-  "status": "coding_started",
+  "status": "implemented_pending_validation",
+  "updated_at": "2026-06-15T08:40:00Z",
   "track": "public_link_package_owned_presentation_reduction",
   "batch": "public-link-mutation-ladder-review-package-owned-surface-slice",
   "target_surface": "public_link_mutation_ladder_review",
@@ -9,8 +10,8 @@
   "target_schema": "larena.public_link_mutation_ladder_review_foundation.v1",
   "source_launch_record_ref": "docs/project-management/launch-records/public-link-mutation-ladder-review-foundation.json",
   "selection": {
-    "public_link_group_count": 35,
-    "selection_basis": "public_link_mutation_ladder_review is the next safe package-owned candidate after public_link_guarded_real_delivery_adapter. This slice moves only consolidated review/report assembly into larena/link.",
+    "public_link_group_count": 15,
+    "selection_basis": "public_link_mutation_ladder_review is the next safe package-owned composition candidate after public_link_cleanup_action. This slice moves only consolidated review/report source composition into larena/link.",
     "why_safe_next": "The source launch record is review-only and keeps new_mutation_behavior_allowed=false, file_deletion_allowed=false, real_file_delivery_allowed=false, queue_or_scheduler_allowed=false, production_runtime_allowed=false and release_ready_claim_allowed=false."
   },
   "allowed_package_files": [
@@ -48,12 +49,7 @@
     "preserve_internal_route_controller_view": true,
     "preserve_public_route_behavior": true,
     "preserve_json_schema": true,
-    "entry_app_keeps_runtime_composition": [
-      "guarded_admin_mutation_planning_report",
-      "revoke_action_report",
-      "regenerate_action_report",
-      "cleanup_action_report"
-    ]
+    "entry_app_role_after_batch": "planning_dependency_and_compatibility_wire"
   },
   "forbidden_behavior": [
     "public_route_registration",

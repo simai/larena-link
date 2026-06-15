@@ -8,6 +8,21 @@ final class PublicLinkMutationLadderReviewPreview
 {
     /**
      * @param array<string, mixed> $planning
+     * @return array<string, mixed>
+     */
+    public static function preview(array $planning, ?string $outputPath = null): array
+    {
+        return self::run(
+            $planning,
+            PublicLinkRevokeActionPreview::preview($planning),
+            PublicLinkRegenerateActionPreview::preview($planning),
+            PublicLinkCleanupActionPreview::preview($planning),
+            $outputPath,
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $planning
      * @param array<string, mixed> $revoke
      * @param array<string, mixed> $regenerate
      * @param array<string, mixed> $cleanup

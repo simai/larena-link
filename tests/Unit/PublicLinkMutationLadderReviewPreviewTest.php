@@ -60,6 +60,8 @@ $cleanup = source_report(
 
 $outputPath = sys_get_temp_dir() . '/larena-link-mutation-ladder-review-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkMutationLadderReviewPreview::run($planning, $revoke, $regenerate, $cleanup, $outputPath);
+$previewOutputPath = sys_get_temp_dir() . '/larena-link-mutation-ladder-review-preview-' . bin2hex(random_bytes(4)) . '.json';
+$previewReport = PublicLinkMutationLadderReviewPreview::preview($planning, $previewOutputPath);
 
 assert_true($report['schema'] === 'larena.public_link_mutation_ladder_review_foundation.v1', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Mutation ladder review preview must pass.');
@@ -104,5 +106,14 @@ assert_true(in_array('developer_testable_operator_review_only', $report['known_l
 assert_true(in_array('no_new_public_link_mutation_behavior', $report['known_limitations'], true), 'Mutation limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+assert_true($previewReport['schema'] === 'larena.public_link_mutation_ladder_review_foundation.v1', 'Preview helper schema mismatch.');
+assert_true($previewReport['status'] === 'passed', 'Preview helper must pass.');
+assert_true(count($previewReport['operator_action_matrix']) === 4, 'Preview helper must keep four action rows.');
+assert_true($previewReport['checks']['source_slice_composition']['status'] === 'passed', 'Preview helper source composition must pass.');
+assert_true($previewReport['scope_boundaries']['consolidated_review_only'] === true, 'Preview helper review-only boundary missing.');
+assert_true($previewReport['scope_boundaries']['new_mutation_behavior_added'] === false, 'Preview helper must not add mutation behavior.');
+assert_true($previewReport['safe_trace']['production_runtime'] === false, 'Preview helper must not enable production runtime.');
+assert_true($previewReport['safe_trace']['release_ready'] === false, 'Preview helper must not claim release readiness.');
+assert_true(is_file($previewOutputPath), 'Preview helper must write JSON evidence when output path is provided.');
 
 echo "PublicLinkMutationLadderReviewPreviewTest passed.\n";
