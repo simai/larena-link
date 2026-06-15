@@ -2,16 +2,19 @@
 
 Status: passed.
 
-Moved public link regenerate action preview report assembly into
-`Larena\Link\Runtime\PublicLinkRegenerateActionPreview`.
+Moved public link regenerate action preview composition and report assembly into
+`Larena\Link\Runtime\PublicLinkRegenerateActionPreview::preview`.
 
-The entry app remains responsible for:
+The package now owns:
 
-- guarded admin mutation planning dependency composition;
+- regenerate request fixture composition;
 - old/new fingerprint fixture snapshots;
 - rollback fixture composition;
 - negative guard fixture composition;
-- existing internal command, route, controller and view contracts.
+- final preview report assembly and evidence writing.
+
+The entry app remains responsible only for the upstream guarded admin mutation
+planning dependency and existing internal command/provider/test wiring.
 
 Forbidden scope was not intentionally enabled:
 
@@ -29,6 +32,4 @@ Forbidden scope was not intentionally enabled:
 Validation summary:
 
 - Package quality gate passed with `PublicLinkRegenerateActionPreviewTest`.
-- Root smoke passed with `PublicLinkRegenerateActionFoundationTest`.
-- Cockpit, governance, debt inventory, ownership and architecture validators passed.
-- Root and package diff checks passed.
+- Root smoke and feature tests pass after wiring to the package preview helper.

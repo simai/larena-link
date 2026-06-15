@@ -3,6 +3,10 @@
   "batch": "public-link-regenerate-action-package-owned-surface-slice",
   "entry_app_files": [
     "app/Larena/PublicLinkRegenerateActionFoundation.php",
+    "app/Larena/PublicLinkMutationLadderReviewFoundation.php",
+    "app/Providers/AppServiceProvider.php",
+    "routes/console/public-link.php",
+    "tests/Feature/PublicLinkRegenerateActionFoundationTest.php",
     "docs/project-management/launch-records/public-link-regenerate-action-package-owned-surface-slice.json"
   ],
   "package_files": [

@@ -18,10 +18,11 @@ git diff --check
 Passed.
 
 - Package quality gate passed, including `PublicLinkRegenerateActionPreviewTest`.
+- Package unit coverage includes `PublicLinkRegenerateActionPreview::preview()`.
 - Root smoke passed: `PublicLinkRegenerateActionFoundationTest`, 4 tests, 69 assertions.
 - `composer run cockpit:check` passed.
 - `composer run validate:cockpit-governance` passed with known cockpit-density warnings and no errors.
-- `composer run validate:entry-app-presentation-debt-inventory` passed; `public_link=35`.
+- `composer run validate:entry-app-presentation-debt-inventory` target after root commit: `public_link=16`.
 - `composer run validate:developer-preview-ownership-model` passed.
 - `composer run validate:developer-preview-architecture` passed; architecture acceptance score `100`.
 - Root/package `git diff --check` passed.

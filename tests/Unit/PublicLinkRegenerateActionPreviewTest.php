@@ -86,6 +86,8 @@ $negativeGuards = [
 
 $outputPath = sys_get_temp_dir() . '/larena-link-regenerate-action-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkRegenerateActionPreview::run($planning, $request, $oldSnapshot, $newSnapshot, $rollback, $negativeGuards, $outputPath);
+$previewOutputPath = sys_get_temp_dir() . '/larena-link-regenerate-action-preview-' . bin2hex(random_bytes(4)) . '.json';
+$previewReport = PublicLinkRegenerateActionPreview::preview($planning, $previewOutputPath);
 
 assert_true($report['schema'] === 'larena.public_link_regenerate_action_foundation.v1', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Regenerate action preview must pass.');
@@ -111,5 +113,11 @@ assert_true(in_array('no_production_regeneration', $report['known_limitations'],
 assert_true(in_array('no_raw_regenerated_token_output', $report['known_limitations'], true), 'Raw regenerated token limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+assert_true($previewReport['schema'] === 'larena.public_link_regenerate_action_foundation.v1', 'Preview helper schema mismatch.');
+assert_true($previewReport['status'] === 'passed', 'Preview helper must pass.');
+assert_true($previewReport['checks']['fingerprint_snapshots']['fingerprint_changed'] === true, 'Preview helper must regenerate fingerprint evidence.');
+assert_true($previewReport['safe_trace']['raw_regenerated_token_returned'] === false, 'Preview helper must hide regenerated raw token.');
+assert_true(!str_contains(json_encode($previewReport, JSON_THROW_ON_ERROR), 'regenerated-preview-token'), 'Preview helper must not expose regenerated raw token.');
+assert_true(is_file($previewOutputPath), 'Preview helper must write JSON evidence when output path is provided.');
 
 echo "PublicLinkRegenerateActionPreviewTest passed.\n";

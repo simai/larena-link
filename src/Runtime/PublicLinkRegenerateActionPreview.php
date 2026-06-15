@@ -8,6 +8,29 @@ final class PublicLinkRegenerateActionPreview
 {
     /**
      * @param array<string, mixed> $planning
+     * @return array<string, mixed>
+     */
+    public static function preview(array $planning, ?string $outputPath = null): array
+    {
+        $request = self::request();
+        $oldSnapshot = self::oldFingerprintSnapshot($request);
+        $newSnapshot = self::newFingerprintSnapshot($oldSnapshot);
+        $rollback = self::rollbackPlan($oldSnapshot, $newSnapshot);
+        $negativeGuards = self::negativeGuards();
+
+        return self::run(
+            $planning,
+            $request,
+            $oldSnapshot,
+            $newSnapshot,
+            $rollback,
+            $negativeGuards,
+            $outputPath,
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $planning
      * @param array<string, mixed> $request
      * @param array<string, mixed> $oldSnapshot
      * @param array<string, mixed> $newSnapshot
@@ -174,6 +197,130 @@ final class PublicLinkRegenerateActionPreview
     }
 
     /**
+     * @return array<string, mixed>
+     */
+    private static function request(): array
+    {
+        return [
+            'action' => 'regenerate_link',
+            'launch_record_ref' => 'docs/project-management/launch-records/public-link-regenerate-action-foundation.json',
+            'confirmation' => 'public_link_regenerate_preview',
+            'operator_ref' => 'local.testing.operator',
+            'current_token_fingerprint' => self::fingerprint('active-preview-token'),
+            'raw_token_visible' => false,
+            'raw_regenerated_token_returned' => false,
+            'access_scope_ref' => 'access.scope:public-link.admin.regenerate',
+            'audit_event_ref' => 'audit.event:public_link.regenerate.requested',
+            'mutates_state_now' => true,
+            'production_mutation' => false,
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $request
+     * @return array<string, mixed>
+     */
+    private static function oldFingerprintSnapshot(array $request): array
+    {
+        return [
+            'snapshot_id' => 'old_regenerate_active_preview',
+            'token_fingerprint' => $request['current_token_fingerprint'],
+            'lifecycle_state' => 'active',
+            'delivery_allowed' => true,
+            'active_until' => 'preview-clock-before-regeneration',
+            'access_scope_ref' => 'access.scope:file-manager.link-sharing.runtime',
+            'audit_event_ref' => 'audit.event:public_link.regenerate.before_snapshot',
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $oldSnapshot
+     * @return array<string, mixed>
+     */
+    private static function newFingerprintSnapshot(array $oldSnapshot): array
+    {
+        return [
+            'snapshot_id' => 'new_regenerate_active_preview',
+            'previous_token_fingerprint' => $oldSnapshot['token_fingerprint'],
+            'token_fingerprint' => self::fingerprint('regenerated-preview-token'),
+            'lifecycle_state' => 'active',
+            'delivery_allowed' => true,
+            'active_from' => 'preview-clock-after-regeneration',
+            'access_scope_ref' => 'access.scope:public-link.admin.regenerate',
+            'audit_event_ref' => 'audit.event:public_link.regenerate.result',
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $oldSnapshot
+     * @param array<string, mixed> $newSnapshot
+     * @return array<string, mixed>
+     */
+    private static function rollbackPlan(array $oldSnapshot, array $newSnapshot): array
+    {
+        return [
+            'rollback_id' => 'restore_previous_token_hash_preview',
+            'from_snapshot' => $newSnapshot['snapshot_id'],
+            'to_snapshot' => $oldSnapshot['snapshot_id'],
+            'restore_token_fingerprint' => $oldSnapshot['token_fingerprint'],
+            'replace_token_fingerprint' => $newSnapshot['token_fingerprint'],
+            'restore_delivery_allowed' => $oldSnapshot['delivery_allowed'],
+            'restore_lifecycle_state' => $oldSnapshot['lifecycle_state'],
+            'rollback_executed_now' => false,
+            'evidence_required' => [
+                'old_fingerprint_snapshot',
+                'new_fingerprint_snapshot',
+                'restore_previous_token_hash_plan',
+            ],
+        ];
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeGuards(): array
+    {
+        return [
+            [
+                'guard' => 'missing_launch_record',
+                'status' => 'blocked',
+                'reason' => 'launch_record_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'missing_access_scope',
+                'status' => 'blocked',
+                'reason' => 'access_scope_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'missing_audit_context',
+                'status' => 'blocked',
+                'reason' => 'audit_context_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'unknown_token',
+                'status' => 'blocked',
+                'reason' => 'known_public_link_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'raw_regenerated_token_output',
+                'status' => 'blocked',
+                'reason' => 'raw_regenerated_token_must_not_be_exposed',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'unbounded_regeneration_loop',
+                'status' => 'blocked',
+                'reason' => 'single_guarded_action_per_launch_record_required',
+                'mutates_state' => false,
+            ],
+        ];
+    }
+
+    /**
      * @param array<string, mixed> $request
      */
     private static function requestContractPass(array $request): bool
@@ -236,6 +383,11 @@ final class PublicLinkRegenerateActionPreview
 
         return !str_contains($encoded, 'active-preview-token')
             && !str_contains($encoded, 'regenerated-preview-token');
+    }
+
+    private static function fingerprint(string $token): string
+    {
+        return 'sha256:' . hash('sha256', $token);
     }
 
     /**
