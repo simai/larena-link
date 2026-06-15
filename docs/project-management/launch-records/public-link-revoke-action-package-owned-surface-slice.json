@@ -7,7 +7,7 @@
   "target_surface": "public_link_revoke_action",
   "target_schema": "larena.public_link_revoke_action_foundation.v1",
   "target_package": "larena/link",
-  "entry_app_wrapper": "app/Larena/PublicLinkRevokeActionFoundation.php",
+  "entry_app_wrapper": "removed in public-link-revoke-action-package-owned-composition-slice",
   "package_runtime": "src/Runtime/PublicLinkRevokeActionPreview.php",
   "allowed_behavior": [
     "local_testing_revoke_preview_report",
@@ -30,5 +30,10 @@
   ],
   "evidence_path": "docs/project-management/evidence/public-link-revoke-action-package-owned-surface/",
   "graph_sync_proposal_path": "docs/project-management/evidence/public-link-revoke-action-package-owned-surface/graph-sync-proposal.json",
-  "status": "coding_started"
+  "status": "implemented_validated",
+  "result": {
+    "package_composition_helper": "Larena\\Link\\Runtime\\PublicLinkRevokeActionPreview::preview",
+    "entry_app_wrapper_removed": true,
+    "validated_at": "2026-06-15T04:05:47Z"
+  }
 }

@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-delivery-contract-hardening-package-local-controller-view-slice
+batch: public-link-revoke-action-package-owned-surface-slice
 features:
   - link.action_links
   - link.admin_center
@@ -40,6 +40,7 @@ features:
   - public_link_guarded_admin_mutation_planning.package_owned_controller_view
   - link.public_link_revoke_action_internal_route
   - public_link_revoke_action.package_owned_controller_view
+  - public_link_revoke_action.package_owned_composition
   - link.public_link_regenerate_action_internal_route
   - public_link_regenerate_action.package_owned_controller_view
   - link.public_link_cleanup_action_internal_route
@@ -58,4 +59,4 @@ runtime:
   php: "^8.3"
   laravel: "^13.0"
 evidence:
-  path: docs/project-management/evidence/public-link-delivery-contract-hardening-package-local-controller-view/
+  path: docs/project-management/evidence/public-link-revoke-action-package-owned-surface/

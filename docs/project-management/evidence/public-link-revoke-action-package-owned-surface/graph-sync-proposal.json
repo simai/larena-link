@@ -7,7 +7,7 @@
   "surface": "public_link_revoke_action",
   "proposal": {
     "type": "package_owned_presentation_reduction_evidence",
-    "summary": "Record that public_link_revoke_action local-testing preview report assembly is now package-owned in larena/link while entry-app fixture composition remains unchanged.",
+    "summary": "Record that public_link_revoke_action local-testing preview fixture composition and report assembly are now package-owned in larena/link while entry-app keeps only the upstream planning dependency composition.",
     "owner_review_required": true
   },
   "guards": {

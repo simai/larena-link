@@ -8,6 +8,29 @@ final class PublicLinkRevokeActionPreview
 {
     /**
      * @param array<string, mixed> $planning
+     * @return array<string, mixed>
+     */
+    public static function preview(array $planning, ?string $outputPath = null): array
+    {
+        $request = self::request();
+        $before = self::beforeState($request);
+        $after = self::afterState($before);
+        $rollback = self::rollbackPlan($before, $after);
+        $negativeGuards = self::negativeGuards();
+
+        return self::run(
+            $planning,
+            $request,
+            $before,
+            $after,
+            $rollback,
+            $negativeGuards,
+            $outputPath,
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $planning
      * @param array<string, mixed> $request
      * @param array<string, mixed> $before
      * @param array<string, mixed> $after
@@ -167,6 +190,120 @@ final class PublicLinkRevokeActionPreview
         }
 
         return false;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function request(): array
+    {
+        return [
+            'action' => 'revoke_link',
+            'launch_record_ref' => 'docs/project-management/launch-records/public-link-revoke-action-foundation.json',
+            'confirmation' => 'public_link_revoke_preview',
+            'operator_ref' => 'local.testing.operator',
+            'token_fingerprint' => self::fingerprint('active-preview-token'),
+            'raw_token_visible' => false,
+            'access_scope_ref' => 'access.scope:public-link.admin.revoke',
+            'audit_event_ref' => 'audit.event:public_link.revoke.requested',
+            'mutates_state_now' => true,
+            'production_mutation' => false,
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $request
+     * @return array<string, mixed>
+     */
+    private static function beforeState(array $request): array
+    {
+        return [
+            'snapshot_id' => 'before_revoke_active_preview',
+            'token_fingerprint' => $request['token_fingerprint'],
+            'lifecycle_state' => 'active',
+            'revoked_at' => null,
+            'delivery_allowed' => true,
+            'access_scope_ref' => 'access.scope:file-manager.link-sharing.runtime',
+            'audit_event_ref' => 'audit.event:public_link.revoke.before_snapshot',
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $before
+     * @return array<string, mixed>
+     */
+    private static function afterState(array $before): array
+    {
+        return [
+            'snapshot_id' => 'after_revoke_active_preview',
+            'token_fingerprint' => $before['token_fingerprint'],
+            'lifecycle_state' => 'revoked',
+            'revoked_at' => 'preview-clock',
+            'delivery_allowed' => false,
+            'access_scope_ref' => 'access.scope:public-link.admin.revoke',
+            'audit_event_ref' => 'audit.event:public_link.revoke.result',
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $before
+     * @param array<string, mixed> $after
+     * @return array<string, mixed>
+     */
+    private static function rollbackPlan(array $before, array $after): array
+    {
+        return [
+            'rollback_id' => 'restore_active_preview_state',
+            'from_snapshot' => $after['snapshot_id'],
+            'to_snapshot' => $before['snapshot_id'],
+            'restore_state' => $before['lifecycle_state'],
+            'restore_revoked_at' => $before['revoked_at'],
+            'restore_delivery_allowed' => $before['delivery_allowed'],
+            'rollback_executed_now' => false,
+            'evidence_required' => [
+                'before_state_snapshot',
+                'after_state_snapshot',
+                'restore_previous_revocation_state_plan',
+            ],
+        ];
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeGuards(): array
+    {
+        return [
+            [
+                'guard' => 'missing_launch_record',
+                'status' => 'blocked',
+                'reason' => 'launch_record_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'missing_access_scope',
+                'status' => 'blocked',
+                'reason' => 'access_scope_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'unknown_token',
+                'status' => 'blocked',
+                'reason' => 'known_public_link_required',
+                'mutates_state' => false,
+            ],
+            [
+                'guard' => 'raw_token_output',
+                'status' => 'blocked',
+                'reason' => 'raw_token_must_not_be_exposed',
+                'mutates_state' => false,
+            ],
+        ];
+    }
+
+    private static function fingerprint(string $token): string
+    {
+        return 'sha256:'.hash('sha256', $token);
     }
 
     /**

@@ -7,8 +7,6 @@
   "package_files": [
     "src/Runtime/PublicLinkRevokeActionPreview.php",
     "tests/Unit/PublicLinkRevokeActionPreviewTest.php",
-    ".larena/launch-context.json",
-    "composer.json",
     "module.yaml",
     "docs/project-management/launch-records/public-link-revoke-action-package-owned-surface-slice.json",
     "docs/project-management/evidence/public-link-revoke-action-package-owned-surface/README.md",
@@ -21,15 +19,17 @@
     "docs/project-management/evidence/public-link-revoke-action-package-owned-surface/graph-sync-proposal.json"
   ],
   "entry_app_files": [
-    "app/Larena/PublicLinkRevokeActionFoundation.php",
+    "app/Larena/PublicLinkRevokeActionFoundation.php (removed)",
+    "app/Providers/AppServiceProvider.php",
+    "routes/console/public-link.php",
+    "app/Larena/PublicLinkMutationLadderReviewFoundation.php",
+    "tests/Feature/PublicLinkRevokeActionFoundationTest.php",
     "docs/project-management/launch-records/public-link-revoke-action-package-owned-surface-slice.json",
     "docs/project-management/reports/public-link-revoke-action-package-owned-surface-slice-implementation.json",
     "docs/project-management/handoffs/public-link-revoke-action-package-owned-surface-slice-implementation-handoff.json"
   ],
   "forbidden_files_not_touched": [
-    "routes/*",
     "resources/*",
-    "tests/Feature/PublicLinkRevokeActionFoundationTest.php",
     "src/Http/*",
     "src/Providers/*",
     "src/Persistence/*",

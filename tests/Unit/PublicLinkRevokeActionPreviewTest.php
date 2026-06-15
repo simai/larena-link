@@ -104,4 +104,16 @@ assert_true(in_array('no_production_revocation', $report['known_limitations'], t
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
 
+$composedOutputPath = sys_get_temp_dir() . '/larena-link-revoke-action-composed-' . bin2hex(random_bytes(4)) . '.json';
+$composed = PublicLinkRevokeActionPreview::preview($planning, $composedOutputPath);
+
+assert_true($composed['schema'] === 'larena.public_link_revoke_action_foundation.v1', 'Composed preview schema mismatch.');
+assert_true($composed['status'] === 'passed', 'Composed revoke preview must pass.');
+assert_true($composed['checks']['request_contract']['status'] === 'passed', 'Composed request contract must pass.');
+assert_true($composed['checks']['before_after_snapshots']['status'] === 'passed', 'Composed before/after snapshots must pass.');
+assert_true($composed['checks']['rollback_plan']['status'] === 'passed', 'Composed rollback plan must pass.');
+assert_true($composed['safe_trace']['persistent_production_revocation'] === false, 'Composed preview must keep production revocation disabled.');
+assert_true(!str_contains(json_encode($composed, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Composed preview must not expose raw token.');
+assert_true(is_file($composedOutputPath), 'Composed preview must write JSON evidence when output path is provided.');
+
 echo "PublicLinkRevokeActionPreviewTest passed.\n";

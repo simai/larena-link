@@ -4,7 +4,7 @@
   "status": "none",
   "deviations": [],
   "notes": [
-    "Entry app fixture composition remains by launch-record design.",
+    "Entry app keeps only upstream planning dependency composition; revoke-specific fixtures moved into the package preview helper.",
     "Package routes, admin CRUD, persistence, delivery adapters, queue/scheduler runtime and production action execution remain forbidden for this slice.",
     "The local-testing state transition remains non-persistent and no production revocation runtime is introduced."
   ]
