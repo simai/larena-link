@@ -1,7 +1,7 @@
 {
   "schema": "larena.package_launch_context.v1",
   "package": "larena/link",
-  "launch_record_ref": "docs/project-management/launch-records/public-link-mutation-ladder-review-package-owned-surface-slice.json",
+  "launch_record_ref": "docs/project-management/launch-records/public-link-persistent-lookup-package-owned-surface-slice.json",
   "specs_repo": "simai/larena-specs",
   "specs_commit": "74ba552dcde34fd48af5dfc01a8f8896afd51c17",
   "base_commit": "e1e6bdd7117caca293e1ba8050739039746175c0",
@@ -84,7 +84,10 @@
     "public_link_mutation_ladder_review.package_owned_controller_view",
     "public_link_mutation_ladder_review.package_owned_composition",
     "link.public_link_delivery_contract_hardening_internal_route",
-    "public_link_delivery_contract_hardening.package_owned_controller_view"
+    "public_link_delivery_contract_hardening.package_owned_controller_view",
+    "link.public_link_persistent_lookup_read_model",
+    "public_link_persistent_lookup.package_owned_read_model",
+    "public_link_persistent_lookup.package_owned_composition"
   ],
   "allowed_files": [
     "scripts/check-metadata-sync.php",
@@ -547,7 +550,18 @@
     "docs/project-management/evidence/public-link-delivery-contract-hardening-package-local-controller-view/implementation-summary.md",
     "docs/project-management/evidence/public-link-delivery-contract-hardening-package-local-controller-view/independent-review.md",
     "docs/project-management/evidence/public-link-delivery-contract-hardening-package-local-controller-view/smoke.md",
-    "docs/project-management/evidence/public-link-delivery-contract-hardening-package-local-controller-view/tests.md"
+    "docs/project-management/evidence/public-link-delivery-contract-hardening-package-local-controller-view/tests.md",
+    "src/Runtime/PublicLinkPersistentLookupPreview.php",
+    "tests/Unit/PublicLinkPersistentLookupPreviewTest.php",
+    "docs/project-management/launch-records/public-link-persistent-lookup-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/README.md",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/implementation-summary.md",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/smoke.md",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/tests.md",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/file-map.json",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/deviations.json",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/graph-sync-proposal.json",
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/independent-review.md"
   ],
   "forbidden_files": [
     "config/*",
@@ -576,8 +590,8 @@
     "migration_or_route_change",
     "restore_legacy_runtime_code_to_active_tree"
   ],
-  "evidence_path": "docs/project-management/evidence/public-link-mutation-ladder-review-package-owned-surface/",
-  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-mutation-ladder-review-package-owned-surface/graph-sync-proposal.json",
+  "evidence_path": "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/graph-sync-proposal.json",
   "status": "coding_started",
   "coding_started": true,
   "repository_enforcement_installed": true,

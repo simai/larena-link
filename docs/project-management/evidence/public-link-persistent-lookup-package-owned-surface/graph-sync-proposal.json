@@ -1,0 +1,38 @@
+{
+  "schema": "larena.package_graph_sync_proposal.v1",
+  "batch": "public-link-persistent-lookup-package-owned-surface-slice",
+  "canonical_update": false,
+  "canonical_update_allowed": false,
+  "proposal_only": true,
+  "target_package": "larena/link",
+  "proposed_facts": [
+    {
+      "id": "link.public_link_persistent_lookup_read_model",
+      "status": "implemented_in_package",
+      "owner": "larena/link",
+      "entry_app_role": "package_report_source_binding_and_local_testing_composition",
+      "internal_route_controller_view_preserved": true,
+      "json_schema_preserved": true,
+      "raw_token_output": false,
+      "token_material_generation": false,
+      "production_lookup_runtime": false,
+      "production_database_mutation": false,
+      "public_file_delivery": false,
+      "file_streaming": false,
+      "file_content_response": false,
+      "one_time_consumption_runtime": false,
+      "real_file_mutation": false,
+      "release_ready": false
+    }
+  ],
+  "blocked_until_owner_approval": [
+    "canonical graph/spec update",
+    "production lookup runtime",
+    "production database mutation",
+    "public file delivery",
+    "file streaming",
+    "token persistence runtime",
+    "one-time consumption runtime",
+    "public route migration into package"
+  ]
+}

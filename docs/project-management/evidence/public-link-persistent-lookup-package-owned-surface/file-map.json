@@ -1,0 +1,21 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "status": "verified",
+  "files": {
+    "runtime": [
+      "src/Runtime/PublicLinkPersistentLookupPreview.php"
+    ],
+    "tests": [
+      "tests/Unit/PublicLinkPersistentLookupPreviewTest.php"
+    ],
+    "metadata": [
+      ".larena/launch-context.json",
+      "composer.json",
+      "composer.lock"
+    ],
+    "evidence": [
+      "docs/project-management/launch-records/public-link-persistent-lookup-package-owned-surface-slice.json",
+      "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/"
+    ]
+  }
+}

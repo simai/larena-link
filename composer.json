@@ -10,6 +10,7 @@
         }
     ],
     "require": {
+        "illuminate/database": "^13.0",
         "illuminate/http": "^13.0",
         "illuminate/support": "^13.0",
         "illuminate/view": "^13.0",
@@ -52,6 +53,7 @@
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkMutationLadderReviewPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDeliveryContractHardeningPreviewTest.php",
+            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkPersistentLookupPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
             "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkDryRunRuntimeRouteBoundaryTest.php",

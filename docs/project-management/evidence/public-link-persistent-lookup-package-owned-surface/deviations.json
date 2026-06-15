@@ -1,0 +1,13 @@
+{
+  "schema": "larena.package_evidence_deviations.v1",
+  "status": "accepted",
+  "deviations": [
+    {
+      "id": "local_testing_database_preview_boundary",
+      "status": "documented",
+      "summary": "The persistent lookup preview keeps the existing local/testing schema and seed behavior, but production lookup and production database mutation remain disabled.",
+      "risk": "low",
+      "mitigation": "Scope checks, feature tests and report safe_trace keep production_database_mutation=false, production_lookup=false and release_ready=false."
+    }
+  ]
+}
