@@ -5,9 +5,9 @@ Batch: `public-link-controlled-delivery-simulation-package-owned-surface-slice`
 This evidence package records the Larena Link package-owned preview slice for
 the public link controlled delivery simulation surface.
 
-The slice owns simulated response metadata/report assembly in `larena/link`.
-The entry app keeps compatibility composition for guarded delivery readiness,
-token fingerprinting and denied-case fixtures.
+The slice owns simulated response metadata/report assembly and dependency
+composition in `larena/link`. The entry app calls the package preview API and
+keeps only compatibility wiring for existing local/testing report consumers.
 
 Scope guards:
 
@@ -20,4 +20,3 @@ Scope guards:
 - no production delivery runtime
 - no DB or file storage mutation
 - no release-ready claim
-

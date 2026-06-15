@@ -3,9 +3,9 @@
   "batch": "public-link-controlled-delivery-simulation-package-owned-surface-slice",
   "deviations": [
     {
-      "id": "entry-app-composes-readiness-and-negative-fixtures",
+      "id": "package-composes-readiness-and-negative-fixtures",
       "status": "accepted",
-      "reason": "Guarded delivery readiness and denied-case fixture composition remain in the entry app for this slice so the package-owned preview does not depend on entry-app classes or introduce production delivery behavior.",
+      "reason": "Guarded delivery readiness and denied-case fixture composition moved into the package through package-owned preview classes only; production delivery behavior remains disabled.",
       "follow_up": "Move the remaining public-link route/runtime compatibility surfaces under dedicated guarded launch records before enabling production delivery runtime."
     }
   ]

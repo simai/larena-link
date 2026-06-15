@@ -2,7 +2,16 @@
   "schema": "larena.package_evidence_file_map.v1",
   "batch": "public-link-controlled-delivery-simulation-package-owned-surface-slice",
   "root_files": [
-    "app/Larena/PublicLinkControlledDeliverySimulationFoundation.php",
+    "app/Larena/PublicLinkControlledDeliverySimulationFoundation.php (removed)",
+    "app/Http/Controllers/Larena/Public/PublicLinkRuntimeResolveController.php",
+    "app/Providers/AppServiceProvider.php",
+    "app/Larena/PublicLinkOneTimeConsumptionLifecycleFoundation.php",
+    "routes/console/public-link.php",
+    "tests/Feature/PublicLinkControlledDeliverySimulationFoundationTest.php",
+    "tests/Feature/PublicLinkRuntimeHardeningFoundationTest.php",
+    "tests/Feature/PublicLinkDeliveryContractHardeningFoundationTest.php",
+    "tests/Feature/PublicLinkPersistentLookupFoundationTest.php",
+    "tests/Feature/PublicLinkTokenStorageContractFoundationTest.php",
     "docs/project-management/launch-records/public-link-controlled-delivery-simulation-package-owned-surface-slice.json",
     "docs/project-management/reports/public-link-controlled-delivery-simulation-package-owned-surface-slice-implementation.json",
     "docs/project-management/handoffs/public-link-controlled-delivery-simulation-package-owned-surface-slice-implementation-handoff.json"
@@ -10,6 +19,7 @@
   "package_files": [
     ".larena/launch-context.json",
     "composer.json",
+    "composer.lock",
     "module.yaml",
     "src/Runtime/PublicLinkControlledDeliverySimulationPreview.php",
     "tests/Unit/PublicLinkControlledDeliverySimulationPreviewTest.php",
@@ -17,11 +27,10 @@
     "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/"
   ],
   "forbidden_files_not_changed": [
-    "routes/*",
     "resources/*",
     "config/*",
     "database/*",
-    "src/Http/*",
+    "src/Http/* except existing internal review surface",
     "src/Delivery/*",
     "src/Persistence/*",
     "src/Token/*",

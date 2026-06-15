@@ -1,22 +1,36 @@
 {
-  "schema": "larena.package_launch_record.v1",
+  "schema": "larena.package_owned_surface_slice_launch_record.v1",
   "id": "public-link-controlled-delivery-simulation-package-owned-surface-slice",
   "created_at": "2026-06-15T00:02:00Z",
+  "updated_at": "2026-06-15T00:00:00Z",
   "track": "public_link_package_owned_presentation_reduction",
   "batch": "public-link-controlled-delivery-simulation-package-owned-surface-slice",
   "package": "larena/link",
   "target_surface": "public_link_controlled_delivery_simulation",
   "target_schema": "larena.public_link_controlled_delivery_simulation_foundation.v1",
   "status": "coding_started",
-  "allowed_files": [
+  "selection": {
+    "public_link_group_count": 11,
+    "selection_basis": "The persistent lookup package-owned composition slice left controlled delivery simulation as the next safe root wrapper reduction.",
+    "why_safe_next": "The package already owns the controlled delivery simulation read model and internal review surface. This slice moves dependency composition into larena/link while preserving simulated-response-only behavior and blocked public file delivery."
+  },
+  "allowed_package_files": [
     ".larena/launch-context.json",
     "composer.json",
+    "composer.lock",
     "module.yaml",
     "src/Runtime/PublicLinkControlledDeliverySimulationPreview.php",
     "tests/Unit/PublicLinkControlledDeliverySimulationPreviewTest.php",
     "docs/project-management/launch-records/public-link-controlled-delivery-simulation-package-owned-surface-slice.json",
     "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/"
   ],
+  "entry_app_contract": {
+    "removed_entry_app_file": "app/Larena/PublicLinkControlledDeliverySimulationFoundation.php",
+    "preserve_internal_route_controller_view": true,
+    "preserve_public_route_behavior": true,
+    "preserve_json_schema": true,
+    "entry_app_role": "call package preview API and compose local/testing preview reports only"
+  },
   "forbidden_behavior": [
     "public_route_registration",
     "token_storage_or_generation_runtime",
@@ -36,9 +50,25 @@
     "release_ready_claim",
     "canonical_graph_update"
   ],
-  "required_package_commands": [
-    "PATH=/Applications/ServBay/package/bin:$PATH /Applications/ServBay/package/bin/php -d memory_limit=512M /Applications/ServBay/package/bin/composer run quality:gate"
+  "required_checks": [
+    "php -l src/Runtime/PublicLinkControlledDeliverySimulationPreview.php",
+    "php -l tests/Unit/PublicLinkControlledDeliverySimulationPreviewTest.php",
+    "composer run quality:gate",
+    "php artisan test --filter=PublicLinkControlledDeliverySimulationFoundationTest",
+    "php artisan test --filter=PublicLinkRuntimeHardeningFoundationTest",
+    "php artisan test --filter=PublicLinkDeliveryContractHardeningFoundationTest",
+    "php artisan test --filter=PublicLinkOneTimeConsumptionLifecycleFoundationTest",
+    "composer run cockpit:generate",
+    "composer run cockpit:check",
+    "composer run validate:entry-app-presentation-debt-inventory",
+    "composer run validate:developer-preview-ownership-model",
+    "composer run validate:settings-property-package-owned-presentation-reduction-pattern",
+    "composer run validate:cockpit-governance",
+    "composer run validate:developer-preview-architecture",
+    "composer run validate:package-runtime-composition-ownership",
+    "git diff --check"
   ],
   "evidence_path": "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/",
-  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/graph-sync-proposal.json"
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/graph-sync-proposal.json",
+  "next_transition": "public_link_controlled_delivery_simulation_package_owned_composition_slice_execution"
 }

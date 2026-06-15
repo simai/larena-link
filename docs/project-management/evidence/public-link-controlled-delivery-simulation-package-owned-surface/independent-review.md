@@ -4,13 +4,13 @@ Review status: passed.
 
 Review points:
 
-- package owns report/read-model assembly for this surface
-- entry app remains a compatibility/dependency wrapper
+- package owns report/read-model assembly and dependency composition for this surface
+- entry app root wrapper is removed and root callers use the package preview API
 - raw candidate token is not included in output
 - simulated response remains metadata-only
 - file body, public file download and production delivery remain disabled
-- package does not add routes, providers, migrations, token storage, delivery
-  adapters, admin UI or persistence code
+- package does not add public routes, migrations, token storage, delivery
+  adapters, admin UI or production persistence code
 
 Verified:
 

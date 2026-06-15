@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 use Larena\Link\Runtime\PublicLinkControlledDeliverySimulationPreview;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
 
@@ -158,5 +161,29 @@ assert_true(in_array('simulated_response_metadata_only', $report['known_limitati
 assert_true(in_array('no_public_file_delivery', $report['known_limitations'], true), 'Public delivery limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+
+$composedOutputPath = sys_get_temp_dir() . '/larena-link-controlled-delivery-simulation-composed-' . bin2hex(random_bytes(4)) . '.json';
+$capsule = new Capsule();
+$capsule->addConnection([
+    'driver' => 'sqlite',
+    'database' => ':memory:',
+    'prefix' => '',
+]);
+$capsule->setAsGlobal();
+$capsule->bootEloquent();
+DB::swap($capsule->getDatabaseManager());
+Schema::swap($capsule->getConnection()->getSchemaBuilder());
+
+$composedReport = PublicLinkControlledDeliverySimulationPreview::preview('active-preview-token', $composedOutputPath);
+
+assert_true($composedReport['schema'] === 'larena.public_link_controlled_delivery_simulation_foundation.v1', 'Composed preview schema mismatch.');
+assert_true($composedReport['status'] === 'passed', 'Composed preview must pass.');
+assert_true($composedReport['simulated_response']['simulation_state'] === 'simulated_ready', 'Composed preview must be simulated-ready.');
+assert_true($composedReport['component_reports']['public_link_guarded_delivery_readiness_foundation']['status'] === 'passed', 'Composed preview must include delivery readiness.');
+assert_true($composedReport['checks']['negative_delivery_simulations']['status'] === 'passed', 'Composed preview negative simulations must pass.');
+assert_true($composedReport['safe_trace']['simulated_response_only'] === true, 'Composed preview must stay simulation-only.');
+assert_true($composedReport['safe_trace']['file_content_returned'] === false, 'Composed preview must not return file content.');
+assert_true(!str_contains(json_encode($composedReport, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Raw token leaked from composed preview.');
+assert_true(is_file($composedOutputPath), 'Composed preview must write JSON evidence when output path is provided.');
 
 echo "PublicLinkControlledDeliverySimulationPreviewTest passed.\n";

@@ -1,10 +1,10 @@
 {
   "schema": "larena.package_launch_context.v1",
   "package": "larena/link",
-  "launch_record_ref": "docs/project-management/launch-records/public-link-persistent-lookup-package-owned-surface-slice.json",
+  "launch_record_ref": "docs/project-management/launch-records/public-link-controlled-delivery-simulation-package-owned-surface-slice.json",
   "specs_repo": "simai/larena-specs",
   "specs_commit": "74ba552dcde34fd48af5dfc01a8f8896afd51c17",
-  "base_commit": "e1e6bdd7117caca293e1ba8050739039746175c0",
+  "base_commit": "1e3393f49d8e45106a56bd4a9e5f3c0c5f0a7eb4",
   "selected_features": [
     "link.target_registry",
     "link.link_resolution",
@@ -40,6 +40,7 @@
     "public_link_guarded_delivery_readiness.package_owned_read_model",
     "link.public_link_controlled_delivery_simulation_read_model",
     "public_link_controlled_delivery_simulation.package_owned_read_model",
+    "public_link_controlled_delivery_simulation.package_owned_composition",
     "link.public_link_one_time_consumption_lifecycle_read_model",
     "public_link_one_time_consumption_lifecycle.package_owned_read_model",
     "link.public_link_guarded_real_delivery_adapter_read_model",
@@ -590,8 +591,8 @@
     "migration_or_route_change",
     "restore_legacy_runtime_code_to_active_tree"
   ],
-  "evidence_path": "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/",
-  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/graph-sync-proposal.json",
+  "evidence_path": "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-controlled-delivery-simulation-package-owned-surface/graph-sync-proposal.json",
   "status": "coding_started",
   "coding_started": true,
   "repository_enforcement_installed": true,

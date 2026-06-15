@@ -7,6 +7,35 @@ namespace Larena\Link\Runtime;
 final class PublicLinkControlledDeliverySimulationPreview
 {
     /**
+     * @return array<string, mixed>
+     */
+    public static function preview(string $candidateToken = 'active-preview-token', ?string $outputPath = null): array
+    {
+        $deliveryReadiness = self::deliveryReadinessReport($candidateToken);
+        $decision = is_array($deliveryReadiness['delivery_decision'] ?? null)
+            ? $deliveryReadiness['delivery_decision']
+            : [];
+        $deliveryState = is_array($deliveryReadiness['delivery_state'] ?? null)
+            ? $deliveryReadiness['delivery_state']
+            : [];
+        $targetProof = is_array($deliveryReadiness['target_proof'] ?? null)
+            ? $deliveryReadiness['target_proof']
+            : [];
+        $fingerprint = PublicLinkPersistentLookupPreview::fingerprint($candidateToken);
+
+        return self::run(
+            $candidateToken,
+            $deliveryReadiness,
+            $decision,
+            $deliveryState,
+            $targetProof,
+            $fingerprint,
+            self::negativeReadinessReports(),
+            $outputPath,
+        );
+    }
+
+    /**
      * @param array<string, mixed> $deliveryReadiness
      * @param array<string, mixed> $decision
      * @param array<string, mixed> $deliveryState
@@ -212,6 +241,84 @@ final class PublicLinkControlledDeliverySimulationPreview
             'production_delivery' => false,
             'one_time_consumption_runtime' => false,
         ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function deliveryReadinessReport(string $candidateToken): array
+    {
+        $persistentLookup = PublicLinkPersistentLookupPreview::run($candidateToken);
+        $lookup = is_array($persistentLookup['lookup_result'] ?? null)
+            ? $persistentLookup['lookup_result']
+            : [];
+        $fingerprint = PublicLinkPersistentLookupPreview::fingerprint($candidateToken);
+
+        return PublicLinkGuardedDeliveryReadinessPreview::run(
+            $candidateToken,
+            $persistentLookup,
+            $lookup,
+            $fingerprint,
+            self::negativeLookups(),
+        );
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeLookups(): array
+    {
+        $cases = [
+            'unknown_token' => 'unknown-preview-token',
+            'expired_link' => 'expired-preview-token',
+            'revoked_link' => 'revoked-preview-token',
+            'missing_access' => 'missing-access-preview-token',
+        ];
+
+        $lookups = [];
+        foreach ($cases as $caseId => $candidate) {
+            $report = PublicLinkPersistentLookupPreview::run($candidate);
+            $lookups[] = [
+                'case_id' => $caseId,
+                'lookup_result' => is_array($report['lookup_result'] ?? null) ? $report['lookup_result'] : [],
+            ];
+        }
+
+        return $lookups;
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeReadinessReports(): array
+    {
+        $cases = [
+            'expired_link' => 'expired-preview-token',
+            'revoked_link' => 'revoked-preview-token',
+            'missing_access' => 'missing-access-preview-token',
+            'unknown_token' => 'unknown-preview-token',
+        ];
+        $reports = [];
+
+        foreach ($cases as $caseId => $candidate) {
+            $readiness = self::deliveryReadinessReport($candidate);
+
+            $reports[] = [
+                'case_id' => $caseId,
+                'fingerprint' => PublicLinkPersistentLookupPreview::fingerprint($candidate),
+                'delivery_decision' => is_array($readiness['delivery_decision'] ?? null)
+                    ? $readiness['delivery_decision']
+                    : [],
+                'delivery_state' => is_array($readiness['delivery_state'] ?? null)
+                    ? $readiness['delivery_state']
+                    : [],
+                'target_proof' => is_array($readiness['target_proof'] ?? null)
+                    ? $readiness['target_proof']
+                    : [],
+            ];
+        }
+
+        return $reports;
     }
 
     /**

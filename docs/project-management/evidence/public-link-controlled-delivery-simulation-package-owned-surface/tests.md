@@ -18,12 +18,14 @@ PATH=/Applications/ServBay/package/bin:$PATH /Applications/ServBay/package/bin/c
 
 Status: passed.
 
-Results:
+Planned results for this composition reduction batch:
 
-- package quality gate: passed
-- root `PublicLinkControlledDeliverySimulationFoundationTest`: passed, 5 tests, 104 assertions
-- cockpit check: passed
-- cockpit governance: passed with existing warnings
-- entry app presentation debt inventory: passed, `public_link=35`
-- developer preview ownership model: passed
-- developer preview architecture: passed, score 100
+- package quality gate
+- root `PublicLinkControlledDeliverySimulationFoundationTest`
+- root `PublicLinkRuntimeHardeningFoundationTest`
+- root `PublicLinkDeliveryContractHardeningFoundationTest`
+- root `PublicLinkOneTimeConsumptionLifecycleFoundationTest`
+- root `PublicLinkTokenStorageContractFoundationTest`
+- root `PublicLinkPersistentLookupFoundationTest`
+- public link smoke commands
+- cockpit/debt/ownership/pattern validators
