@@ -1,0 +1,22 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "package": "larena/link",
+  "batch": "public-link-delivery-contract-hardening-package-local-controller-view-slice",
+  "surface": "public_link_delivery_contract_hardening",
+  "status": "proposal_only",
+  "canonical_update_allowed": false,
+  "proposed_updates": [
+    {
+      "path": "graph/specs/architecture/larena-entry-app-presentation-debt-inventory.json",
+      "change": "Remove the app-owned public_link_delivery_contract_hardening controller/view from the public_link debt group after the root slice lands."
+    },
+    {
+      "path": "graph/specs/architecture/larena-developer-preview-ownership-model.json",
+      "change": "Record one fewer app-owned Larena controller and view, and one additional package-owned Larena view."
+    },
+    {
+      "path": "graph/specs/architecture/larena-settings-property-package-owned-presentation-reduction-pattern.json",
+      "change": "Update the entry-app debt tracked file count and package-owned view count."
+    }
+  ]
+}

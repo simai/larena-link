@@ -5,8 +5,9 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Route;
 use Larena\Link\Http\Controllers\Internal\PublicContentLinkFlowReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkCleanupActionReviewController;
-use Larena\Link\Http\Controllers\Internal\PublicLinkDryRunRuntimeReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkControlledDeliverySimulationReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkDeliveryContractHardeningReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkDryRunRuntimeReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedDeliveryReadinessReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedAdminMutationPlanningReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedRealDeliveryAdapterReviewController;
@@ -56,6 +57,9 @@ Route::middleware('web')
 
         Route::get('/public-link-mutation-ladder-review', [PublicLinkMutationLadderReviewController::class, 'review'])
             ->name('public-link-mutation-ladder-review');
+
+        Route::get('/public-link-delivery-contract-hardening', [PublicLinkDeliveryContractHardeningReviewController::class, 'review'])
+            ->name('public-link-delivery-contract-hardening');
 
         Route::get('/public-link-controlled-delivery-simulation', [PublicLinkControlledDeliverySimulationReviewController::class, 'review'])
             ->name('public-link-controlled-delivery-simulation');

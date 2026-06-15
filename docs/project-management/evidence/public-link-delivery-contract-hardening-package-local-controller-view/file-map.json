@@ -1,0 +1,15 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "package": "larena/link",
+  "slice": "public-link-delivery-contract-hardening-package-local-controller-view",
+  "files": [
+    "src/Contracts/PublicLinkDeliveryContractHardeningReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkDeliveryContractHardeningReviewController.php",
+    "resources/views/internal/public-link-delivery-contract-hardening-review.blade.php",
+    "routes/internal.php",
+    "tests/Feature/PublicLinkDeliveryContractHardeningRouteBoundaryTest.php",
+    "composer.json",
+    "module.yaml",
+    ".larena/launch-context.json"
+  ]
+}
