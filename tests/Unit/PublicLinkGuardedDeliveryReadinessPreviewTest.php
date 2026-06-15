@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Larena\Link\Runtime\PublicLinkGuardedDeliveryReadinessPreview;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -12,6 +15,21 @@ function assert_true(bool $condition, string $message): void
         fwrite(STDERR, $message . "\n");
         exit(1);
     }
+}
+
+function boot_preview_database(): void
+{
+    $capsule = new Capsule();
+    $capsule->addConnection([
+        'driver' => 'sqlite',
+        'database' => ':memory:',
+        'prefix' => '',
+    ]);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    DB::swap($capsule->getDatabaseManager());
+    Schema::swap($capsule->getConnection()->getSchemaBuilder());
 }
 
 $persistentLookup = [
@@ -104,5 +122,24 @@ assert_true(!str_contains(json_encode($report, JSON_THROW_ON_ERROR), 'active-pre
 assert_true(in_array('no_public_file_delivery', $report['known_limitations'], true), 'Public delivery limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+
+$composedOutputPath = sys_get_temp_dir() . '/larena-link-guarded-delivery-readiness-composed-' . bin2hex(random_bytes(4)) . '.json';
+boot_preview_database();
+$composed = PublicLinkGuardedDeliveryReadinessPreview::preview('active-preview-token', $composedOutputPath);
+
+assert_true($composed['schema'] === 'larena.public_link_guarded_delivery_readiness_foundation.v1', 'Unexpected composed schema.');
+assert_true($composed['status'] === 'passed', 'Composed guarded delivery readiness preview must pass.');
+assert_true($composed['delivery_state']['state'] === 'ready_but_blocked', 'Composed active lookup must become ready-but-blocked.');
+assert_true($composed['delivery_decision']['decision'] === 'would_allow', 'Composed active lookup must allow preview decision.');
+assert_true($composed['delivery_decision']['file_delivery'] === 'blocked_by_foundation_scope', 'Composed file delivery must stay blocked.');
+assert_true($composed['delivery_decision']['file_content_returned'] === false, 'Composed file content must stay blocked.');
+assert_true($composed['checks']['negative_delivery_guards']['status'] === 'passed', 'Composed negative guard check must pass.');
+assert_true($composed['checks']['file_delivery_block']['status'] === 'passed', 'Composed file delivery block check must pass.');
+assert_true($composed['safe_trace']['production_delivery'] === false, 'Composed production delivery must stay disabled.');
+assert_true($composed['safe_trace']['file_download_executed'] === false, 'Composed file download must stay disabled.');
+assert_true($composed['safe_trace']['file_content_returned'] === false, 'Composed file content must stay disabled.');
+assert_true($composed['safe_trace']['one_time_consumption_runtime'] === false, 'Composed one-time consumption must stay disabled.');
+assert_true(!str_contains(json_encode($composed, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Composed raw token leaked into report.');
+assert_true(is_file($composedOutputPath), 'Composed preview must write JSON evidence when output path is provided.');
 
 echo "PublicLinkGuardedDeliveryReadinessPreviewTest passed.\n";

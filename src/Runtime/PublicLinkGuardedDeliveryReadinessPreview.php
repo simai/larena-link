@@ -7,6 +7,26 @@ namespace Larena\Link\Runtime;
 final class PublicLinkGuardedDeliveryReadinessPreview
 {
     /**
+     * @return array<string, mixed>
+     */
+    public static function preview(string $candidateToken = 'active-preview-token', ?string $outputPath = null): array
+    {
+        $persistentLookup = PublicLinkPersistentLookupPreview::run($candidateToken);
+        $lookup = is_array($persistentLookup['lookup_result'] ?? null)
+            ? $persistentLookup['lookup_result']
+            : [];
+
+        return self::run(
+            $candidateToken,
+            $persistentLookup,
+            $lookup,
+            PublicLinkTokenStorageContractPreview::fingerprint($candidateToken),
+            self::negativeLookups(),
+            $outputPath,
+        );
+    }
+
+    /**
      * @param array<string, mixed> $persistentLookup
      * @param array<string, mixed> $lookup
      * @param list<array<string, mixed>> $negativeLookups
@@ -315,6 +335,32 @@ final class PublicLinkGuardedDeliveryReadinessPreview
             && self::negativeDecisionFor($negativeLookups, 'expired_link') === 'would_deny'
             && self::negativeDecisionFor($negativeLookups, 'revoked_link') === 'would_deny'
             && self::negativeDecisionFor($negativeLookups, 'missing_access') === 'would_deny';
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeLookups(): array
+    {
+        $cases = [
+            'unknown_token' => 'unknown-preview-token',
+            'expired_link' => 'expired-preview-token',
+            'revoked_link' => 'revoked-preview-token',
+            'missing_access' => 'missing-access-preview-token',
+        ];
+        $lookups = [];
+
+        foreach ($cases as $caseId => $candidate) {
+            $report = PublicLinkPersistentLookupPreview::run($candidate);
+            $lookups[] = [
+                'case_id' => $caseId,
+                'lookup_result' => is_array($report['lookup_result'] ?? null)
+                    ? $report['lookup_result']
+                    : [],
+            ];
+        }
+
+        return $lookups;
     }
 
     /**

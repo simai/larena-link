@@ -9,6 +9,11 @@
   "target_schema": "larena.public_link_guarded_delivery_readiness_foundation.v1",
   "target_package": "larena/link",
   "status": "coding_started",
+  "selection": {
+    "public_link_group_count": 8,
+    "selection_basis": "public_link_guarded_delivery_readiness is the next safe package-owned candidate after public_link_guarded_real_delivery_adapter. This slice moves only delivery readiness metadata/report composition into larena/link.",
+    "why_safe_next": "The surface keeps public_file_download, file_content_response, delivery adapter runtime, one-time consumption runtime, database writes, storage mutation and release-ready claims disabled."
+  },
   "allowed_files": [
     ".larena/launch-context.json",
     "composer.json",
