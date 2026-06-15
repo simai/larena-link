@@ -1,0 +1,12 @@
+{
+  "schema": "larena.package_evidence_deviations.v1",
+  "batch": "public-link-one-time-consumption-lifecycle-package-owned-surface-slice",
+  "deviations": [
+    {
+      "id": "entry-app-composes-controlled-delivery-simulation",
+      "status": "accepted",
+      "reason": "Controlled delivery simulation and denied-case fixture composition remain in the entry app for this slice so the package-owned preview does not depend on entry-app classes or introduce real one-time consumption behavior.",
+      "follow_up": "Move the remaining public-link route/runtime compatibility surfaces under dedicated guarded launch records before enabling production delivery or one-time consumption runtime."
+    }
+  ]
+}

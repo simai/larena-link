@@ -1,0 +1,36 @@
+{
+  "schema": "larena.package_launch_record.v1",
+  "id": "public-link-one-time-consumption-lifecycle-package-owned-surface-slice",
+  "created_at": "2026-06-15T00:28:00Z",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-one-time-consumption-lifecycle-package-owned-surface-slice",
+  "package": "larena/link",
+  "target_surface": "public_link_one_time_consumption_lifecycle",
+  "target_schema": "larena.public_link_one_time_consumption_lifecycle_foundation.v1",
+  "status": "coding_started",
+  "allowed_files": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "src/Runtime/PublicLinkOneTimeConsumptionLifecyclePreview.php",
+    "tests/Unit/PublicLinkOneTimeConsumptionLifecyclePreviewTest.php",
+    "docs/project-management/launch-records/public-link-one-time-consumption-lifecycle-package-owned-surface-slice.json",
+    "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-owned-surface/"
+  ],
+  "forbidden_behavior": [
+    "public_route_registration",
+    "persistent_consumed_at_write",
+    "real_one_time_token_consumption",
+    "token_storage_or_generation_runtime",
+    "public_file_download",
+    "file_content_response",
+    "production_delivery_runtime",
+    "release_ready_claim",
+    "canonical_graph_update"
+  ],
+  "required_package_commands": [
+    "PATH=/Applications/ServBay/package/bin:$PATH /Applications/ServBay/package/bin/php -d memory_limit=512M /Applications/ServBay/package/bin/composer run quality:gate"
+  ],
+  "evidence_path": "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-owned-surface/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-owned-surface/graph-sync-proposal.json"
+}
