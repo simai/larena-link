@@ -1,0 +1,26 @@
+{
+  "schema": "larena.package_file_map.v1",
+  "package": "larena/link",
+  "batch": "public-link-guarded-delivery-readiness-package-local-controller-view-slice",
+  "files": {
+    "contracts": [
+      "src/Contracts/PublicLinkGuardedDeliveryReadinessReportSource.php"
+    ],
+    "controllers": [
+      "src/Http/Controllers/Internal/PublicLinkGuardedDeliveryReadinessReviewController.php"
+    ],
+    "routes": [
+      "routes/internal.php"
+    ],
+    "views": [
+      "resources/views/internal/public-link-guarded-delivery-readiness-review.blade.php"
+    ],
+    "tests": [
+      "tests/Feature/PublicLinkGuardedDeliveryReadinessRouteBoundaryTest.php"
+    ],
+    "evidence": [
+      "docs/project-management/launch-records/public-link-guarded-delivery-readiness-package-local-controller-view-slice.json",
+      "docs/project-management/evidence/public-link-guarded-delivery-readiness-package-local-controller-view/"
+    ]
+  }
+}
