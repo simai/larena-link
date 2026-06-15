@@ -5,9 +5,9 @@ Batch: `public-link-one-time-consumption-lifecycle-package-owned-surface-slice`
 This evidence package records the Larena Link package-owned preview slice for
 the public link one-time consumption lifecycle surface.
 
-The slice owns simulated consumption lifecycle/report assembly in `larena/link`.
-The entry app keeps compatibility composition for controlled delivery
-simulation, token fingerprinting and denied-case fixtures.
+The slice owns simulated consumption lifecycle/report assembly and package-local
+composition in `larena/link`. The entry app keeps compatibility route/provider
+wire only.
 
 Scope guards:
 
@@ -20,4 +20,3 @@ Scope guards:
 - no production delivery runtime
 - no DB or file storage mutation
 - no release-ready claim
-

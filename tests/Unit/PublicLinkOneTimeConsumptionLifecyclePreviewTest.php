@@ -2,6 +2,9 @@
 
 declare(strict_types=1);
 
+use Illuminate\Database\Capsule\Manager as Capsule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Larena\Link\Runtime\PublicLinkOneTimeConsumptionLifecyclePreview;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -12,6 +15,21 @@ function assert_true(bool $condition, string $message): void
         fwrite(STDERR, $message . "\n");
         exit(1);
     }
+}
+
+function boot_preview_database(): void
+{
+    $capsule = new Capsule();
+    $capsule->addConnection([
+        'driver' => 'sqlite',
+        'database' => ':memory:',
+        'prefix' => '',
+    ]);
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    DB::swap($capsule->getDatabaseManager());
+    Schema::swap($capsule->getConnection()->getSchemaBuilder());
 }
 
 $deliverySimulation = [
@@ -136,6 +154,21 @@ assert_true(in_array('simulated_consumption_plan_only', $report['known_limitatio
 assert_true(in_array('no_persistent_consumed_at_write', $report['known_limitations'], true), 'Persistent write limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
+
+$composedOutputPath = sys_get_temp_dir() . '/larena-link-one-time-composed-' . bin2hex(random_bytes(4)) . '.json';
+boot_preview_database();
+$composed = PublicLinkOneTimeConsumptionLifecyclePreview::preview('active-preview-token', $composedOutputPath);
+
+assert_true($composed['schema'] === 'larena.public_link_one_time_consumption_lifecycle_foundation.v1', 'Unexpected composed schema.');
+assert_true($composed['status'] === 'passed', 'Composed one-time lifecycle preview must pass.');
+assert_true($composed['lifecycle_state']['state'] === 'simulated_consumption_planned', 'Composed preview must plan simulated consumption.');
+assert_true($composed['consumption_plan']['consume_now'] === false, 'Composed preview must not consume now.');
+assert_true($composed['consumption_plan']['persistent_consumed_at_write'] === false, 'Composed preview must not write consumed_at.');
+assert_true($composed['safe_trace']['production_delivery'] === false, 'Composed preview must keep production delivery disabled.');
+assert_true($composed['safe_trace']['file_content_returned'] === false, 'Composed preview must not return file content.');
+assert_true($composed['safe_trace']['release_ready'] === false, 'Composed preview must not claim release readiness.');
+assert_true(!str_contains(json_encode($composed, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Composed raw token leaked into report.');
+assert_true(is_file($composedOutputPath), 'Composed preview must write JSON evidence when output path is provided.');
 
 $consumed = PublicLinkOneTimeConsumptionLifecyclePreview::run(
     'consumed-preview-token',

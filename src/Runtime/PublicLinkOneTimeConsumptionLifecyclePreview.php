@@ -7,6 +7,26 @@ namespace Larena\Link\Runtime;
 final class PublicLinkOneTimeConsumptionLifecyclePreview
 {
     /**
+     * @return array<string, mixed>
+     */
+    public static function preview(string $candidateToken = 'active-preview-token', ?string $outputPath = null): array
+    {
+        $deliverySimulation = PublicLinkControlledDeliverySimulationPreview::preview($candidateToken);
+        $simulation = is_array($deliverySimulation['simulated_response'] ?? null)
+            ? $deliverySimulation['simulated_response']
+            : [];
+
+        return self::run(
+            $candidateToken,
+            $deliverySimulation,
+            $simulation,
+            PublicLinkTokenStorageContractPreview::fingerprint($candidateToken),
+            self::negativeDeliverySimulations(),
+            $outputPath,
+        );
+    }
+
+    /**
      * @param array<string, mixed> $deliverySimulation
      * @param array<string, mixed> $simulation
      * @param list<array<string, mixed>> $negativeDeliverySimulations
@@ -290,6 +310,35 @@ final class PublicLinkOneTimeConsumptionLifecyclePreview
         }
 
         return 'missing_case';
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function negativeDeliverySimulations(): array
+    {
+        $cases = [
+            'already_consumed' => 'consumed-preview-token',
+            'expired_link' => 'expired-preview-token',
+            'revoked_link' => 'revoked-preview-token',
+            'missing_access' => 'missing-access-preview-token',
+            'unknown_token' => 'unknown-preview-token',
+        ];
+        $simulations = [];
+
+        foreach ($cases as $caseId => $candidate) {
+            $deliverySimulation = PublicLinkControlledDeliverySimulationPreview::preview($candidate);
+
+            $simulations[] = [
+                'case_id' => $caseId,
+                'fingerprint' => PublicLinkTokenStorageContractPreview::fingerprint($candidate),
+                'simulated_response' => is_array($deliverySimulation['simulated_response'] ?? null)
+                    ? $deliverySimulation['simulated_response']
+                    : [],
+            ];
+        }
+
+        return $simulations;
     }
 
     /**

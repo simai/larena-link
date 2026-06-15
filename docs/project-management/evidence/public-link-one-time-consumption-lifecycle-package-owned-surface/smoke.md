@@ -8,4 +8,4 @@ PATH=/Applications/ServBay/package/bin:$PATH /Applications/ServBay/package/bin/p
 
 Status: passed.
 
-Result: 5 tests, 114 assertions.
+Result: expected during root adoption validation.

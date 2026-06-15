@@ -21,9 +21,9 @@ Status: passed.
 Results:
 
 - package quality gate: passed
-- root `PublicLinkOneTimeConsumptionLifecycleFoundationTest`: passed, 5 tests, 114 assertions
+- root `PublicLinkOneTimeConsumptionLifecycleFoundationTest`: expected to pass after root adoption
 - cockpit check: passed
 - cockpit governance: passed with existing warnings
-- entry app presentation debt inventory: passed, `public_link=35`
+- entry app presentation debt inventory: expected to pass with reduced `public_link` count after root adoption
 - developer preview ownership model: passed
 - developer preview architecture: passed, score 100

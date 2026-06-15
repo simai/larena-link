@@ -4,8 +4,8 @@ Review status: passed.
 
 Review points:
 
-- package owns report/read-model assembly for this surface
-- entry app remains a compatibility/dependency wrapper
+- package owns report/read-model assembly and runtime composition for this surface
+- entry app remains compatibility route/provider/command wire
 - raw candidate token is not included in output
 - simulated consumption remains planning-only
 - `consume_now` and `persistent_consumed_at_write` remain false
@@ -16,5 +16,5 @@ Review points:
 Verified:
 
 - package quality gate passed
-- root one-time consumption lifecycle feature test passed, 5 tests, 114 assertions
+- root one-time consumption lifecycle feature test expected during root adoption validation
 - cockpit/debt/ownership/architecture validators passed
