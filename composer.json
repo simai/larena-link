@@ -57,6 +57,7 @@
     "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkDryRunRuntimeRouteBoundaryTest.php",
     "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRuntimeHardeningRouteBoundaryTest.php",
     "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedDeliveryReadinessRouteBoundaryTest.php",
+    "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedRealDeliveryAdapterRouteBoundaryTest.php",
     "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkControlledDeliverySimulationRouteBoundaryTest.php",
     "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkOneTimeConsumptionLifecycleRouteBoundaryTest.php",
     "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkTokenStorageContractRouteBoundaryTest.php",

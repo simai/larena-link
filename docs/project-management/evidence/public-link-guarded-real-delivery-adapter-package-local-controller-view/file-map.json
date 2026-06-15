@@ -1,0 +1,28 @@
+{
+  "schema": "larena.package_surface_file_map.v1",
+  "batch": "public-link-guarded-real-delivery-adapter-package-local-controller-view-slice",
+  "target_surface": "public_link_guarded_real_delivery_adapter",
+  "package_files_added": [
+    "src/Contracts/PublicLinkGuardedRealDeliveryAdapterReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkGuardedRealDeliveryAdapterReviewController.php",
+    "resources/views/internal/public-link-guarded-real-delivery-adapter-review.blade.php",
+    "tests/Feature/PublicLinkGuardedRealDeliveryAdapterRouteBoundaryTest.php",
+    "docs/project-management/launch-records/public-link-guarded-real-delivery-adapter-package-local-controller-view-slice.json",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/"
+  ],
+  "package_files_changed": [
+    ".larena/launch-context.json",
+    "composer.json",
+    "module.yaml",
+    "routes/internal.php"
+  ],
+  "entry_app_files_removed": [
+    "app/Http/Controllers/Larena/Internal/PublicLink/PublicLinkGuardedRealDeliveryAdapterController.php",
+    "resources/views/larena/public-link-guarded-real-delivery-adapter-review.blade.php"
+  ],
+  "entry_app_files_changed": [
+    "app/Providers/AppServiceProvider.php",
+    "routes/larena/public-link-preview.php",
+    "tests/Feature/PublicLinkGuardedRealDeliveryAdapterFoundationTest.php"
+  ]
+}

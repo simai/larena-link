@@ -1,0 +1,65 @@
+{
+  "schema": "larena.package_surface_launch_record.v1",
+  "id": "public-link-guarded-real-delivery-adapter-package-local-controller-view-slice",
+  "status": "implemented_validated",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-guarded-real-delivery-adapter-package-local-controller-view-slice",
+  "target_surface": "public_link_guarded_real_delivery_adapter",
+  "target_package": "larena/link",
+  "scope": "Move only the internal developer-preview route, controller and Blade view for public_link_guarded_real_delivery_adapter into larena/link while preserving the existing internal URL, route name and JSON contract. Keep public runtime resolver behavior unchanged and do not enable real delivery.",
+  "allowed_package_files": [
+    "composer.json",
+    "composer.lock",
+    "module.yaml",
+    ".larena/launch-context.json",
+    "src/Contracts/PublicLinkGuardedRealDeliveryAdapterReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkGuardedRealDeliveryAdapterReviewController.php",
+    "routes/internal.php",
+    "resources/views/internal/public-link-guarded-real-delivery-adapter-review.blade.php",
+    "tests/Feature/PublicLinkGuardedRealDeliveryAdapterRouteBoundaryTest.php",
+    "docs/project-management/launch-records/public-link-guarded-real-delivery-adapter-package-local-controller-view-slice.json",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/"
+  ],
+  "required_entry_app_changes": [
+    "Bind Larena\\Link\\Contracts\\PublicLinkGuardedRealDeliveryAdapterReportSource to the existing entry-app report source.",
+    "Remove the app-owned public_link_guarded_real_delivery_adapter internal route/controller/view after the package route is available.",
+    "Keep App\\Http\\Controllers\\Larena\\Public\\PublicLinkRuntimeResolveController and public route unchanged."
+  ],
+  "preserve": {
+    "internal_url": "/larena/internal/public-link-guarded-real-delivery-adapter",
+    "route_name": "larena.internal.public-link-guarded-real-delivery-adapter",
+    "json_schema": "larena.public_link_guarded_real_delivery_adapter_foundation.v1",
+    "public_runtime_route": "/larena/link/{token}"
+  },
+  "forbidden_behavior": [
+    "public_route_registration_change",
+    "token_material_generation",
+    "delivery_adapter_runtime",
+    "adapter_stream_invocation",
+    "file_streaming",
+    "file_content_response",
+    "production_delivery_promotion",
+    "production_database_mutation",
+    "persistent_consumed_at_write",
+    "storage_mutation_outside_existing_local_testing_preview",
+    "release_ready_claim",
+    "canonical_graph_update"
+  ],
+  "required_checks": [
+    "composer run quality:gate",
+    "php artisan test --filter=PublicLinkGuardedRealDeliveryAdapterFoundationTest",
+    "composer run cockpit:check",
+    "composer run validate:cockpit-governance",
+    "composer run validate:entry-app-presentation-debt-inventory",
+    "composer run validate:developer-preview-ownership-model",
+    "composer run validate:developer-preview-architecture",
+    "git diff --check"
+  ],
+  "result": {
+    "package_quality_gate": "passed",
+    "root_public_link_guarded_real_delivery_adapter_test": "passed",
+    "root_cockpit_debt_ownership_validators": "passed",
+    "public_link_group_count_after": 25,
+    "validated_at": "2026-06-15T00:00:00Z"
+  }
+}

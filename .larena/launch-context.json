@@ -1,7 +1,7 @@
 {
   "schema": "larena.package_launch_context.v1",
   "package": "larena/link",
-  "launch_record_ref": "docs/project-management/launch-records/public-link-one-time-consumption-lifecycle-package-local-controller-view-slice.json",
+  "launch_record_ref": "docs/project-management/launch-records/public-link-guarded-real-delivery-adapter-package-local-controller-view-slice.json",
   "specs_repo": "simai/larena-specs",
   "specs_commit": "74ba552dcde34fd48af5dfc01a8f8896afd51c17",
   "base_commit": "e1e6bdd7117caca293e1ba8050739039746175c0",
@@ -64,7 +64,9 @@
     "link.public_link_controlled_delivery_simulation_internal_route",
     "public_link_controlled_delivery_simulation.package_owned_controller_view",
     "link.public_link_one_time_consumption_lifecycle_internal_route",
-    "public_link_one_time_consumption_lifecycle.package_owned_controller_view"
+    "public_link_one_time_consumption_lifecycle.package_owned_controller_view",
+    "link.public_link_guarded_real_delivery_adapter_internal_route",
+    "public_link_guarded_real_delivery_adapter.package_owned_controller_view"
   ],
   "allowed_files": [
     "scripts/check-metadata-sync.php",
@@ -423,7 +425,20 @@
     "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/implementation-summary.md",
     "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/independent-review.md",
     "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/smoke.md",
-    "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/tests.md"
+    "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/tests.md",
+    "src/Contracts/PublicLinkGuardedRealDeliveryAdapterReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkGuardedRealDeliveryAdapterReviewController.php",
+    "resources/views/internal/public-link-guarded-real-delivery-adapter-review.blade.php",
+    "tests/Feature/PublicLinkGuardedRealDeliveryAdapterRouteBoundaryTest.php",
+    "docs/project-management/launch-records/public-link-guarded-real-delivery-adapter-package-local-controller-view-slice.json",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/README.md",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/deviations.json",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/file-map.json",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/graph-sync-proposal.json",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/implementation-summary.md",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/independent-review.md",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/smoke.md",
+    "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/tests.md"
   ],
   "forbidden_files": [
     "config/*",
@@ -452,8 +467,8 @@
     "migration_or_route_change",
     "restore_legacy_runtime_code_to_active_tree"
   ],
-  "evidence_path": "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/",
-  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-one-time-consumption-lifecycle-package-local-controller-view/graph-sync-proposal.json",
+  "evidence_path": "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/",
+  "graph_sync_proposal_path": "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-local-controller-view/graph-sync-proposal.json",
   "status": "coding_started",
   "coding_started": true,
   "repository_enforcement_installed": true,
