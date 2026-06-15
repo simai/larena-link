@@ -7,6 +7,20 @@ namespace Larena\Link\Runtime;
 final class PublicLinkOperatorLifecycleManagementPreview
 {
     /**
+     * @return array<string, mixed>
+     */
+    public static function preview(?string $outputPath = null): array
+    {
+        $registry = [];
+
+        foreach (self::cases() as $case) {
+            $registry[] = self::operatorRecord($case);
+        }
+
+        return self::run($registry, self::actionPolicy(), $outputPath);
+    }
+
+    /**
      * @param list<array<string, mixed>> $registry
      * @param list<array<string, mixed>> $actionPolicy
      * @return array<string, mixed>
@@ -135,6 +149,113 @@ final class PublicLinkOperatorLifecycleManagementPreview
         }
 
         return $report;
+    }
+
+    /**
+     * @return list<array<string, string>>
+     */
+    private static function cases(): array
+    {
+        return [
+            ['id' => 'active_link', 'token' => 'active-preview-token'],
+            ['id' => 'already_consumed', 'token' => 'consumed-preview-token'],
+            ['id' => 'expired_link', 'token' => 'expired-preview-token'],
+            ['id' => 'revoked_link', 'token' => 'revoked-preview-token'],
+            ['id' => 'missing_access', 'token' => 'missing-access-preview-token'],
+            ['id' => 'unknown_token', 'token' => 'unknown-preview-token'],
+        ];
+    }
+
+    /**
+     * @param array<string, string> $case
+     * @return array<string, mixed>
+     */
+    private static function operatorRecord(array $case): array
+    {
+        $adapter = PublicLinkGuardedRealDeliveryAdapterPreview::preview($case['token']);
+        $decision = is_array($adapter['adapter_decision'] ?? null) ? $adapter['adapter_decision'] : [];
+        $lifecycleGate = is_array($adapter['lifecycle_gate'] ?? null) ? $adapter['lifecycle_gate'] : [];
+        $state = is_array($lifecycleGate['state'] ?? null) ? $lifecycleGate['state'] : [];
+        $plan = is_array($lifecycleGate['consumption_plan'] ?? null) ? $lifecycleGate['consumption_plan'] : [];
+
+        return [
+            'case_id' => $case['id'],
+            'token_fingerprint' => $decision['token_fingerprint'] ?? PublicLinkTokenStorageContractPreview::fingerprint($case['token']),
+            'raw_token_visible' => false,
+            'lifecycle_state' => $state['state'] ?? 'blocked_unknown',
+            'adapter_state' => $decision['adapter_state'] ?? 'adapter_blocked_unknown',
+            'decision' => $decision['decision'] ?? 'would_deny',
+            'reason' => $decision['reason'] ?? $state['reason'] ?? 'blocked',
+            'access_scope_ref' => $decision['access_scope_ref'] ?? $plan['access_scope_ref'] ?? 'access.query_scope:public_link.blocked',
+            'audit_event_ref' => $decision['audit_event_ref'] ?? 'audit.event:public_link.operator_review.blocked',
+            'review_surface' => '/larena/internal/public-link-operator-lifecycle-management',
+            'machine_surface' => '/larena/internal/public-link-operator-lifecycle-management?format=json',
+            'operator_status' => ($decision['decision'] ?? null) === 'would_allow'
+                ? 'delivery_adapter_ready_preview'
+                : 'delivery_blocked_review_required',
+            'allowed_actions' => [
+                'review_decision_trace',
+                'copy_safe_fingerprint',
+                'open_machine_report',
+            ],
+            'blocked_actions' => [
+                'stream_file',
+                'consume_token',
+                'write_consumed_at',
+                'revoke_link',
+                'regenerate_link',
+                'delete_link',
+            ],
+            'requires_future_launch_record' => true,
+            'mutates_state' => false,
+            'file_content_returned' => false,
+            'production_delivery' => false,
+        ];
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function actionPolicy(): array
+    {
+        return [
+            [
+                'action' => 'review_decision_trace',
+                'state' => 'available',
+                'mutates_state' => false,
+                'requires_future_launch_record' => false,
+            ],
+            [
+                'action' => 'copy_safe_fingerprint',
+                'state' => 'available',
+                'mutates_state' => false,
+                'requires_future_launch_record' => false,
+            ],
+            [
+                'action' => 'stream_file',
+                'state' => 'blocked_future_launch_required',
+                'mutates_state' => true,
+                'requires_future_launch_record' => true,
+            ],
+            [
+                'action' => 'consume_token',
+                'state' => 'blocked_future_launch_required',
+                'mutates_state' => true,
+                'requires_future_launch_record' => true,
+            ],
+            [
+                'action' => 'revoke_link',
+                'state' => 'blocked_future_launch_required',
+                'mutates_state' => true,
+                'requires_future_launch_record' => true,
+            ],
+            [
+                'action' => 'regenerate_link',
+                'state' => 'blocked_future_launch_required',
+                'mutates_state' => true,
+                'requires_future_launch_record' => true,
+            ],
+        ];
     }
 
     /**
