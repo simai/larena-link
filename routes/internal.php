@@ -14,6 +14,7 @@ use Larena\Link\Http\Controllers\Internal\PublicLinkOneTimeConsumptionLifecycleR
 use Larena\Link\Http\Controllers\Internal\PublicLinkPersistentLookupReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkRuntimeHardeningReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkRuntimePlanningReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkRevokeActionReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkTokenStorageContractReviewController;
 
 Route::middleware('web')
@@ -40,6 +41,9 @@ Route::middleware('web')
 
         Route::get('/public-link-guarded-admin-mutation-planning', [PublicLinkGuardedAdminMutationPlanningReviewController::class, 'review'])
             ->name('public-link-guarded-admin-mutation-planning');
+
+        Route::get('/public-link-revoke-action', [PublicLinkRevokeActionReviewController::class, 'review'])
+            ->name('public-link-revoke-action');
 
         Route::get('/public-link-controlled-delivery-simulation', [PublicLinkControlledDeliverySimulationReviewController::class, 'review'])
             ->name('public-link-controlled-delivery-simulation');

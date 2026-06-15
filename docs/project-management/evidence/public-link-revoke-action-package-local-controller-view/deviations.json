@@ -1,0 +1,9 @@
+{
+  "schema": "larena.package_surface_deviations.v1",
+  "surface": "public_link_revoke_action",
+  "deviations": [],
+  "notes": [
+    "The package controller depends on an entry-app report source contract because the report still composes local/testing state snapshots in the entry app.",
+    "The route is local/testing only and remains under the existing /larena/internal URL."
+  ]
+}

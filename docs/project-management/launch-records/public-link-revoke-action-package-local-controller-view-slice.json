@@ -1,0 +1,63 @@
+{
+  "schema": "larena.package_surface_launch_record.v1",
+  "id": "public-link-revoke-action-package-local-controller-view-slice",
+  "status": "implemented_validated",
+  "track": "public_link_package_owned_presentation_reduction",
+  "batch": "public-link-revoke-action-package-local-controller-view-slice",
+  "target_surface": "public_link_revoke_action",
+  "target_package": "larena/link",
+  "scope": "Move only the internal developer-preview route, controller and Blade view for public_link_revoke_action into larena/link while preserving the existing internal URL, route name and JSON contract. Keep revoke behavior local/testing only and do not enable production public-link mutation.",
+  "allowed_package_files": [
+    "composer.json",
+    "composer.lock",
+    "module.yaml",
+    ".larena/launch-context.json",
+    "src/Contracts/PublicLinkRevokeActionReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkRevokeActionReviewController.php",
+    "routes/internal.php",
+    "resources/views/internal/public-link-revoke-action-review.blade.php",
+    "tests/Feature/PublicLinkRevokeActionRouteBoundaryTest.php",
+    "docs/project-management/launch-records/public-link-revoke-action-package-local-controller-view-slice.json",
+    "docs/project-management/evidence/public-link-revoke-action-package-local-controller-view/"
+  ],
+  "required_entry_app_changes": [
+    "Bind Larena\\Link\\Contracts\\PublicLinkRevokeActionReportSource to the existing entry-app report source.",
+    "Remove the app-owned public_link_revoke_action internal route/controller/view after the package route is available.",
+    "Keep regenerate, cleanup, mutation ladder and delivery actions unchanged."
+  ],
+  "preserve": {
+    "internal_url": "/larena/internal/public-link-revoke-action",
+    "route_name": "larena.internal.public-link-revoke-action",
+    "json_schema": "larena.public_link_revoke_action_foundation.v1"
+  },
+  "forbidden_behavior": [
+    "public_route_registration_change",
+    "production_revoke_action_enablement",
+    "regenerate_action_enablement",
+    "cleanup_action_enablement",
+    "public_file_delivery",
+    "file_streaming",
+    "file_content_response",
+    "production_database_mutation",
+    "queue_or_scheduler_execution",
+    "release_ready_claim",
+    "canonical_graph_update"
+  ],
+  "required_checks": [
+    "composer run quality:gate",
+    "php artisan test --filter=PublicLinkRevokeActionFoundationTest",
+    "composer run cockpit:check",
+    "composer run validate:cockpit-governance",
+    "composer run validate:entry-app-presentation-debt-inventory",
+    "composer run validate:developer-preview-ownership-model",
+    "composer run validate:developer-preview-architecture",
+    "git diff --check"
+  ],
+  "result": {
+    "package_quality_gate": "pending",
+    "root_public_link_revoke_action_test": "pending",
+    "root_cockpit_debt_ownership_validators": "pending",
+    "public_link_group_count_after": null,
+    "validated_at": null
+  }
+}
