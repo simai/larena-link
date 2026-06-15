@@ -1,0 +1,12 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "package": "larena/link",
+  "batch": "public-link-controlled-delivery-simulation-package-local-controller-view-slice",
+  "canonical_update_allowed": false,
+  "proposal": {
+    "surface": "public_link_controlled_delivery_simulation",
+    "owner": "larena/link",
+    "change": "internal route/controller/view moved to package-owned local/testing contribution boundary",
+    "entry_app_role": "report source bridge plus unchanged public resolver route"
+  }
+}
