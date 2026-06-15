@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 use Larena\Link\Http\Controllers\Internal\PublicContentLinkFlowReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkCleanupActionReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkDryRunRuntimeReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkControlledDeliverySimulationReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkGuardedDeliveryReadinessReviewController;
@@ -48,6 +49,9 @@ Route::middleware('web')
 
         Route::get('/public-link-regenerate-action', [PublicLinkRegenerateActionReviewController::class, 'review'])
             ->name('public-link-regenerate-action');
+
+        Route::get('/public-link-cleanup-action', [PublicLinkCleanupActionReviewController::class, 'review'])
+            ->name('public-link-cleanup-action');
 
         Route::get('/public-link-controlled-delivery-simulation', [PublicLinkControlledDeliverySimulationReviewController::class, 'review'])
             ->name('public-link-controlled-delivery-simulation');

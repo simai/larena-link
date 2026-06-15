@@ -1,0 +1,15 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "package": "larena/link",
+  "slice": "public-link-cleanup-action-package-local-controller-view",
+  "files": [
+    "src/Contracts/PublicLinkCleanupActionReportSource.php",
+    "src/Http/Controllers/Internal/PublicLinkCleanupActionReviewController.php",
+    "resources/views/internal/public-link-cleanup-action-review.blade.php",
+    "routes/internal.php",
+    "tests/Feature/PublicLinkCleanupActionRouteBoundaryTest.php",
+    "composer.json",
+    "module.yaml",
+    ".larena/launch-context.json"
+  ]
+}
