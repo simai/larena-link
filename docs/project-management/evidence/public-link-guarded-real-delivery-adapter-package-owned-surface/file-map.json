@@ -1,0 +1,21 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "status": "verified",
+  "files": {
+    "runtime": [
+      "src/Runtime/PublicLinkGuardedRealDeliveryAdapterPreview.php"
+    ],
+    "tests": [
+      "tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php"
+    ],
+    "metadata": [
+      ".larena/launch-context.json",
+      "composer.json",
+      "module.yaml"
+    ],
+    "evidence": [
+      "docs/project-management/launch-records/public-link-guarded-real-delivery-adapter-package-owned-surface-slice.json",
+      "docs/project-management/evidence/public-link-guarded-real-delivery-adapter-package-owned-surface/"
+    ]
+  }
+}
