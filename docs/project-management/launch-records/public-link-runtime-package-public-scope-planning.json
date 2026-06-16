@@ -1,0 +1,44 @@
+{
+  "schema": "larena.package_surface_launch_record.v1",
+  "id": "public-link-runtime-package-public-scope-planning",
+  "status": "implemented_validated",
+  "track": "package_owned_route_provider_promotion_and_runtime_ownership_readiness",
+  "batch": "public-link-runtime-package-public-scope-planning",
+  "target_surface": "public_link_runtime_routes",
+  "target_package": "larena/link",
+  "scope": "Record the exact package-local public route/controller/provider prerequisites required before public_link_runtime_routes can move from deferred readiness toward package-owned promotion. Keep the current entry-app public route and compatibility controller unchanged.",
+  "allowed_package_files": [
+    "composer.json",
+    "module.yaml",
+    ".larena/launch-context.json",
+    "src/Runtime/PublicLinkRuntimePackagePublicScopePlan.php",
+    "tests/Unit/PublicLinkRuntimePackagePublicScopePlanTest.php",
+    "docs/project-management/launch-records/public-link-runtime-package-public-scope-planning.json",
+    "docs/project-management/evidence/public-link-runtime-package-public-scope-planning/"
+  ],
+  "preserve": {
+    "public_route": "/larena/link/{token}",
+    "public_controller": "App\\Http\\Controllers\\Larena\\Public\\PublicLinkRuntimeResolveController",
+    "provider_public_route_registration": false
+  },
+  "forbidden_behavior": [
+    "create_routes_public_php",
+    "add_src_Http_Controllers_Public",
+    "provider_public_route_registration_change",
+    "entry_app_public_route_removal",
+    "entry_app_public_controller_removal",
+    "token_storage_runtime",
+    "delivery_runtime",
+    "database_mutation",
+    "filesystem_mutation",
+    "release_ready_claim"
+  ],
+  "required_checks": [
+    "composer run quality:gate",
+    "git diff --check"
+  ],
+  "result": {
+    "package_quality_gate": "passed",
+    "entry_app_followup": "Root workflow evidence must point to this package planning slice before any future public route/controller parity work starts."
+  }
+}

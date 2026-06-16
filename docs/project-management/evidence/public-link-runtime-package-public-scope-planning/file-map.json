@@ -1,0 +1,10 @@
+{
+  "schema": "larena.package_evidence_file_map.v1",
+  "status": "ready",
+  "files": {
+    "planning_contract": "src/Runtime/PublicLinkRuntimePackagePublicScopePlan.php",
+    "test": "tests/Unit/PublicLinkRuntimePackagePublicScopePlanTest.php",
+    "launch_record": "docs/project-management/launch-records/public-link-runtime-package-public-scope-planning.json",
+    "launch_context": ".larena/launch-context.json"
+  }
+}

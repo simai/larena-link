@@ -1,0 +1,30 @@
+{
+  "schema": "larena.graph_sync_proposal.v1",
+  "id": "public-link-runtime-package-public-scope-planning",
+  "status": "proposed",
+  "canonical_update_allowed": false,
+  "package": "larena/link",
+  "surface": "public_link_runtime_routes",
+  "proposal": {
+    "type": "package_public_scope_prerequisite_planning",
+    "summary": "Record package-local public route/controller/provider prerequisites before any public_link_runtime_routes promotion attempt.",
+    "owner_review_required": true
+  },
+  "evidence_refs": [
+    "docs/project-management/evidence/public-link-runtime-package-public-scope-planning/README.md",
+    "docs/project-management/evidence/public-link-runtime-package-public-scope-planning/implementation-summary.md",
+    "docs/project-management/evidence/public-link-runtime-package-public-scope-planning/tests.md",
+    "docs/project-management/evidence/public-link-runtime-package-public-scope-planning/smoke.md",
+    "docs/project-management/evidence/public-link-runtime-package-public-scope-planning/file-map.json",
+    "docs/project-management/evidence/public-link-runtime-package-public-scope-planning/deviations.json"
+  ],
+  "guards": {
+    "public_route_enabled": false,
+    "public_controller_enabled": false,
+    "token_storage_enabled": false,
+    "delivery_adapter_enabled": false,
+    "database_mutation": false,
+    "file_storage_mutation": false,
+    "release_ready": false
+  }
+}
