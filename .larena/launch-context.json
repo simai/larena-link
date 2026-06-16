@@ -1,7 +1,7 @@
 {
   "schema": "larena.package_launch_context.v1",
   "package": "larena/link",
-  "launch_record_ref": "docs/project-management/launch-records/public-link-guarded-delivery-readiness-package-owned-surface-slice.json",
+  "launch_record_ref": "../larena/docs/project-management/launch-records/public-link-runtime-route-provider-promotion-readiness.json",
   "specs_repo": "simai/larena-specs",
   "specs_commit": "74ba552dcde34fd48af5dfc01a8f8896afd51c17",
   "base_commit": "3ed084e3f0d0be9dfe39f7f39df6871ee0bad165",
@@ -91,7 +91,9 @@
     "public_link_delivery_contract_hardening.package_owned_controller_view",
     "link.public_link_persistent_lookup_read_model",
     "public_link_persistent_lookup.package_owned_read_model",
-    "public_link_persistent_lookup.package_owned_composition"
+    "public_link_persistent_lookup.package_owned_composition",
+    "link.public_link_runtime_route_provider_promotion_readiness_contract",
+    "public_link_runtime_route_provider_promotion_readiness.package_owned_readiness_contract"
   ],
   "allowed_files": [
     "scripts/check-metadata-sync.php",
@@ -140,6 +142,7 @@
     "src/Runtime/PublicLinkMutationLadderReviewPreview.php",
     "src/Runtime/PublicLinkDeliveryContractHardeningPreview.php",
     "src/Runtime/PublicLinkRuntimeHardeningPreview.php",
+    "src/Runtime/PublicLinkRouteProviderPromotionReadiness.php",
     "src/Http/Controllers/Internal/PublicContentLinkFlowReviewController.php",
     "src/Providers/LinkServiceProvider.php",
     "src/Http/Controllers/Internal/PublicLinkRuntimePlanningReviewController.php",
@@ -171,6 +174,7 @@
     "tests/Unit/PublicLinkMutationLadderReviewPreviewTest.php",
     "tests/Unit/PublicLinkDeliveryContractHardeningPreviewTest.php",
     "tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
+    "tests/Unit/PublicLinkRouteProviderPromotionReadinessTest.php",
     "tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
     "tests/Feature/PublicLinkGuardedDeliveryReadinessRouteBoundaryTest.php",
     "tests/Feature/LinkServiceProviderRegistrationTest.php",
