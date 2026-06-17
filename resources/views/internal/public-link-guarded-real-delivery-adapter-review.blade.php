@@ -16,77 +16,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
     <title>Larena Public Link Guarded Real Delivery Adapter</title>
-    <style>
-        :root {
-            color-scheme: light;
-            --bg: #f7f8fa;
-            --panel: #ffffff;
-            --line: #d8dde5;
-            --text: #111827;
-            --muted: #5b6472;
-            --ok: #0f7b45;
-            --warn: #9a6200;
-            --danger: #b42318;
-        }
-        * { box-sizing: border-box; }
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        }
-        main { width: min(1240px, calc(100% - 32px)); margin: 32px auto; }
-        header {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-        h1 { margin: 0 0 6px; font-size: 28px; letter-spacing: 0; }
-        h2 { margin: 0 0 12px; font-size: 18px; letter-spacing: 0; }
-        .sub { margin: 0; color: var(--muted); max-width: 920px; }
-        .badge {
-            display: inline-block;
-            border-radius: 6px;
-            padding: 5px 8px;
-            color: #fff;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-        .status-pass { background: var(--ok); }
-        .status-warn { background: var(--warn); }
-        .status-danger { background: var(--danger); }
-        section {
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 8px;
-            padding: 18px;
-            margin-bottom: 16px;
-        }
-        table { width: 100%; border-collapse: collapse; }
-        th, td {
-            padding: 10px 0;
-            border-top: 1px solid var(--line);
-            text-align: left;
-            vertical-align: top;
-        }
-        th {
-            color: var(--muted);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: .04em;
-        }
-        .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
-        pre.mono {
-            white-space: pre-wrap;
-            overflow-wrap: anywhere;
-            margin: 0;
-            max-width: 860px;
-        }
-        .ok { color: var(--ok); font-weight: 700; }
-        .danger { color: var(--danger); font-weight: 700; }
-    </style>
+    @include('larena-link::internal.partials.public-link-review-styles', [
+        'mainWidth' => '1240px',
+        'subWidth' => '920px',
+        'preWidth' => '860px',
+    ])
 </head>
 <body>
 <main>

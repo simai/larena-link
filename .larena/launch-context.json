@@ -582,7 +582,9 @@
     "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/file-map.json",
     "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/deviations.json",
     "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/graph-sync-proposal.json",
-    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/independent-review.md"
+    "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/independent-review.md",
+    "docs/project-management/launch-records/public-link-review-presentation-hygiene-slice.json",
+    "resources/views/internal/partials/public-link-review-styles.blade.php"
   ],
   "forbidden_files": [
     "config/*",

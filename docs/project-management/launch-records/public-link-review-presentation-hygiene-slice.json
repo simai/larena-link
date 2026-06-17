@@ -1,0 +1,77 @@
+{
+  "schema": "larena.package_owned_view_hygiene_launch_record.v1",
+  "id": "public-link-review-presentation-hygiene-slice",
+  "status": "validated",
+  "created_at": "2026-06-17T14:02:08+03:00",
+  "track_id": "preview_architecture_feedback_closure",
+  "owner": "larena/link",
+  "action_type": "package_owned_view_hygiene",
+  "scope": [
+    "larena/link package internal public-link review views",
+    "shared CSS presentation normalization only"
+  ],
+  "allowed_package_files": [
+    ".larena/launch-context.json",
+    "docs/project-management/launch-records/public-link-review-presentation-hygiene-slice.json",
+    "resources/views/internal/partials/public-link-review-styles.blade.php",
+    "resources/views/internal/public-content-link-flow-review.blade.php",
+    "resources/views/internal/public-link-cleanup-action-review.blade.php",
+    "resources/views/internal/public-link-controlled-delivery-simulation-review.blade.php",
+    "resources/views/internal/public-link-delivery-contract-hardening-review.blade.php",
+    "resources/views/internal/public-link-dry-run-runtime-review.blade.php",
+    "resources/views/internal/public-link-guarded-admin-mutation-planning-review.blade.php",
+    "resources/views/internal/public-link-guarded-delivery-readiness-review.blade.php",
+    "resources/views/internal/public-link-guarded-real-delivery-adapter-review.blade.php",
+    "resources/views/internal/public-link-mutation-ladder-review.blade.php",
+    "resources/views/internal/public-link-one-time-consumption-lifecycle-review.blade.php",
+    "resources/views/internal/public-link-operator-lifecycle-management-review.blade.php",
+    "resources/views/internal/public-link-persistent-lookup-review.blade.php",
+    "resources/views/internal/public-link-regenerate-action-review.blade.php",
+    "resources/views/internal/public-link-revoke-action-review.blade.php",
+    "resources/views/internal/public-link-runtime-hardening-review.blade.php",
+    "resources/views/internal/public-link-runtime-planning-review.blade.php",
+    "resources/views/internal/public-link-token-storage-contract-review.blade.php"
+  ],
+  "non_goals": [
+    "route migration",
+    "controller migration",
+    "provider wiring",
+    "runtime promotion",
+    "public delivery behavior changes",
+    "database or env mutation",
+    "Blade-side PHP cleanup beyond replacing inline style blocks"
+  ],
+  "expected_effect": {
+    "link_style_block_count_before": 17,
+    "link_style_block_count_after": 1,
+    "total_style_block_count_before": 99,
+    "total_style_block_count_after": 83
+  },
+  "required_checks": [
+    "PATH=/Applications/ServBay/script/alias:$PATH composer run quality:gate",
+    "PATH=/Applications/ServBay/script/alias:$PATH php scripts/validate-preview-presentation-hygiene-inventory.php",
+    "git diff --check"
+  ],
+  "deferred_boundaries": [
+    "route/provider runtime promotion remains deferred",
+    "public runtime route promotion remains deferred until public-scope security and parity evidence exists",
+    "Blade-side PHP logic cleanup remains a separate launch-recorded batch"
+  ],
+  "validation": {
+    "final_status": "passed",
+    "commands": [
+      "PATH=/Applications/ServBay/script/alias:$PATH composer run quality:gate in packages/link",
+      "PATH=/Applications/ServBay/script/alias:$PATH php scripts/validate-developer-preview-ownership-model.php",
+      "PATH=/Applications/ServBay/script/alias:$PATH php scripts/validate-developer-preview-architecture.php",
+      "PATH=/Applications/ServBay/script/alias:$PATH php scripts/validate-preview-presentation-hygiene-inventory.php",
+      "PATH=/Applications/ServBay/script/alias:$PATH php scripts/validate-developer-feedback-intake.php",
+      "PATH=/Applications/ServBay/script/alias:$PATH php scripts/validate-cockpit-decision-layer-and-presentation-governance.php",
+      "PATH=/Applications/ServBay/script/alias:$PATH php artisan test tests/Feature/DeveloperPreviewIndexTest.php tests/Feature/DeveloperPreviewCockpitCommandTest.php tests/Feature/AdminShellNavigationGroupingHardeningTest.php tests/Feature/PublicLinkOperatorLifecycleManagementFoundationTest.php tests/Feature/PublicLinkGuardedAdminMutationPlanningFoundationTest.php tests/Feature/PublicLinkRevokeActionFoundationTest.php tests/Feature/PublicLinkRegenerateActionFoundationTest.php tests/Feature/PublicLinkCleanupActionFoundationTest.php tests/Feature/PublicLinkMutationLadderReviewFoundationTest.php tests/Feature/PublicLinkDeliveryContractHardeningFoundationTest.php",
+      "git diff --check in root and packages/link"
+    ],
+    "pre_commit_gate": {
+      "status": "passed",
+      "evidence_ref": "/Users/rim/Documents/GitHub/larena/source/output/action-gates/action-gate-report-20260617112017.json"
+    }
+  }
+}
