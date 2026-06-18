@@ -73,6 +73,14 @@ assert_true($report['scenario'] === 'public_link_persistent_lookup_foundation', 
 assert_true($report['mutates_state'] === true, 'Local testing mutation flag must stay visible.');
 assert_true($report['production_mutates_state'] === false, 'Production mutation must stay disabled.');
 assert_true($report['checks']['schema_boundary']['status'] === 'passed', 'Schema boundary must pass.');
+assert_true(
+    $report['checks']['schema_boundary']['migration_ref'] === 'larena/link::2026_06_08_000001_create_larena_public_link_lookup_table',
+    'Schema boundary must expose package-owned migration ref.',
+);
+assert_true(
+    !str_contains(json_encode($report['checks']['schema_boundary'], JSON_THROW_ON_ERROR), 'database/migrations/'),
+    'Schema boundary must not expose app migration paths.',
+);
 assert_true($report['checks']['fixture_seed']['status'] === 'passed', 'Fixture seed must pass.');
 assert_true($report['checks']['hash_only_lookup']['status'] === 'passed', 'Hash-only lookup must pass.');
 assert_true($report['checks']['lookup_decision_contract']['unknown_token_fail_closed'] === true, 'Unknown token must fail closed.');
@@ -90,6 +98,7 @@ assert_true(in_array('no_production_lookup_runtime', $report['known_limitations'
 assert_true(in_array('no_public_file_delivery', $report['known_limitations'], true), 'Public delivery limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(!str_contains(json_encode($report, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Report must not expose raw token.');
+assert_true(!str_contains(json_encode($report, JSON_THROW_ON_ERROR), 'database/migrations/'), 'Report must not expose app migration paths.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
 
 echo "PublicLinkPersistentLookupPreviewTest passed.\n";

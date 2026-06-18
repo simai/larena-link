@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Schema;
 final class PublicLinkPersistentLookupPreview
 {
     private const TABLE = 'larena_public_link_lookup';
+    private const MIGRATION_REF = 'larena/link::2026_06_08_000001_create_larena_public_link_lookup_table';
 
     /**
      * @return array<string, mixed>
@@ -120,10 +121,10 @@ final class PublicLinkPersistentLookupPreview
             'schema_boundary' => [
                 'status' => ($schema['table_exists'] ?? false) === true ? 'passed' : 'failed',
                 'table' => self::TABLE,
-                'migration_ref' => 'database/migrations/2026_06_08_000001_create_larena_public_link_lookup_table.php',
+                'migration_ref' => self::MIGRATION_REF,
                 'table_exists' => $schema['table_exists'] ?? false,
                 'created_now' => $schema['created_now'] ?? false,
-                'rollback_command' => 'php artisan migrate:rollback --path=database/migrations/2026_06_08_000001_create_larena_public_link_lookup_table.php',
+                'rollback_boundary' => 'package-owned migration rollback must be coordinated by the Larena installer/update workflow',
                 'raw_token_column_exists' => false,
             ],
             'fixture_seed' => [
@@ -231,7 +232,7 @@ final class PublicLinkPersistentLookupPreview
                 ],
                 'rollback_boundary' => [
                     'drop_table' => self::TABLE,
-                    'migration_ref' => 'database/migrations/2026_06_08_000001_create_larena_public_link_lookup_table.php',
+                    'migration_ref' => self::MIGRATION_REF,
                 ],
             ],
             'checks' => $checks,
