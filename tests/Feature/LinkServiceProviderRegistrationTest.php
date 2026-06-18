@@ -9,6 +9,7 @@ assert(in_array($provider, $composer['extra']['laravel']['providers'] ?? [], tru
 
 $source = (string) file_get_contents(__DIR__ . '/../../src/Providers/LinkServiceProvider.php');
 assert(str_contains($source, "loadRoutesFrom(__DIR__ . '/../../routes/internal.php')"));
+assert(str_contains($source, "loadMigrationsFrom(__DIR__ . '/../../database/migrations')"));
 assert(str_contains($source, "loadViewsFrom(__DIR__ . '/../../resources/views', 'larena-link')"));
 assert(str_contains($source, "environment(['local', 'testing'])"));
 
