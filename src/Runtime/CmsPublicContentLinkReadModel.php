@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Larena\Link\Runtime;
 
+use Illuminate\Database\ConnectionInterface;
+
 final class CmsPublicContentLinkReadModel
 {
     public const DEMO_ID = 'cms-link:demo';
@@ -80,6 +82,14 @@ final class CmsPublicContentLinkReadModel
         ];
 
         return self::finish($report, $outputPath);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public static function fromDatabase(ConnectionInterface $connection, string $id = self::DEMO_ID, ?string $outputPath = null): array
+    {
+        return self::finish(CmsPublicContentLinkDatabaseReadSource::forId($connection, $id), $outputPath);
     }
 
     /**

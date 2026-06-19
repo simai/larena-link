@@ -97,7 +97,8 @@
     "link.public_link_runtime_package_public_scope_plan_contract",
     "public_link_runtime_package_public_scope_planning.package_owned_planning_contract"
     ,
-    "cms_public_content_link.read_model_fixture"
+    "cms_public_content_link.read_model_fixture",
+    "cms_public_content_link.database_backed_read_model"
   ],
   "allowed_files": [
     "scripts/check-metadata-sync.php",
@@ -149,6 +150,7 @@
     "src/Runtime/PublicLinkRouteProviderPromotionReadiness.php",
     "src/Runtime/PublicLinkRuntimePackagePublicScopePlan.php",
     "src/Runtime/CmsPublicContentLinkReadModel.php",
+    "src/Runtime/CmsPublicContentLinkDatabaseReadSource.php",
     "src/Http/Controllers/Internal/PublicContentLinkFlowReviewController.php",
     "src/Providers/LinkServiceProvider.php",
     "database/migrations/2026_06_08_000001_create_larena_public_link_lookup_table.php",
@@ -184,6 +186,7 @@
     "tests/Unit/PublicLinkRouteProviderPromotionReadinessTest.php",
     "tests/Unit/PublicLinkRuntimePackagePublicScopePlanTest.php",
     "tests/Unit/CmsPublicContentLinkReadModelTest.php",
+    "tests/Unit/CmsPublicContentLinkDatabaseReadSourceTest.php",
     "tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
     "tests/Feature/PublicLinkGuardedDeliveryReadinessRouteBoundaryTest.php",
     "tests/Feature/LinkServiceProviderRegistrationTest.php",
