@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-runtime-package-public-scope-planning
+batch: public-link-package-route-and-operator-get-render-parity-implementation-launch-2026-06-22
 features:
   - link.action_links
   - link.admin_center

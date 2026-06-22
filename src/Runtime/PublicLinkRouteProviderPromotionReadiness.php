@@ -23,6 +23,17 @@ final class PublicLinkRouteProviderPromotionReadiness
 
         $packagePublicRoutePath = dirname(__DIR__, 2) . '/routes/public.php';
         $packagePublicRouteExists = is_file($packagePublicRoutePath);
+        $packagePublicControllerPath = dirname(__DIR__) . '/Http/Controllers/Public/PublicLinkRuntimeResolveController.php';
+        $packagePublicControllerExists = is_file($packagePublicControllerPath);
+        $configPath = dirname(__DIR__, 2) . '/config/larena-link.php';
+        $configSource = is_file($configPath)
+            ? (string) file_get_contents($configPath)
+            : '';
+        $providerLoadsPublicRoute = str_contains($providerSource, "loadRoutesFrom(__DIR__ . '/../../routes/public.php')");
+        $providerPublicRouteGuarded = str_contains($providerSource, 'shouldLoadPublicRoutes')
+            && str_contains($providerSource, "get('larena-link.public_routes.enabled', false)")
+            && str_contains($providerSource, "environment(['local', 'testing'])");
+        $publicRouteEnabledByDefault = preg_match('/[\'"]public_routes[\'"]\s*=>\s*\[[\s\S]*?[\'"]enabled[\'"]\s*=>\s*true/', $configSource) === 1;
 
         $checks = [
             'package_service_provider_available' => [
@@ -40,13 +51,19 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'provider_loads_internal_routes' => str_contains($providerSource, "loadRoutesFrom(__DIR__ . '/../../routes/internal.php')"),
                 'internal_prefix' => '/larena/internal',
             ],
-            'public_runtime_route_not_promoted_yet' => [
-                'status' => !$packagePublicRouteExists
-                    && !str_contains($providerSource, "loadRoutesFrom(__DIR__ . '/../../routes/public.php')")
+            'public_runtime_route_guarded_candidate_not_promoted_yet' => [
+                'status' => $packagePublicRouteExists
+                    && $packagePublicControllerExists
+                    && $providerLoadsPublicRoute
+                    && $providerPublicRouteGuarded
+                    && !$publicRouteEnabledByDefault
                     ? 'passed'
                     : 'failed',
                 'package_public_route_file_exists' => $packagePublicRouteExists,
-                'provider_loads_public_route_now' => str_contains($providerSource, "loadRoutesFrom(__DIR__ . '/../../routes/public.php')"),
+                'package_public_controller_exists' => $packagePublicControllerExists,
+                'provider_loads_public_route_candidate' => $providerLoadsPublicRoute,
+                'provider_public_route_guarded' => $providerPublicRouteGuarded,
+                'public_route_enabled_by_default' => $publicRouteEnabledByDefault,
                 'future_route_shape' => '/larena/link/{token}',
                 'provider_promotion_enabled_now' => false,
             ],
@@ -56,7 +73,7 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'future_runtime_route_owner' => 'larena/link',
                 'current_adapter_controller' => 'App\\Http\\Controllers\\Larena\\Public\\PublicLinkRuntimeResolveController',
                 'entry_app_adapter_required_until_package_route_parity_proven' => true,
-                'package_local_public_controller_required_before_promotion' => true,
+                'package_local_public_controller_candidate_exists' => $packagePublicControllerExists,
             ],
             'promotion_guards' => [
                 'status' => 'passed',
@@ -66,8 +83,8 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'filesystem_mutation' => false,
                 'release_ready' => false,
                 'required_before_promotion' => [
-                    'package public route file exists and is provider-loaded',
-                    'package-local public runtime controller exists',
+                    'package public route candidate parity smoke passes',
+                    'package-local public runtime controller parity smoke passes',
                     'entry-app and package route parity is proven',
                     'negative token/access/replay/rate-limit security checks pass',
                     'entry-app compatibility adapter removal has rollback evidence',
@@ -78,7 +95,7 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'developer_testable_foundation_only' => true,
                 'provider_promotion_now' => false,
                 'token_storage_runtime_enabled' => false,
-                'public_route_runtime_enabled' => false,
+                'public_route_runtime_enabled' => $publicRouteEnabledByDefault,
                 'file_download_runtime_enabled' => false,
                 'real_database_mutation' => false,
                 'real_filesystem_mutation' => false,
@@ -103,7 +120,10 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'provider_promotion_status' => 'readiness_recorded_not_executed',
                 'entry_app_compatibility_adapter_required' => true,
                 'package_public_route_present' => $packagePublicRouteExists,
-                'package_provider_loads_public_route_now' => str_contains($providerSource, "loadRoutesFrom(__DIR__ . '/../../routes/public.php')"),
+                'package_public_controller_present' => $packagePublicControllerExists,
+                'package_provider_loads_public_route_candidate' => $providerLoadsPublicRoute,
+                'package_provider_public_route_guarded' => $providerPublicRouteGuarded,
+                'package_public_route_enabled_by_default' => $publicRouteEnabledByDefault,
             ],
             'checks' => $checks,
             'safe_trace' => [
@@ -112,8 +132,10 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'entry_app_adapter_controller' => 'App\\Http\\Controllers\\Larena\\Public\\PublicLinkRuntimeResolveController',
                 'provider_promotion_executed' => false,
                 'package_public_route_present' => $packagePublicRouteExists,
-                'package_provider_loads_public_route_now' => str_contains($providerSource, "loadRoutesFrom(__DIR__ . '/../../routes/public.php')"),
-                'public_runtime_enabled' => false,
+                'package_public_controller_present' => $packagePublicControllerExists,
+                'package_provider_loads_public_route_candidate' => $providerLoadsPublicRoute,
+                'package_provider_public_route_guarded' => $providerPublicRouteGuarded,
+                'public_runtime_enabled' => $publicRouteEnabledByDefault,
                 'real_file_delivery' => false,
                 'real_database_mutation' => false,
                 'release_ready' => false,
@@ -121,12 +143,12 @@ final class PublicLinkRouteProviderPromotionReadiness
             'known_limitations' => [
                 'public route still mounted by entry app',
                 'entry-app compatibility adapter still required',
-                'package public route file not created in this batch',
-                'no package-local public runtime controller yet',
+                'package public route candidate disabled by default',
+                'package-local public runtime controller still requires parity smoke before promotion',
                 'not production runtime',
                 'not release ready',
             ],
-            'next_recommended_step' => 'prepare_public_link_runtime_provider_promotion_launch_record',
+            'next_recommended_step' => 'prove_public_link_runtime_parity_smoke',
             'evidence_path' => $outputPath,
         ];
 
