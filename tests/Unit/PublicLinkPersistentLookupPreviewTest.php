@@ -17,14 +17,17 @@ function assert_true(bool $condition, string $message): void
 $fingerprint = PublicLinkPersistentLookupPreview::fingerprint('active-preview-token');
 $schema = [
     'table' => 'larena_public_link_lookup',
-    'table_exists' => true,
-    'created_now' => true,
-    'mutates_state' => true,
+    'table_exists' => false,
+    'created_now' => false,
+    'mutates_state' => false,
+    'preview_lookup_mode' => 'in_memory_fixture',
+    'migration_execution_allowed' => false,
 ];
 $seed = [
     'table' => 'larena_public_link_lookup',
     'seeded_count' => 4,
-    'mutates_state' => true,
+    'mutates_state' => false,
+    'preview_lookup_mode' => 'in_memory_fixture',
     'fixture_keys' => [
         $fingerprint,
         PublicLinkPersistentLookupPreview::fingerprint('expired-preview-token'),
@@ -70,9 +73,11 @@ $report = PublicLinkPersistentLookupPreview::reportFromLookup(
 assert_true($report['schema'] === 'larena.public_link_persistent_lookup_foundation.v1', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Persistent lookup preview must pass.');
 assert_true($report['scenario'] === 'public_link_persistent_lookup_foundation', 'Unexpected scenario.');
-assert_true($report['mutates_state'] === true, 'Local testing mutation flag must stay visible.');
+assert_true($report['mutates_state'] === false, 'Preview lookup must not mutate state.');
 assert_true($report['production_mutates_state'] === false, 'Production mutation must stay disabled.');
 assert_true($report['checks']['schema_boundary']['status'] === 'passed', 'Schema boundary must pass.');
+assert_true($report['checks']['schema_boundary']['created_now'] === false, 'Preview must not create schema.');
+assert_true($report['checks']['schema_boundary']['migration_execution_allowed'] === false, 'Preview migration execution must stay disabled.');
 assert_true(
     $report['checks']['schema_boundary']['migration_ref'] === 'larena/link::2026_06_08_000001_create_larena_public_link_lookup_table',
     'Schema boundary must expose package-owned migration ref.',
@@ -82,6 +87,7 @@ assert_true(
     'Schema boundary must not expose app migration paths.',
 );
 assert_true($report['checks']['fixture_seed']['status'] === 'passed', 'Fixture seed must pass.');
+assert_true($report['checks']['fixture_seed']['mutates_state'] === false, 'Preview fixture seed must not write DB rows.');
 assert_true($report['checks']['hash_only_lookup']['status'] === 'passed', 'Hash-only lookup must pass.');
 assert_true($report['checks']['lookup_decision_contract']['unknown_token_fail_closed'] === true, 'Unknown token must fail closed.');
 assert_true($report['checks']['lookup_decision_contract']['expired_token_fail_closed'] === true, 'Expired token must fail closed.');
@@ -90,11 +96,14 @@ assert_true($report['checks']['lookup_decision_contract']['missing_access_scope_
 assert_true($report['checks']['access_audit_boundary']['status'] === 'passed', 'Access/audit boundary must pass.');
 assert_true($report['checks']['file_delivery_block']['file_download_executed'] === false, 'File delivery must stay disabled.');
 assert_true($report['checks']['scope_boundary']['production_database_mutation'] === false, 'Production DB mutation must stay disabled.');
+assert_true($report['checks']['scope_boundary']['real_database_mutation'] === false, 'Preview DB mutation must stay disabled.');
 assert_true($report['safe_trace']['persistent_token_table'] === true, 'Persistent table marker missing.');
+assert_true($report['safe_trace']['real_database_mutation'] === false, 'Preview DB mutation marker must stay false.');
 assert_true($report['safe_trace']['production_lookup'] === false, 'Production lookup must stay disabled.');
 assert_true($report['safe_trace']['file_content_returned'] === false, 'File content must stay disabled.');
 assert_true($report['safe_trace']['release_ready'] === false, 'Release-ready claim must stay disabled.');
 assert_true(in_array('no_production_lookup_runtime', $report['known_limitations'], true), 'Production lookup limitation missing.');
+assert_true(in_array('preview_uses_in_memory_fixture_lookup', $report['known_limitations'], true), 'In-memory preview limitation missing.');
 assert_true(in_array('no_public_file_delivery', $report['known_limitations'], true), 'Public delivery limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(!str_contains(json_encode($report, JSON_THROW_ON_ERROR), 'active-preview-token'), 'Report must not expose raw token.');

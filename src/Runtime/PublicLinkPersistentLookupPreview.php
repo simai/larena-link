@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Larena\Link\Runtime;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 final class PublicLinkPersistentLookupPreview
@@ -17,8 +16,8 @@ final class PublicLinkPersistentLookupPreview
      */
     public static function run(string $candidateToken = 'active-preview-token', ?string $outputPath = null): array
     {
-        $schema = self::ensureSchema();
-        $seed = self::seedFixtures();
+        $schema = self::previewSchemaState();
+        $seed = self::previewFixtureState();
         $lookup = self::lookup($candidateToken);
         $negativeLookups = [
             'unknown_token_fail_closed' => self::lookup('unknown-preview-token'),
@@ -35,33 +34,29 @@ final class PublicLinkPersistentLookupPreview
      */
     public static function lookup(string $candidateToken): array
     {
-        if (!Schema::hasTable(self::TABLE)) {
-            return self::notFound($candidateToken, 'table_missing');
-        }
-
         $key = self::fingerprint($candidateToken);
-        $record = DB::table(self::TABLE)->where('token_hash_ref', $key)->first();
+        $record = self::fixtureRecord($candidateToken);
 
         if ($record === null) {
             return self::notFound($candidateToken, 'unknown_token');
         }
 
         $base = [
-            'stored_lookup_key' => (string) $record->token_hash_ref,
-            'link_identity_ref' => $record->link_identity_ref,
-            'logical_file_id' => $record->logical_file_id,
-            'access_scope_ref' => $record->access_scope_ref,
-            'audit_event_ref' => (string) $record->audit_event_ref,
-            'expires_at' => $record->expires_at,
-            'revoked_at' => $record->revoked_at,
-            'status' => (string) $record->status,
+            'stored_lookup_key' => (string) $record['token_hash_ref'],
+            'link_identity_ref' => $record['link_identity_ref'],
+            'logical_file_id' => $record['logical_file_id'],
+            'access_scope_ref' => $record['access_scope_ref'],
+            'audit_event_ref' => (string) $record['audit_event_ref'],
+            'expires_at' => $record['expires_at'],
+            'revoked_at' => $record['revoked_at'],
+            'status' => (string) $record['status'],
             'raw_token_visible' => false,
             'raw_token_persisted' => false,
             'file_download_executed' => false,
             'mutates_state' => false,
         ];
 
-        if ($record->status === 'revoked' || $record->revoked_at !== null) {
+        if ($record['status'] === 'revoked' || $record['revoked_at'] !== null) {
             return array_merge($base, [
                 'lookup_status' => 'found_revoked',
                 'decision' => 'would_deny',
@@ -69,7 +64,7 @@ final class PublicLinkPersistentLookupPreview
             ]);
         }
 
-        if ($record->expires_at !== null && strtotime((string) $record->expires_at) <= time()) {
+        if ($record['expires_at'] !== null && strtotime((string) $record['expires_at']) <= time()) {
             return array_merge($base, [
                 'lookup_status' => 'found_expired',
                 'decision' => 'would_deny',
@@ -77,7 +72,7 @@ final class PublicLinkPersistentLookupPreview
             ]);
         }
 
-        if ($record->access_scope_ref === null || $record->access_scope_ref === 'missing') {
+        if ($record['access_scope_ref'] === null || $record['access_scope_ref'] === 'missing') {
             return array_merge($base, [
                 'lookup_status' => 'found_missing_access_scope',
                 'decision' => 'would_deny',
@@ -119,11 +114,13 @@ final class PublicLinkPersistentLookupPreview
                 'file_delivery_allowed' => false,
             ],
             'schema_boundary' => [
-                'status' => ($schema['table_exists'] ?? false) === true ? 'passed' : 'failed',
+                'status' => ($schema['migration_execution_allowed'] ?? true) === false ? 'passed' : 'failed',
                 'table' => self::TABLE,
                 'migration_ref' => self::MIGRATION_REF,
                 'table_exists' => $schema['table_exists'] ?? false,
                 'created_now' => $schema['created_now'] ?? false,
+                'preview_lookup_mode' => $schema['preview_lookup_mode'] ?? null,
+                'migration_execution_allowed' => $schema['migration_execution_allowed'] ?? true,
                 'rollback_boundary' => 'package-owned migration rollback must be coordinated by the Larena installer/update workflow',
                 'raw_token_column_exists' => false,
             ],
@@ -174,9 +171,9 @@ final class PublicLinkPersistentLookupPreview
             'scope_boundary' => [
                 'status' => 'passed',
                 'local_testing_only' => true,
-                'mutates_state' => ($schema['created_now'] ?? false) === true || ($seed['mutates_state'] ?? false) === true,
+                'mutates_state' => false,
                 'production_mutates_state' => false,
-                'real_database_mutation' => true,
+                'real_database_mutation' => false,
                 'production_database_mutation' => false,
                 'real_file_mutation' => false,
                 'public_file_delivery' => false,
@@ -247,7 +244,7 @@ final class PublicLinkPersistentLookupPreview
                 'file_content_returned' => false,
                 'one_time_consumption_runtime' => false,
                 'real_file_mutation' => false,
-                'real_database_mutation' => true,
+                'real_database_mutation' => false,
                 'production_database_mutation' => false,
                 'release_ready' => false,
                 'graph_sync_canonical_update' => false,
@@ -255,7 +252,8 @@ final class PublicLinkPersistentLookupPreview
             'evidence_path' => $outputPath,
             'known_limitations' => [
                 'developer_testable_persistent_lookup_foundation_only',
-                'local_testing_schema_and_seed_only',
+                'preview_uses_in_memory_fixture_lookup',
+                'package_migration_not_executed_by_preview',
                 'no_raw_token_storage',
                 'no_production_lookup_runtime',
                 'no_public_file_delivery',
@@ -280,73 +278,63 @@ final class PublicLinkPersistentLookupPreview
     /**
      * @return array<string, mixed>
      */
-    private static function ensureSchema(): array
+    private static function previewSchemaState(): array
     {
-        if (Schema::hasTable(self::TABLE)) {
-            return [
-                'table' => self::TABLE,
-                'table_exists' => true,
-                'created_now' => false,
-                'mutates_state' => false,
-            ];
-        }
-
-        Schema::create(self::TABLE, function ($table): void {
-            $table->id();
-            $table->string('token_hash_ref', 96)->unique();
-            $table->string('link_identity_ref')->nullable();
-            $table->string('logical_file_id')->nullable();
-            $table->string('access_scope_ref')->nullable();
-            $table->string('audit_event_ref');
-            $table->string('status', 32);
-            $table->timestamp('expires_at')->nullable();
-            $table->timestamp('revoked_at')->nullable();
-            $table->json('preview_metadata')->nullable();
-            $table->timestamps();
-            $table->index(['status', 'expires_at']);
-            $table->index('revoked_at');
-            $table->index('access_scope_ref');
-        });
-
         return [
             'table' => self::TABLE,
-            'table_exists' => true,
-            'created_now' => true,
-            'mutates_state' => true,
+            'table_exists' => Schema::hasTable(self::TABLE),
+            'created_now' => false,
+            'mutates_state' => false,
+            'preview_lookup_mode' => 'in_memory_fixture',
+            'migration_ref' => self::MIGRATION_REF,
+            'migration_execution_allowed' => false,
         ];
     }
 
     /**
      * @return array<string, mixed>
      */
-    private static function seedFixtures(): array
+    private static function previewFixtureState(): array
     {
-        $rows = [
+        $rows = self::fixtures();
+
+        return [
+            'table' => self::TABLE,
+            'seeded_count' => count($rows),
+            'mutates_state' => false,
+            'preview_lookup_mode' => 'in_memory_fixture',
+            'fixture_keys' => array_map(static fn (array $row): string => $row['token_hash_ref'], $rows),
+            'raw_token_persisted' => false,
+        ];
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function fixtures(): array
+    {
+        return [
             self::fixture('active-preview-token', 'active', 'access.scope:file-manager.link-sharing.runtime', 'audit.event:file-manager.link-sharing.runtime', '+1 day', null),
             self::fixture('expired-preview-token', 'active', 'access.scope:file-manager.link-sharing.runtime', 'audit.event:file-manager.link-sharing.expired', '-1 day', null),
             self::fixture('revoked-preview-token', 'revoked', 'access.scope:file-manager.link-sharing.runtime', 'audit.event:file-manager.link-sharing.revoked', '+1 day', '-1 hour'),
             self::fixture('missing-access-preview-token', 'active', 'missing', 'audit.event:file-manager.link-sharing.missing-access', '+1 day', null),
         ];
+    }
 
-        $mutates = false;
-        foreach ($rows as $row) {
-            $existing = DB::table(self::TABLE)->where('token_hash_ref', $row['token_hash_ref'])->first();
-            if ($existing === null) {
-                DB::table(self::TABLE)->insert($row);
-                $mutates = true;
-                continue;
+    /**
+     * @return array<string, mixed>|null
+     */
+    private static function fixtureRecord(string $candidateToken): ?array
+    {
+        $key = self::fingerprint($candidateToken);
+
+        foreach (self::fixtures() as $fixture) {
+            if ($fixture['token_hash_ref'] === $key) {
+                return $fixture;
             }
-
-            DB::table(self::TABLE)->where('token_hash_ref', $row['token_hash_ref'])->update($row);
         }
 
-        return [
-            'table' => self::TABLE,
-            'seeded_count' => DB::table(self::TABLE)->count(),
-            'mutates_state' => $mutates,
-            'fixture_keys' => array_map(static fn (array $row): string => $row['token_hash_ref'], $rows),
-            'raw_token_persisted' => false,
-        ];
+        return null;
     }
 
     /**

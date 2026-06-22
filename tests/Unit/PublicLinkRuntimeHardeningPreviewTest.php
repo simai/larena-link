@@ -55,7 +55,7 @@ $tokenStorage = runtime_source_report('larena.public_link_token_storage_contract
 $tokenStorage['lookup_result'] = ['decision' => 'would_allow', 'lookup_status' => 'hash_match_preview'];
 $tokenStorage['candidate_lookup'] = ['token_fingerprint' => 'sha256:fixture'];
 
-$persistentLookup = runtime_source_report('larena.public_link_persistent_lookup_foundation.v1', 'public_link_persistent_lookup_foundation', true);
+$persistentLookup = runtime_source_report('larena.public_link_persistent_lookup_foundation.v1', 'public_link_persistent_lookup_foundation', false);
 $persistentLookup['lookup_result'] = ['decision' => 'would_allow', 'lookup_status' => 'hash_lookup_preview'];
 $persistentLookup['candidate_lookup'] = ['token_fingerprint' => 'sha256:fixture'];
 
@@ -90,7 +90,7 @@ $report = PublicLinkRuntimeHardeningPreview::run(
 assert_true($report['schema'] === 'larena.public_link_runtime_hardening_foundation.v1', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Runtime hardening preview must pass.');
 assert_true($report['scenario'] === 'public_link_runtime_hardening_foundation', 'Unexpected scenario.');
-assert_true($report['mutates_state'] === true, 'Existing persistent lookup local-testing mutation marker must be preserved.');
+assert_true($report['mutates_state'] === false, 'Preview runtime hardening must stay no-write.');
 assert_true($report['production_mutates_state'] === false, 'Production mutation must stay false.');
 assert_true($report['resolution_decision']['decision'] === 'would_allow', 'Active decision must allow preview.');
 assert_true($report['resolution_decision']['http_status_preview'] === 202, 'Active preview status must be 202.');
@@ -106,7 +106,7 @@ foreach (['launch_record_scope', 'route_hardening_contract', 'token_redaction', 
 assert_true($report['safe_trace']['token_storage_enabled_now'] === false, 'Token storage runtime must stay disabled.');
 assert_true($report['safe_trace']['persistent_token_table'] === true, 'Persistent table marker must be preserved.');
 assert_true($report['safe_trace']['database_migration'] === true, 'Database migration marker must be preserved.');
-assert_true($report['safe_trace']['real_database_mutation'] === true, 'Existing local mutation marker must be preserved.');
+assert_true($report['safe_trace']['real_database_mutation'] === false, 'Preview DB mutation marker must stay false.');
 assert_true($report['safe_trace']['production_lookup'] === false, 'Production lookup must stay false.');
 assert_true($report['safe_trace']['file_download_executed'] === false, 'File download must stay false.');
 assert_true($report['safe_trace']['file_content_returned'] === false, 'File content must stay false.');
