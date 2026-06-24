@@ -100,7 +100,8 @@
     "cms_public_content_link.read_model_fixture",
     "cms_public_content_link.database_backed_read_model"
   ],
-  "allowed_files": [
+    "allowed_files": [
+    "README.md",
     "scripts/check-metadata-sync.php",
     "module.yaml",
     ".larena/launch-context.json",
