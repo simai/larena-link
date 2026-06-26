@@ -1,0 +1,22 @@
+{
+  "schema": "larena.core_assets.set.v1",
+  "asset_set": "link.internal.public_link_review",
+  "owner_package": "larena/link",
+  "activation_owner": "larena/core:core.assets",
+  "version": "0.1.0",
+  "context": "preview",
+  "resources": [
+    {
+      "key": "link.internal.public_link_review.css",
+      "kind": "css",
+      "path": "resources/assets/internal/public-link-review.css",
+      "load": "critical"
+    }
+  ],
+  "policy": {
+    "local_only": true,
+    "allow_cdn": false,
+    "allow_template_direct_include": false,
+    "final_path_owned_by_core_assets": true
+  }
+}
