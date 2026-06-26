@@ -13,6 +13,8 @@
     "link.in_memory_planning_runtime",
     "link.public_link_runtime_planning_read_model",
     "public_link_runtime_planning.package_owned_read_model",
+    "developer_feedback.presentation_hygiene.public_link_review_stylesheet_extraction",
+    "link.internal_preview_asset_boundary",
     "link.public_link_dry_run_runtime_read_model",
     "public_link_dry_run_runtime.package_owned_read_model",
     "link.public_content_link_flow_read_model",
@@ -599,7 +601,10 @@
     "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/graph-sync-proposal.json",
     "docs/project-management/evidence/public-link-persistent-lookup-package-owned-surface/independent-review.md",
     "docs/project-management/launch-records/public-link-review-presentation-hygiene-slice.json",
-    "resources/views/internal/partials/public-link-review-styles.blade.php"
+    "resources/views/internal/partials/public-link-review-styles.blade.php",
+    "resources/assets/internal/public-link-review.css",
+    "src/Http/Controllers/Internal/PublicLinkPreviewAssetController.php",
+    "src/Support/PreviewResponder.php"
   ],
   "forbidden_files": [
     "config/*",

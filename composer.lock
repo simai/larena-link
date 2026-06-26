@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1e5c86b556a140a598deaab37550dee6",
+    "content-hash": "14050ffd2af3cb70121f97ee5804ffc6",
     "packages": [
         {
             "name": "brick/math",
@@ -767,7 +767,7 @@
         },
         {
             "name": "illuminate/collections",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
@@ -827,7 +827,7 @@
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -872,17 +872,83 @@
             "time": "2026-02-25T16:07:55+00:00"
         },
         {
-            "name": "illuminate/container",
-            "version": "v13.15.0",
+            "name": "illuminate/console",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/illuminate/container.git",
-                "reference": "94af2a79236031ba3dfc93548c8cc545d3bfc4b3"
+                "url": "https://github.com/illuminate/console.git",
+                "reference": "9385e26d7a5ce4b5412d46abd0f7289f55500e9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/94af2a79236031ba3dfc93548c8cc545d3bfc4b3",
-                "reference": "94af2a79236031ba3dfc93548c8cc545d3bfc4b3",
+                "url": "https://api.github.com/repos/illuminate/console/zipball/9385e26d7a5ce4b5412d46abd0f7289f55500e9d",
+                "reference": "9385e26d7a5ce4b5412d46abd0f7289f55500e9d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "illuminate/collections": "^13.0",
+                "illuminate/contracts": "^13.0",
+                "illuminate/macroable": "^13.0",
+                "illuminate/support": "^13.0",
+                "illuminate/view": "^13.0",
+                "laravel/prompts": "^0.3.0",
+                "nunomaduro/termwind": "^2.0",
+                "php": "^8.3",
+                "symfony/console": "^7.4.0 || ^8.0.0",
+                "symfony/polyfill-php84": "^1.37",
+                "symfony/process": "^7.4.5 || ^8.0.5"
+            },
+            "suggest": {
+                "dragonmantank/cron-expression": "Required to use scheduler (^3.3.2).",
+                "ext-pcntl": "Required to use signal trapping.",
+                "guzzlehttp/guzzle": "Required to use the ping methods on schedules (^7.8).",
+                "illuminate/bus": "Required to use the scheduled job dispatcher (^13.0).",
+                "illuminate/container": "Required to use the scheduler (^13.0).",
+                "illuminate/filesystem": "Required to use the generator command (^13.0).",
+                "illuminate/queue": "Required to use closures for scheduled jobs (^13.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "13.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Console package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2026-06-19T14:10:55+00:00"
+        },
+        {
+            "name": "illuminate/container",
+            "version": "v13.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/container.git",
+                "reference": "50a24585e90cfdede3b241234fb29c803005022c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/50a24585e90cfdede3b241234fb29c803005022c",
+                "reference": "50a24585e90cfdede3b241234fb29c803005022c",
                 "shasum": ""
             },
             "require": {
@@ -931,20 +997,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-05-28T23:50:37+00:00"
+            "time": "2026-06-10T13:09:02+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "dc805389d17f13821726423bf4fc90d3162bf90d"
+                "reference": "0b719e8cac0dcdb021e0ddfee5ef65410fe53000"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/dc805389d17f13821726423bf4fc90d3162bf90d",
-                "reference": "dc805389d17f13821726423bf4fc90d3162bf90d",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/0b719e8cac0dcdb021e0ddfee5ef65410fe53000",
+                "reference": "0b719e8cac0dcdb021e0ddfee5ef65410fe53000",
                 "shasum": ""
             },
             "require": {
@@ -979,7 +1045,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-05-21T13:18:48+00:00"
+            "time": "2026-06-22T12:59:19+00:00"
         },
         {
             "name": "illuminate/database",
@@ -1111,7 +1177,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -1239,7 +1305,7 @@
         },
         {
             "name": "illuminate/macroable",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -1285,7 +1351,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -1337,16 +1403,16 @@
         },
         {
             "name": "illuminate/reflection",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/reflection.git",
-                "reference": "4fe1659f068ab2b50131cf906c5d8bba4e34df0c"
+                "reference": "178cdb5eb08c5369ae6b71518e557bed68e74577"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/reflection/zipball/4fe1659f068ab2b50131cf906c5d8bba4e34df0c",
-                "reference": "4fe1659f068ab2b50131cf906c5d8bba4e34df0c",
+                "url": "https://api.github.com/repos/illuminate/reflection/zipball/178cdb5eb08c5369ae6b71518e557bed68e74577",
+                "reference": "178cdb5eb08c5369ae6b71518e557bed68e74577",
                 "shasum": ""
             },
             "require": {
@@ -1384,11 +1450,77 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-03-10T20:04:12+00:00"
+            "time": "2026-06-18T15:47:27+00:00"
+        },
+        {
+            "name": "illuminate/routing",
+            "version": "v13.17.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/routing.git",
+                "reference": "231af41d0679d73d7364b90e1e0945e57a628c1d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/routing/zipball/231af41d0679d73d7364b90e1e0945e57a628c1d",
+                "reference": "231af41d0679d73d7364b90e1e0945e57a628c1d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-filter": "*",
+                "ext-hash": "*",
+                "illuminate/collections": "^13.0",
+                "illuminate/container": "^13.0",
+                "illuminate/contracts": "^13.0",
+                "illuminate/http": "^13.0",
+                "illuminate/macroable": "^13.0",
+                "illuminate/pipeline": "^13.0",
+                "illuminate/session": "^13.0",
+                "illuminate/support": "^13.0",
+                "php": "^8.3",
+                "symfony/http-foundation": "^7.4.0 || ^8.0.0",
+                "symfony/http-kernel": "^7.4.0 || ^8.0.0",
+                "symfony/polyfill-php84": "^1.36",
+                "symfony/polyfill-php85": "^1.36",
+                "symfony/routing": "^7.4.0 || ^8.0.0"
+            },
+            "suggest": {
+                "illuminate/console": "Required to use the make commands (^13.0).",
+                "php-http/discovery": "Required to use PSR-7 bridging features (^1.15).",
+                "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^7.4 || ^8.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "13.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Routing\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "The Illuminate Routing package.",
+            "homepage": "https://laravel.com",
+            "support": {
+                "issues": "https://github.com/laravel/framework/issues",
+                "source": "https://github.com/laravel/framework"
+            },
+            "time": "2026-06-19T14:06:42+00:00"
         },
         {
             "name": "illuminate/session",
-            "version": "v13.15.0",
+            "version": "v13.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
@@ -1577,6 +1709,65 @@
             "time": "2026-06-05T14:48:46+00:00"
         },
         {
+            "name": "laravel/prompts",
+            "version": "v0.3.21",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/prompts.git",
+                "reference": "7753c65c281c2550c7c183f14e18062073b7d821"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/prompts/zipball/7753c65c281c2550c7c183f14e18062073b7d821",
+                "reference": "7753c65c281c2550c7c183f14e18062073b7d821",
+                "shasum": ""
+            },
+            "require": {
+                "composer-runtime-api": "^2.2",
+                "ext-mbstring": "*",
+                "php": "^8.1",
+                "symfony/console": "^6.2|^7.0|^8.0"
+            },
+            "conflict": {
+                "illuminate/console": ">=10.17.0 <10.25.0",
+                "laravel/framework": ">=10.17.0 <10.25.0"
+            },
+            "require-dev": {
+                "illuminate/collections": "^10.0|^11.0|^12.0|^13.0",
+                "mockery/mockery": "^1.5",
+                "pestphp/pest": "^2.3|^3.4|^4.0",
+                "phpstan/phpstan": "^1.12.28",
+                "phpstan/phpstan-mockery": "^1.1.3"
+            },
+            "suggest": {
+                "ext-pcntl": "Required for the spinner to be animated."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "0.3.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Laravel\\Prompts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Add beautiful and user-friendly forms to your command-line applications.",
+            "support": {
+                "issues": "https://github.com/laravel/prompts/issues",
+                "source": "https://github.com/laravel/prompts/tree/v0.3.21"
+            },
+            "time": "2026-06-26T00:11:25+00:00"
+        },
+        {
             "name": "laravel/serializable-closure",
             "version": "v2.0.13",
             "source": {
@@ -1636,6 +1827,337 @@
                 "source": "https://github.com/laravel/serializable-closure"
             },
             "time": "2026-04-16T14:03:50+00:00"
+        },
+        {
+            "name": "larena/access",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../access",
+                "reference": "b420bc7e6aeda887c3cde6e410b741f0d6c79aa3"
+            },
+            "require": {
+                "illuminate/http": "^13.0",
+                "illuminate/routing": "^13.0",
+                "illuminate/support": "^13.0",
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Larena\\Access\\Providers\\AccessServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Larena\\Access\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Larena\\Access\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "@php tests/Unit/AccessDecisionContractTest.php",
+                    "@php tests/Unit/AccessFailsClosedTest.php",
+                    "@php tests/Unit/AccessGrantDecisionRuntimeTest.php",
+                    "@php tests/Unit/AccessGrantDecisionFailsClosedTest.php",
+                    "@php tests/Unit/AccessMiddlewareRuntimeContractTest.php"
+                ],
+                "test:unit": [
+                    "@php tests/Unit/AccessDecisionContractTest.php",
+                    "@php tests/Unit/AccessFailsClosedTest.php",
+                    "@php tests/Unit/AccessGrantDecisionRuntimeTest.php",
+                    "@php tests/Unit/AccessGrantDecisionFailsClosedTest.php",
+                    "@php tests/Unit/AccessMiddlewareRuntimeContractTest.php"
+                ],
+                "lint": [
+                    "@php scripts/lint.php"
+                ],
+                "analyse": [
+                    "@php scripts/analyse.php"
+                ],
+                "validate:larena": [
+                    "@php scripts/validate-larena-package.php"
+                ],
+                "evidence:check": [
+                    "@php scripts/check-evidence.php"
+                ],
+                "scope:check": [
+                    "@php tools/larena-scope-check.php"
+                ],
+                "quality:gate": [
+                    "@validate:larena",
+                    "@lint",
+                    "@analyse",
+                    "@test",
+                    "@larena:metadata:check",
+                    "@evidence:check",
+                    "@scope:check"
+                ],
+                "larena:metadata:check": [
+                    "@php scripts/check-metadata-sync.php"
+                ]
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rim Zabarov",
+                    "homepage": "https://github.com/zabarov"
+                }
+            ],
+            "description": "Larena Access: Operation permissions, target providers, query scopes and explainable access decisions.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "larena/audit",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../audit",
+                "reference": "e0554043d10ca35b0a1cc5fda09f07840ccf4b21"
+            },
+            "require": {
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Larena\\Audit\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Larena\\Audit\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "php tests/Unit/AuditEventContractTest.php && php tests/Unit/AuditFailsClosedTest.php && php tests/Unit/AuditRedactorRuntimeTest.php && php tests/Unit/AuditEventPipelineTest.php && php tests/Unit/AuditEventPipelineFailsClosedTest.php && php tests/Unit/InstallAuditTrailTest.php"
+                ],
+                "test:unit": [
+                    "php tests/Unit/AuditEventContractTest.php && php tests/Unit/AuditFailsClosedTest.php && php tests/Unit/AuditRedactorRuntimeTest.php && php tests/Unit/AuditEventPipelineTest.php && php tests/Unit/AuditEventPipelineFailsClosedTest.php && php tests/Unit/InstallAuditTrailTest.php"
+                ],
+                "lint": [
+                    "php scripts/lint.php"
+                ],
+                "analyse": [
+                    "php scripts/analyse.php"
+                ],
+                "validate:larena": [
+                    "php scripts/validate-larena-package.php"
+                ],
+                "evidence:check": [
+                    "php scripts/check-evidence.php"
+                ],
+                "scope:check": [
+                    "php tools/larena-scope-check.php"
+                ],
+                "quality:gate": [
+                    "@validate:larena",
+                    "@lint",
+                    "@analyse",
+                    "@test",
+                    "@larena:metadata:check",
+                    "@evidence:check",
+                    "@scope:check"
+                ],
+                "larena:metadata:check": [
+                    "php scripts/check-metadata-sync.php"
+                ]
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rim Zabarov",
+                    "homepage": "https://github.com/zabarov"
+                }
+            ],
+            "description": "Larena Audit: Unified structured audit layer that receives package AuditEvent objects, validates taxonomy, redacts sensitive payloads, correlates runtime activity, routes events to sinks and provides operator search/export/diagnostics.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "larena/core",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../core",
+                "reference": "9a1f82168811523fff7e23b85c6e7b3eedd216da"
+            },
+            "require": {
+                "illuminate/console": "^13.0",
+                "illuminate/database": "^13.0",
+                "illuminate/support": "^13.0",
+                "larena/access": "dev-main",
+                "larena/audit": "dev-main",
+                "larena/licensing": "dev-main",
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Larena\\Core\\Providers\\CoreServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Larena\\Core\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Larena\\Core\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "php tests/Unit/OperationRuntimeContractTest.php && php tests/Unit/OperationRuntimeFailsClosedTest.php && php tests/Unit/SyncOperationRuntimeTest.php && php tests/Unit/SyncOperationRuntimeFailsClosedTest.php && php tests/Unit/RuntimeSecurityCompositionTest.php && php tests/Unit/RuntimeSecurityCompositionFailsClosedTest.php && php tests/Unit/FoundationPackageSetTest.php && php tests/Unit/InstallReadinessContractTest.php && php tests/Unit/InstallApplyLaunchRecordTest.php && php tests/Unit/PackageRegistrySeedTest.php && php tests/Unit/InstallerPersistenceFoundationTest.php && php tests/Unit/InstallerDbSchemaApplyTest.php && php tests/Unit/InstallAuditTrailApplyTest.php && php tests/Unit/PackageRegistryDiagnosticsTest.php && php tests/Unit/RuntimeSecurityClusterSmokeTest.php && php tests/Unit/DataContentClusterSmokeTest.php && php tests/Unit/CommandReportPresenterTest.php && php tests/Unit/StarterEvidencePathTest.php && php tests/Unit/CoreAssetActivationContractTest.php"
+                ],
+                "test:unit": [
+                    "php tests/Unit/OperationRuntimeContractTest.php && php tests/Unit/OperationRuntimeFailsClosedTest.php && php tests/Unit/SyncOperationRuntimeTest.php && php tests/Unit/SyncOperationRuntimeFailsClosedTest.php && php tests/Unit/RuntimeSecurityCompositionTest.php && php tests/Unit/RuntimeSecurityCompositionFailsClosedTest.php && php tests/Unit/FoundationPackageSetTest.php && php tests/Unit/InstallReadinessContractTest.php && php tests/Unit/InstallApplyLaunchRecordTest.php && php tests/Unit/PackageRegistrySeedTest.php && php tests/Unit/InstallerPersistenceFoundationTest.php && php tests/Unit/InstallerDbSchemaApplyTest.php && php tests/Unit/InstallAuditTrailApplyTest.php && php tests/Unit/PackageRegistryDiagnosticsTest.php && php tests/Unit/RuntimeSecurityClusterSmokeTest.php && php tests/Unit/DataContentClusterSmokeTest.php && php tests/Unit/CommandReportPresenterTest.php && php tests/Unit/StarterEvidencePathTest.php && php tests/Unit/CoreAssetActivationContractTest.php"
+                ],
+                "lint": [
+                    "php scripts/lint.php"
+                ],
+                "analyse": [
+                    "php scripts/analyse.php"
+                ],
+                "validate:larena": [
+                    "php scripts/validate-larena-package.php"
+                ],
+                "evidence:check": [
+                    "php scripts/check-evidence.php"
+                ],
+                "scope:check": [
+                    "php tools/larena-scope-check.php"
+                ],
+                "quality:gate": [
+                    "@validate:larena",
+                    "@lint",
+                    "@analyse",
+                    "@test",
+                    "@larena:metadata:check",
+                    "@evidence:check",
+                    "@scope:check"
+                ],
+                "larena:metadata:check": [
+                    "php scripts/check-metadata-sync.php"
+                ]
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rim Zabarov",
+                    "homepage": "https://github.com/zabarov"
+                }
+            ],
+            "description": "Larena Core: Platform foundation for package registry, operation runtime, compatibility, SitePack portable data standard and shared contracts.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "larena/licensing",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "../licensing",
+                "reference": "52d1215a25369cca17d5170bbfcae82d1f6c86d2"
+            },
+            "require": {
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Larena\\Licensing\\": "src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Larena\\Licensing\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "php tests/Unit/CapabilityContractTest.php && php tests/Unit/LicensingFailsClosedTest.php && php tests/Unit/LicensingCapabilityDecisionRuntimeTest.php && php tests/Unit/LicensingCapabilityDecisionFailsClosedTest.php"
+                ],
+                "test:unit": [
+                    "php tests/Unit/CapabilityContractTest.php && php tests/Unit/LicensingFailsClosedTest.php && php tests/Unit/LicensingCapabilityDecisionRuntimeTest.php && php tests/Unit/LicensingCapabilityDecisionFailsClosedTest.php"
+                ],
+                "lint": [
+                    "php scripts/lint.php"
+                ],
+                "analyse": [
+                    "php scripts/analyse.php"
+                ],
+                "validate:larena": [
+                    "php scripts/validate-larena-package.php"
+                ],
+                "evidence:check": [
+                    "php scripts/check-evidence.php"
+                ],
+                "scope:check": [
+                    "php tools/larena-scope-check.php"
+                ],
+                "quality:gate": [
+                    "@validate:larena",
+                    "@lint",
+                    "@analyse",
+                    "@test",
+                    "@larena:metadata:check",
+                    "@evidence:check",
+                    "@scope:check"
+                ],
+                "larena:metadata:check": [
+                    "php scripts/check-metadata-sync.php"
+                ]
+            },
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Rim Zabarov",
+                    "homepage": "https://github.com/zabarov"
+                }
+            ],
+            "description": "Larena Licensing: Runtime licensing layer that decides which package, bundle and capability features are available to a site, with signed entitlement snapshots, trial restrictions, subscription/expiration policies, environment-aware licenses, limits and explainable locks.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "nesbot/carbon",
@@ -1741,6 +2263,93 @@
                 }
             ],
             "time": "2026-06-14T20:41:42+00:00"
+        },
+        {
+            "name": "nunomaduro/termwind",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nunomaduro/termwind.git",
+                "reference": "712a31b768f5daea284c2169a7d227031001b9a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nunomaduro/termwind/zipball/712a31b768f5daea284c2169a7d227031001b9a8",
+                "reference": "712a31b768f5daea284c2169a7d227031001b9a8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^8.2",
+                "symfony/console": "^7.4.4 || ^8.0.4"
+            },
+            "require-dev": {
+                "illuminate/console": "^11.47.0",
+                "laravel/pint": "^1.27.1",
+                "mockery/mockery": "^1.6.12",
+                "pestphp/pest": "^2.36.0 || ^3.8.4 || ^4.3.2",
+                "phpstan/phpstan": "^1.12.32",
+                "phpstan/phpstan-strict-rules": "^1.6.2",
+                "symfony/var-dumper": "^7.3.5 || ^8.0.4",
+                "thecodingmachine/phpstan-strict-rules": "^1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Termwind\\Laravel\\TermwindServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-2.x": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Functions.php"
+                ],
+                "psr-4": {
+                    "Termwind\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "It's like Tailwind CSS, but for the console.",
+            "keywords": [
+                "cli",
+                "console",
+                "css",
+                "package",
+                "php",
+                "style"
+            ],
+            "support": {
+                "issues": "https://github.com/nunomaduro/termwind/issues",
+                "source": "https://github.com/nunomaduro/termwind/tree/v2.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/nunomaduro",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/xiCO2k",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-02-16T23:10:27+00:00"
         },
         {
             "name": "psr/clock",
@@ -2275,6 +2884,104 @@
                 }
             ],
             "time": "2026-03-24T13:12:05+00:00"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/console.git",
+                "reference": "85095d2573eaefaf35e40b9513a9bf09f72cd217"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/console/zipball/85095d2573eaefaf35e40b9513a9bf09f72cd217",
+                "reference": "85095d2573eaefaf35e40b9513a9bf09f72cd217",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3",
+                "symfony/polyfill-mbstring": "~1.0",
+                "symfony/service-contracts": "^2.5|^3",
+                "symfony/string": "^7.2|^8.0"
+            },
+            "conflict": {
+                "symfony/dependency-injection": "<6.4",
+                "symfony/dotenv": "<6.4",
+                "symfony/event-dispatcher": "<6.4",
+                "symfony/lock": "<6.4",
+                "symfony/process": "<6.4"
+            },
+            "provide": {
+                "psr/log-implementation": "1.0|2.0|3.0"
+            },
+            "require-dev": {
+                "psr/log": "^1|^2|^3",
+                "symfony/config": "^6.4|^7.0|^8.0",
+                "symfony/dependency-injection": "^6.4|^7.0|^8.0",
+                "symfony/event-dispatcher": "^6.4|^7.0|^8.0",
+                "symfony/http-foundation": "^6.4|^7.0|^8.0",
+                "symfony/http-kernel": "^6.4|^7.0|^8.0",
+                "symfony/lock": "^6.4|^7.0|^8.0",
+                "symfony/messenger": "^6.4|^7.0|^8.0",
+                "symfony/process": "^6.4|^7.0|^8.0",
+                "symfony/stopwatch": "^6.4|^7.0|^8.0",
+                "symfony/var-dumper": "^6.4|^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Console\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Eases the creation of beautiful and testable command line interfaces",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "cli",
+                "command-line",
+                "console",
+                "terminal"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/console/tree/v7.4.13"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-05-24T08:56:14+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -3036,6 +3743,88 @@
             "time": "2026-04-10T16:19:22+00:00"
         },
         {
+            "name": "symfony/polyfill-intl-grapheme",
+            "version": "v1.38.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-intl-grapheme.git",
+                "reference": "e9247d281d694a5120554d9afaf54e070e88a603"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-grapheme/zipball/e9247d281d694a5120554d9afaf54e070e88a603",
+                "reference": "e9247d281d694a5120554d9afaf54e070e88a603",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2"
+            },
+            "suggest": {
+                "ext-intl": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Polyfill\\Intl\\Grapheme\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for intl's grapheme_* functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "grapheme",
+                "intl",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-intl-grapheme/tree/v1.38.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-05-26T05:58:03+00:00"
+        },
+        {
             "name": "symfony/polyfill-intl-idn",
             "version": "v1.38.1",
             "source": {
@@ -3697,6 +4486,334 @@
             "time": "2026-05-25T11:52:35+00:00"
         },
         {
+            "name": "symfony/process",
+            "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "f5804be144caceb570f6747519999636b664f24c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/f5804be144caceb570f6747519999636b664f24c",
+                "reference": "f5804be144caceb570f6747519999636b664f24c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/v7.4.13"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-05-23T16:05:06+00:00"
+        },
+        {
+            "name": "symfony/routing",
+            "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/routing.git",
+                "reference": "3a162171bb008e5e0f15dce6581373a4c0e8390d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/3a162171bb008e5e0f15dce6581373a4c0e8390d",
+                "reference": "3a162171bb008e5e0f15dce6581373a4c0e8390d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3"
+            },
+            "conflict": {
+                "symfony/config": "<6.4",
+                "symfony/dependency-injection": "<6.4",
+                "symfony/yaml": "<6.4"
+            },
+            "require-dev": {
+                "psr/log": "^1|^2|^3",
+                "symfony/config": "^6.4|^7.0|^8.0",
+                "symfony/dependency-injection": "^6.4|^7.0|^8.0",
+                "symfony/expression-language": "^6.4|^7.0|^8.0",
+                "symfony/http-foundation": "^6.4|^7.0|^8.0",
+                "symfony/yaml": "^6.4|^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Routing\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Maps an HTTP request to a set of configuration variables",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "router",
+                "routing",
+                "uri",
+                "url"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/routing/tree/v7.4.13"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-05-24T11:20:33+00:00"
+        },
+        {
+            "name": "symfony/service-contracts",
+            "version": "v3.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/service-contracts.git",
+                "reference": "d25d82433a80eba6aa0e6c24b61d7370d99e444a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/d25d82433a80eba6aa0e6c24b61d7370d99e444a",
+                "reference": "d25d82433a80eba6aa0e6c24b61d7370d99e444a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "psr/container": "^1.1|^2.0",
+                "symfony/deprecation-contracts": "^2.5|^3"
+            },
+            "conflict": {
+                "ext-psr": "<1.1|>=2"
+            },
+            "type": "library",
+            "extra": {
+                "thanks": {
+                    "url": "https://github.com/symfony/contracts",
+                    "name": "symfony/contracts"
+                },
+                "branch-alias": {
+                    "dev-main": "3.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Contracts\\Service\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Test/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Generic abstractions related to writing services",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "abstractions",
+                "contracts",
+                "decoupling",
+                "interfaces",
+                "interoperability",
+                "standards"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/service-contracts/tree/v3.7.0"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-03-28T09:44:51+00:00"
+        },
+        {
+            "name": "symfony/string",
+            "version": "v7.4.13",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/string.git",
+                "reference": "961683010db3b27ec6ebcd7308e6e1ee8fa7ffde"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/string/zipball/961683010db3b27ec6ebcd7308e6e1ee8fa7ffde",
+                "reference": "961683010db3b27ec6ebcd7308e6e1ee8fa7ffde",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3.0",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-intl-grapheme": "~1.33",
+                "symfony/polyfill-intl-normalizer": "~1.0",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "symfony/translation-contracts": "<2.5"
+            },
+            "require-dev": {
+                "symfony/emoji": "^7.1|^8.0",
+                "symfony/http-client": "^6.4|^7.0|^8.0",
+                "symfony/intl": "^6.4|^7.0|^8.0",
+                "symfony/translation-contracts": "^2.5|^3.0",
+                "symfony/var-exporter": "^6.4|^7.0|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Resources/functions.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\String\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Provides an object-oriented API to strings and deals with bytes, UTF-8 code points and grapheme clusters in a unified way",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "grapheme",
+                "i18n",
+                "string",
+                "unicode",
+                "utf-8",
+                "utf8"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/string/tree/v7.4.13"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2026-05-23T15:23:29+00:00"
+        },
+        {
             "name": "symfony/translation",
             "version": "v7.4.10",
             "source": {
@@ -4108,7 +5225,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "larena/access": 20,
+        "larena/audit": 20,
+        "larena/core": 20,
+        "larena/licensing": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

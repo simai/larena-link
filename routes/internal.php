@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Route;
 use Larena\Link\Http\Controllers\Internal\PublicContentLinkFlowReviewController;
+use Larena\Link\Http\Controllers\Internal\PublicLinkPreviewAssetController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkCleanupActionReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkControlledDeliverySimulationReviewController;
 use Larena\Link\Http\Controllers\Internal\PublicLinkDeliveryContractHardeningReviewController;
@@ -25,6 +26,9 @@ Route::middleware('web')
     ->prefix('larena/internal')
     ->name('larena.internal.')
     ->group(static function (): void {
+        Route::get('/public-link/assets/{assetKey}', PublicLinkPreviewAssetController::class)
+            ->name('public-link.assets');
+
         Route::get('/public-content-link-flow', [PublicContentLinkFlowReviewController::class, 'review'])
             ->name('public-content-link-flow');
 
