@@ -72,5 +72,7 @@ features:
 runtime:
   php: "^8.3"
   laravel: "^13.0"
+assets:
+  path: assets.yaml
 evidence:
   path: docs/project-management/evidence/public-link-runtime-package-public-scope-planning/
