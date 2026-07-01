@@ -51,7 +51,7 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'provider_loads_internal_routes' => str_contains($providerSource, "loadRoutesFrom(__DIR__ . '/../../routes/internal.php')"),
                 'internal_prefix' => '/larena/internal',
             ],
-            'public_runtime_route_guarded_candidate_not_promoted_yet' => [
+            'public_runtime_route_guarded_env_gated_provider_promotion' => [
                 'status' => $packagePublicRouteExists
                     && $packagePublicControllerExists
                     && $providerLoadsPublicRoute
@@ -65,14 +65,15 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'provider_public_route_guarded' => $providerPublicRouteGuarded,
                 'public_route_enabled_by_default' => $publicRouteEnabledByDefault,
                 'future_route_shape' => '/larena/link/{token}',
-                'provider_promotion_enabled_now' => false,
+                'env_gated_provider_promotion_enabled_now' => true,
+                'provider_promotion_enabled_by_default' => false,
             ],
             'entry_app_compatibility_adapter_expected' => [
                 'status' => 'passed',
-                'current_runtime_route_owner' => 'simai/larena',
-                'future_runtime_route_owner' => 'larena/link',
+                'default_runtime_route_owner' => 'simai/larena',
+                'env_enabled_runtime_route_owner' => 'larena/link',
                 'current_adapter_controller' => 'App\\Http\\Controllers\\Larena\\Public\\PublicLinkRuntimeResolveController',
-                'entry_app_adapter_required_until_package_route_parity_proven' => true,
+                'entry_app_adapter_required_for_default_and_rollback' => true,
                 'package_local_public_controller_candidate_exists' => $packagePublicControllerExists,
             ],
             'promotion_guards' => [
@@ -83,17 +84,16 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'filesystem_mutation' => false,
                 'release_ready' => false,
                 'required_before_promotion' => [
-                    'package public route candidate parity smoke passes',
-                    'package-local public runtime controller parity smoke passes',
-                    'entry-app and package route parity is proven',
+                    'default and env-enabled public route parity smoke passes',
                     'negative token/access/replay/rate-limit security checks pass',
-                    'entry-app compatibility adapter removal has rollback evidence',
+                    'entry-app compatibility adapter removal has a separate default-promotion launch record',
                 ],
             ],
             'scope_boundary' => [
                 'status' => 'passed',
                 'developer_testable_foundation_only' => true,
-                'provider_promotion_now' => false,
+                'env_gated_provider_promotion_now' => true,
+                'provider_promotion_by_default_now' => false,
                 'token_storage_runtime_enabled' => false,
                 'public_route_runtime_enabled' => $publicRouteEnabledByDefault,
                 'file_download_runtime_enabled' => false,
@@ -114,11 +114,11 @@ final class PublicLinkRouteProviderPromotionReadiness
             'owner_package' => 'larena/link',
             'route_group' => 'public_link_runtime_routes',
             'summary' => [
-                'current_mount' => 'entry_app_public_route',
-                'future_mount' => 'package_service_provider_public_route',
+                'default_mount' => 'entry_app_public_route',
+                'env_enabled_mount' => 'package_service_provider_public_route',
                 'current_route_shape' => '/larena/link/{token}',
-                'provider_promotion_status' => 'readiness_recorded_not_executed',
-                'entry_app_compatibility_adapter_required' => true,
+                'provider_promotion_status' => 'env_gated_package_provider_route_owner_proven',
+                'default_entry_app_compatibility_adapter_required' => true,
                 'package_public_route_present' => $packagePublicRouteExists,
                 'package_public_controller_present' => $packagePublicControllerExists,
                 'package_provider_loads_public_route_candidate' => $providerLoadsPublicRoute,
@@ -130,7 +130,8 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'owner_package' => 'larena/link',
                 'route_group' => 'public_link_runtime_routes',
                 'entry_app_adapter_controller' => 'App\\Http\\Controllers\\Larena\\Public\\PublicLinkRuntimeResolveController',
-                'provider_promotion_executed' => false,
+                'env_gated_provider_promotion_executed' => true,
+                'default_provider_promotion_executed' => false,
                 'package_public_route_present' => $packagePublicRouteExists,
                 'package_public_controller_present' => $packagePublicControllerExists,
                 'package_provider_loads_public_route_candidate' => $providerLoadsPublicRoute,
@@ -141,14 +142,14 @@ final class PublicLinkRouteProviderPromotionReadiness
                 'release_ready' => false,
             ],
             'known_limitations' => [
-                'public route still mounted by entry app',
-                'entry-app compatibility adapter still required',
-                'package public route candidate disabled by default',
-                'package-local public runtime controller still requires parity smoke before promotion',
+                'public route is still mounted by entry app by default',
+                'entry-app compatibility adapter still required for default and rollback',
+                'package public route is enabled only by LARENA_LINK_PUBLIC_ROUTES=true',
+                'default provider promotion still requires a separate launch boundary',
                 'not production runtime',
                 'not release ready',
             ],
-            'next_recommended_step' => 'prove_public_link_runtime_parity_smoke',
+            'next_recommended_step' => 'decide_default_package_provider_promotion_or_keep_env_gated_launch_boundary',
             'evidence_path' => $outputPath,
         ];
 

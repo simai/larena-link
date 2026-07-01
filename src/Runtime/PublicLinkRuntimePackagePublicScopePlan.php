@@ -13,7 +13,7 @@ final class PublicLinkRuntimePackagePublicScopePlan
     {
         return [
             'schema' => 'larena.link.public_link_runtime_package_public_scope_plan.v1',
-            'status' => 'candidate_created_not_promoted',
+            'status' => 'env_gated_provider_promotion_ready',
             'mutates_state' => false,
             'track' => 'package_owned_route_provider_promotion_and_runtime_ownership_readiness',
             'batch' => 'public-link-runtime-package-public-scope-planning',
@@ -26,13 +26,15 @@ final class PublicLinkRuntimePackagePublicScopePlan
                 'package_public_controller_present' => true,
                 'provider_loads_public_route_candidate' => true,
                 'provider_public_route_guarded' => true,
+                'env_enabled_package_provider_route_owner' => true,
+                'default_entry_app_compatibility_route_retained' => true,
             ],
             'required_package_scope' => [
                 'route_file' => 'routes/public.php',
                 'controller' => 'src/Http/Controllers/Public/PublicLinkRuntimeResolveController.php',
                 'provider_change' => "loadRoutesFrom(__DIR__ . '/../../routes/public.php')",
                 'must_preserve_route_shape' => '/larena/link/{token}',
-                'must_preserve_route_name' => 'larena.public-link-runtime-hardening.resolve.package-candidate',
+                'must_preserve_route_name' => 'larena.public-link-runtime-hardening.resolve',
             ],
             'required_guards_before_promotion' => [
                 'package public route and controller parity is implemented and tested',
@@ -45,7 +47,7 @@ final class PublicLinkRuntimePackagePublicScopePlan
                 'change the /larena/link/{token} contract',
                 'enable package public route by default',
             ],
-            'next_transition' => 'prove_public_link_runtime_parity_smoke',
+            'next_transition' => 'prove_default_to_package_provider_promotion_smoke',
         ];
     }
 }

@@ -12,6 +12,6 @@ Route::middleware((array) config('larena-link.public_routes.middleware', ['web']
             PublicLinkRuntimeResolveController::class,
         )->name((string) config(
             'larena-link.public_routes.name',
-            'larena.public-link-runtime-hardening.resolve.package-candidate',
+            'larena.public-link-runtime-hardening.resolve',
         ));
     });
