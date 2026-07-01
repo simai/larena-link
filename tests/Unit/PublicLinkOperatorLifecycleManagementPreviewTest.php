@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Larena\Link\Runtime\PublicLinkOperatorLifecycleManagementPreview;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 function assert_true(bool $condition, string $message): void
 {

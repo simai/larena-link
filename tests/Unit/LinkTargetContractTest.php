@@ -7,7 +7,7 @@ use Larena\Link\Contracts\TokenPolicy;
 use Larena\Link\Enums\LinkAudience;
 use Larena\Link\Enums\LinkTargetVisibility;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 $target = new ReflectionClass(LinkTargetDescriptor::class);
 

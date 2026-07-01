@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Larena\Link\Enums\LinkResolutionStatus;
 use Larena\Link\Enums\LinkTargetVisibility;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 foreach ([
     LinkResolutionStatus::Denied,

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Larena\Link\Runtime\PublicLinkRouteProviderPromotionReadiness;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 function assert_true(bool $condition, string $message): void
 {

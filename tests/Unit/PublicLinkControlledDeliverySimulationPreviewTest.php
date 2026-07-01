@@ -7,7 +7,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 function assert_true(bool $condition, string $message): void
 {

@@ -10,15 +10,15 @@
         }
     ],
     "require": {
-    "illuminate/database": "^13.0",
-    "illuminate/http": "^13.0",
-    "illuminate/support": "^13.0",
-    "illuminate/view": "^13.0",
-    "larena/access": "dev-main",
-    "larena/audit": "dev-main",
-    "larena/core": "dev-main",
-    "larena/licensing": "dev-main",
-    "php": "^8.3"
+        "illuminate/database": "^13.0",
+        "illuminate/http": "^13.0",
+        "illuminate/support": "^13.0",
+        "illuminate/view": "^13.0",
+        "larena/access": "dev-main",
+        "larena/audit": "dev-main",
+        "larena/core": "dev-main",
+        "larena/licensing": "dev-main",
+        "php": "^8.3"
     },
     "autoload": {
         "psr-4": {
@@ -31,95 +31,95 @@
         }
     },
     "require-dev": {
-    "phpstan/phpstan": "^2.0"
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../core",
-      "options": {
-        "symlink": true
-      }
+        "phpstan/phpstan": "^2.0"
     },
-    {
-      "type": "path",
-      "url": "../access",
-      "options": {
-        "symlink": true
-      }
-    },
-    {
-      "type": "path",
-      "url": "../audit",
-      "options": {
-        "symlink": true
-      }
-    },
-    {
-      "type": "path",
-      "url": "../licensing",
-      "options": {
-        "symlink": true
-      }
-    }
-  ],
-  "scripts": {
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../core",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../access",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../audit",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "type": "path",
+            "url": "../licensing",
+            "options": {
+                "symlink": true
+            }
+        }
+    ],
+    "scripts": {
         "test": [
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/InMemoryLinkRuntimeFailsClosedTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/InMemoryLinkRuntimeTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkFailsClosedTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkTargetContractTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkPolicyPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimePlanningPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRouteProviderPromotionReadinessTest.php",
-      "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimePackagePublicScopePlanTest.php",
-      "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/CmsPublicContentLinkDatabaseReadSourceTest.php",
-      "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDryRunRuntimePreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicContentLinkFlowPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkSharingSafetyPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/FileManagerLinkSharingRuntimePreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkTokenStorageContractPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkOperatorLifecycleManagementPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedAdminMutationPlanningPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRevokeActionPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRegenerateActionPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkCleanupActionPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedDeliveryReadinessPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkControlledDeliverySimulationPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkOneTimeConsumptionLifecyclePreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkMutationLadderReviewPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDeliveryContractHardeningPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkPersistentLookupPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkDryRunRuntimeRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRuntimeHardeningRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedDeliveryReadinessRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedRealDeliveryAdapterRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkOperatorLifecycleManagementRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedAdminMutationPlanningRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRevokeActionRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRegenerateActionRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkCleanupActionRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkMutationLadderReviewRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkDeliveryContractHardeningRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkControlledDeliverySimulationRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkOneTimeConsumptionLifecycleRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkTokenStorageContractRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkPersistentLookupRouteBoundaryTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/LinkServiceProviderRegistrationTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkMigrationRegistrationTest.php",
-            "php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRuntimePlanningRouteBoundaryTest.php"
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/InMemoryLinkRuntimeFailsClosedTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/InMemoryLinkRuntimeTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkFailsClosedTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkTargetContractTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkPolicyPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimePlanningPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRouteProviderPromotionReadinessTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimePackagePublicScopePlanTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/CmsPublicContentLinkDatabaseReadSourceTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDryRunRuntimePreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicContentLinkFlowPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/LinkSharingSafetyPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/FileManagerLinkSharingRuntimePreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkTokenStorageContractPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkOperatorLifecycleManagementPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedAdminMutationPlanningPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRevokeActionPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRegenerateActionPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkCleanupActionPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedDeliveryReadinessPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkControlledDeliverySimulationPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkOneTimeConsumptionLifecyclePreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkGuardedRealDeliveryAdapterPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkMutationLadderReviewPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkDeliveryContractHardeningPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkPersistentLookupPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkDryRunRuntimeRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRuntimeHardeningRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedDeliveryReadinessRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedRealDeliveryAdapterRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkOperatorLifecycleManagementRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkGuardedAdminMutationPlanningRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRevokeActionRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRegenerateActionRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkCleanupActionRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkMutationLadderReviewRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkDeliveryContractHardeningRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkControlledDeliverySimulationRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkOneTimeConsumptionLifecycleRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkTokenStorageContractRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkPersistentLookupRouteBoundaryTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/LinkServiceProviderRegistrationTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkMigrationRegistrationTest.php",
+            "@php -d zend.assertions=1 -d assert.exception=1 tests/Feature/PublicLinkRuntimePlanningRouteBoundaryTest.php"
         ],
         "test:unit": [
             "@test"
         ],
-        "lint": "php scripts/lint.php",
-        "analyse": "php -d memory_limit=512M vendor/bin/phpstan analyse --configuration=phpstan.neon.dist --no-progress --memory-limit=512M",
-        "validate:larena": "php scripts/validate-larena-package.php",
-        "evidence:check": "php scripts/check-evidence.php",
-        "scope:check": "php tools/larena-scope-check.php",
+        "lint": "@php scripts/lint.php",
+        "analyse": "@php scripts/analyse.php",
+        "validate:larena": "@php scripts/validate-larena-package.php",
+        "evidence:check": "@php scripts/check-evidence.php",
+        "scope:check": "@php tools/larena-scope-check.php",
         "quality:gate": [
             "@validate:larena",
             "@lint",
@@ -129,7 +129,7 @@
             "@evidence:check",
             "@scope:check"
         ],
-        "larena:metadata:check": "php scripts/check-metadata-sync.php"
+        "larena:metadata:check": "@php scripts/check-metadata-sync.php"
     },
     "extra": {
         "laravel": {

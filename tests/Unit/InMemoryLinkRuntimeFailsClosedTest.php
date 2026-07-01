@@ -11,7 +11,7 @@ use Larena\Link\Runtime\ArrayLinkRequest;
 use Larena\Link\Runtime\ArrayLinkRevocationPlan;
 use Larena\Link\Runtime\InMemoryLinkRuntime;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 function assert_denied(LinkResolutionStatus $actual, string $message): void
 {

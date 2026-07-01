@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Larena\Link\Runtime\CmsPublicContentLinkReadModel;
 
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 $outputPath = sys_get_temp_dir() . '/larena-link-cms-public-content-link-read-model-' . bin2hex(random_bytes(4)) . '.json';
 $report = CmsPublicContentLinkReadModel::forId(CmsPublicContentLinkReadModel::DEMO_ID, $outputPath);
