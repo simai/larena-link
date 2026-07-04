@@ -100,6 +100,7 @@
         "public_link_runtime_package_public_scope_planning.package_owned_planning_contract",
         "cms_public_content_link.read_model_fixture",
         "cms_public_content_link.database_backed_read_model",
+        "link.admin_surface_contributor_contract",
         "frontend.package_asset_descriptor"
     ],
     "allowed_files": [
@@ -155,6 +156,7 @@
         "src/Runtime/PublicLinkRuntimePackagePublicScopePlan.php",
         "src/Runtime/CmsPublicContentLinkReadModel.php",
         "src/Runtime/CmsPublicContentLinkDatabaseReadSource.php",
+        "src/Admin/PublicLinkAdminSurfaceContributor.php",
         "config/larena-link.php",
         "src/Http/Controllers/Internal/PublicContentLinkFlowReviewController.php",
         "src/Http/Controllers/Public/PublicLinkRuntimeResolveController.php",
@@ -196,6 +198,7 @@
         "tests/bootstrap.php",
         "tests/Unit/CmsPublicContentLinkReadModelTest.php",
         "tests/Unit/CmsPublicContentLinkDatabaseReadSourceTest.php",
+        "tests/Unit/PublicLinkAdminSurfaceContributorTest.php",
         "tests/Feature/PublicContentLinkFlowRouteBoundaryTest.php",
         "tests/Feature/PublicLinkGuardedDeliveryReadinessRouteBoundaryTest.php",
         "tests/Feature/LinkServiceProviderRegistrationTest.php",
