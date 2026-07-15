@@ -1,13 +1,13 @@
 {
   "schema": "larena.package_integration_file_map.v1",
   "package": "larena/link",
-  "status": "coding_started",
+  "status": "implementation_written",
   "touched_files": [
     ".larena/launch-context.json",
     "docs/project-management/launch-records/canonical-developer-alpha-integration.json",
     "module.yaml"
   ],
   "planned_changes": [
-    "tests/Unit/PublicLinkAdminSurfaceContributorTest.php"
+    "No further Link implementation changes are planned; root pinning and acceptance remain pending."
   ]
 }

@@ -1,3 +1,3 @@
 # Independent review
 
-The pre-merge review confirmed the base/input lineage, isolated worktree, allowed scope and conflict strategy. Implementation and test evidence still require a separate post-change review.
+The change is limited to replacing one direct `vendor/autoload.php` include with the existing canonical package bootstrap. The full package quality gate passed and no runtime PHP source changed. Final acceptance remains owned by the root assembly review.

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Larena\Link\Admin\PublicLinkAdminSurfaceContributor;
 
-require __DIR__ . '/../../vendor/autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 function expect_invalid_public_link_admin_contributor(array $descriptors, string $expectedMessage): void
 {
