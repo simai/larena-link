@@ -2,7 +2,7 @@ package: larena/link
 title: Larena Link
 status: coding_started
 cluster: data-content
-batch: public-link-package-route-and-operator-get-render-parity-implementation-launch-2026-06-22
+batch: canonical-developer-alpha-integration
 features:
   - link.action_links
   - link.admin_surface_contributor_contract
@@ -76,4 +76,4 @@ runtime:
 assets:
   path: assets.yaml
 evidence:
-  path: docs/project-management/evidence/public-link-runtime-package-public-scope-planning/
+  path: docs/project-management/evidence/canonical-assembly/

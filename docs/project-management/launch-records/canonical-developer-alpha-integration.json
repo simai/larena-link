@@ -1,0 +1,21 @@
+{
+  "schema": "larena.package_launch_record.v1",
+  "id": "link-canonical-developer-alpha-quality-guard",
+  "package": "larena/link",
+  "status": "coding_started",
+  "branch": "codex/canonical-developer-alpha-integration",
+  "base_commit": "015a45a7e872e7914d278512283b5b152ee83f7d",
+  "specs_commit": "66938800984dcbd1b8bbe38be440d775ac07851f",
+  "root_launch_record_id": "larena.launch.canonical_assembly_integration",
+  "goal": "Make the existing PublicLink admin contributor test use the package canonical bootstrap so the root quality guard remains strict.",
+  "allowed_files": [
+    ".larena/launch-context.json",
+    "docs/project-management/launch-records/canonical-developer-alpha-integration.json",
+    "docs/project-management/evidence/canonical-assembly/*",
+    "module.yaml",
+    "tests/Unit/PublicLinkAdminSurfaceContributorTest.php"
+  ],
+  "non_goals": ["runtime behavior change", "new Link feature", "validator weakening", "production readiness"],
+  "rollback": "Reset only this isolated integration branch to base_commit; no database or runtime state is touched.",
+  "evidence": "docs/project-management/evidence/canonical-assembly/"
+}
