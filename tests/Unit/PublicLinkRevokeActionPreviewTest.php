@@ -15,7 +15,7 @@ function assert_true(bool $condition, string $message): void
 }
 
 $planning = [
-    'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation.v1',
+    'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation',
     'status' => 'passed',
     'mutation_plan_registry' => [
         ['action' => 'revoke_link'],
@@ -82,7 +82,7 @@ $negativeGuards = [
 $outputPath = sys_get_temp_dir() . '/larena-link-revoke-action-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkRevokeActionPreview::run($planning, $request, $before, $after, $rollback, $negativeGuards, $outputPath);
 
-assert_true($report['schema'] === 'larena.public_link_revoke_action_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_revoke_action_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Revoke action preview must pass.');
 assert_true($report['scenario'] === 'public_link_revoke_action_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === true, 'Local testing transition flag must stay visible.');
@@ -107,7 +107,7 @@ assert_true(is_file($outputPath), 'Preview must write JSON evidence when output 
 $composedOutputPath = sys_get_temp_dir() . '/larena-link-revoke-action-composed-' . bin2hex(random_bytes(4)) . '.json';
 $composed = PublicLinkRevokeActionPreview::preview($planning, $composedOutputPath);
 
-assert_true($composed['schema'] === 'larena.public_link_revoke_action_foundation.v1', 'Composed preview schema mismatch.');
+assert_true($composed['schema'] === 'larena.public_link_revoke_action_foundation', 'Composed preview schema mismatch.');
 assert_true($composed['status'] === 'passed', 'Composed revoke preview must pass.');
 assert_true($composed['checks']['request_contract']['status'] === 'passed', 'Composed request contract must pass.');
 assert_true($composed['checks']['before_after_snapshots']['status'] === 'passed', 'Composed before/after snapshots must pass.');

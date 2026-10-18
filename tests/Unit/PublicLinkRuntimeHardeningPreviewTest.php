@@ -26,7 +26,7 @@ function runtime_source_report(string $schema, string $scenario, bool $mutates =
 }
 
 $dryRun = [
-    'schema' => 'larena.public_link_dry_run_runtime_preview.v1',
+    'schema' => 'larena.public_link_dry_run_runtime_preview',
     'status' => 'passed',
     'scenario' => 'public_link_dry_run_runtime_preview',
     'mutates_state' => false,
@@ -51,27 +51,27 @@ $dryRun = [
     ],
 ];
 
-$tokenStorage = runtime_source_report('larena.public_link_token_storage_contract_foundation.v1', 'public_link_token_storage_contract_foundation');
+$tokenStorage = runtime_source_report('larena.public_link_token_storage_contract_foundation', 'public_link_token_storage_contract_foundation');
 $tokenStorage['lookup_result'] = ['decision' => 'would_allow', 'lookup_status' => 'hash_match_preview'];
 $tokenStorage['candidate_lookup'] = ['token_fingerprint' => 'sha256:fixture'];
 
-$persistentLookup = runtime_source_report('larena.public_link_persistent_lookup_foundation.v1', 'public_link_persistent_lookup_foundation', false);
+$persistentLookup = runtime_source_report('larena.public_link_persistent_lookup_foundation', 'public_link_persistent_lookup_foundation', false);
 $persistentLookup['lookup_result'] = ['decision' => 'would_allow', 'lookup_status' => 'hash_lookup_preview'];
 $persistentLookup['candidate_lookup'] = ['token_fingerprint' => 'sha256:fixture'];
 
-$deliveryReadiness = runtime_source_report('larena.public_link_guarded_delivery_readiness_foundation.v1', 'public_link_guarded_delivery_readiness_foundation');
+$deliveryReadiness = runtime_source_report('larena.public_link_guarded_delivery_readiness_foundation', 'public_link_guarded_delivery_readiness_foundation');
 $deliveryReadiness['delivery_state'] = ['state' => 'ready_preview'];
 $deliveryReadiness['delivery_decision'] = ['decision' => 'would_allow', 'deny_reasons' => [], 'would_deliver_sandbox_target' => true];
 $deliveryReadiness['target_proof'] = ['target_fingerprint' => 'sha256:target'];
 
-$deliverySimulation = runtime_source_report('larena.public_link_controlled_delivery_simulation_foundation.v1', 'public_link_controlled_delivery_simulation_foundation');
+$deliverySimulation = runtime_source_report('larena.public_link_controlled_delivery_simulation_foundation', 'public_link_controlled_delivery_simulation_foundation');
 $deliverySimulation['simulated_response'] = ['decision' => 'would_allow', 'simulation_state' => 'decision_trace_only', 'http_status_preview' => 202, 'body_included' => false];
 
-$consumptionLifecycle = runtime_source_report('larena.public_link_one_time_consumption_lifecycle_foundation.v1', 'public_link_one_time_consumption_lifecycle_foundation');
+$consumptionLifecycle = runtime_source_report('larena.public_link_one_time_consumption_lifecycle_foundation', 'public_link_one_time_consumption_lifecycle_foundation');
 $consumptionLifecycle['lifecycle_state'] = ['state' => 'active_one_time_preview'];
 $consumptionLifecycle['consumption_plan'] = ['decision' => 'would_allow', 'plan_status' => 'simulated_only', 'consume_now' => false, 'persistent_consumed_at_write' => false];
 
-$deliveryAdapter = runtime_source_report('larena.public_link_guarded_real_delivery_adapter_foundation.v1', 'public_link_guarded_real_delivery_adapter_foundation');
+$deliveryAdapter = runtime_source_report('larena.public_link_guarded_real_delivery_adapter_foundation', 'public_link_guarded_real_delivery_adapter_foundation');
 $deliveryAdapter['adapter_decision'] = ['decision' => 'would_allow', 'adapter_state' => 'ready_preview', 'adapter_id' => 'preview', 'stream_now' => false, 'adapter_stream_invoked' => false, 'file_body_included' => false];
 
 $outputPath = sys_get_temp_dir() . '/larena-link-runtime-hardening-' . bin2hex(random_bytes(4)) . '.json';
@@ -87,7 +87,7 @@ $report = PublicLinkRuntimeHardeningPreview::run(
     $outputPath
 );
 
-assert_true($report['schema'] === 'larena.public_link_runtime_hardening_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_runtime_hardening_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Runtime hardening preview must pass.');
 assert_true($report['scenario'] === 'public_link_runtime_hardening_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview runtime hardening must stay no-write.');

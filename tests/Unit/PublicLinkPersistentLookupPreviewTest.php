@@ -70,7 +70,7 @@ $report = PublicLinkPersistentLookupPreview::reportFromLookup(
     $outputPath,
 );
 
-assert_true($report['schema'] === 'larena.public_link_persistent_lookup_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_persistent_lookup_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Persistent lookup preview must pass.');
 assert_true($report['scenario'] === 'public_link_persistent_lookup_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview lookup must not mutate state.');

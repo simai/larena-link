@@ -88,7 +88,7 @@ final class PublicLinkGuardedAdminMutationPlanningPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation.v1',
+            'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

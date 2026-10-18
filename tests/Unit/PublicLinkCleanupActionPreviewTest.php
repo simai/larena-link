@@ -15,7 +15,7 @@ function assert_true(bool $condition, string $message): void
 }
 
 $planning = [
-    'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation.v1',
+    'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation',
     'status' => 'passed',
     'mutation_plan_registry' => [
         ['action' => 'revoke_link'],
@@ -111,7 +111,7 @@ $report = PublicLinkCleanupActionPreview::run($planning, $request, $candidateSet
 $previewOutputPath = sys_get_temp_dir() . '/larena-link-cleanup-action-preview-' . bin2hex(random_bytes(4)) . '.json';
 $previewReport = PublicLinkCleanupActionPreview::preview($planning, $previewOutputPath);
 
-assert_true($report['schema'] === 'larena.public_link_cleanup_action_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_cleanup_action_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Cleanup action preview must pass.');
 assert_true($report['scenario'] === 'public_link_cleanup_action_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === true, 'Local testing transition flag must stay visible.');
@@ -136,7 +136,7 @@ assert_true(in_array('no_production_cleanup', $report['known_limitations'], true
 assert_true(in_array('no_file_deletion', $report['known_limitations'], true), 'File deletion limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
-assert_true($previewReport['schema'] === 'larena.public_link_cleanup_action_foundation.v1', 'Preview helper schema mismatch.');
+assert_true($previewReport['schema'] === 'larena.public_link_cleanup_action_foundation', 'Preview helper schema mismatch.');
 assert_true($previewReport['status'] === 'passed', 'Preview helper must pass.');
 assert_true($previewReport['checks']['candidate_set_snapshot']['candidate_count'] === 3, 'Preview helper must expose cleanup candidates.');
 assert_true($previewReport['checks']['candidate_set_snapshot']['excluded_active_count'] === 1, 'Preview helper must protect active links.');

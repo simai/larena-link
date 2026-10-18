@@ -134,7 +134,7 @@ final class PublicContentLinkFlowPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_content_link_flow_preview.v1',
+            'schema' => 'larena.public_content_link_flow_preview',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

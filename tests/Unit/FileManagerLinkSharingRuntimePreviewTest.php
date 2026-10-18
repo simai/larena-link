@@ -103,7 +103,7 @@ $safeTrace = [
 $outputPath = sys_get_temp_dir() . '/larena-file-manager-link-sharing-runtime-' . bin2hex(random_bytes(4)) . '.json';
 $report = FileManagerLinkSharingRuntimePreview::run($checks, $safeTrace, $outputPath);
 
-assert_true($report['schema'] === 'larena.file_manager_link_sharing_runtime_preview.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.file_manager_link_sharing_runtime_preview', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'File-manager link sharing runtime preview must pass.');
 assert_true($report['mutates_state'] === false, 'Preview must not mutate state.');
 assert_true($report['scenario'] === 'file_manager_link_sharing_runtime', 'Unexpected scenario.');

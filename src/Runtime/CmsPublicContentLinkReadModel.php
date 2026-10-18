@@ -26,7 +26,7 @@ final class CmsPublicContentLinkReadModel
         }
 
         $report = [
-            'schema' => 'larena.cms_public_content_link_read_model.v1',
+            'schema' => 'larena.cms_public_content_link_read_model',
             'status' => 'passed',
             'generated_at' => gmdate('c'),
             'owner_package' => 'larena/link',
@@ -98,7 +98,7 @@ final class CmsPublicContentLinkReadModel
     private static function failed(string $status, string $code): array
     {
         return [
-            'schema' => 'larena.cms_public_content_link_read_model.v1',
+            'schema' => 'larena.cms_public_content_link_read_model',
             'status' => $status,
             'generated_at' => gmdate('c'),
             'owner_package' => 'larena/link',

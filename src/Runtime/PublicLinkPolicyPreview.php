@@ -125,7 +125,7 @@ final class PublicLinkPolicyPreview
         ];
 
         return [
-            'schema' => 'larena.link_public_link_policy_preview.v1',
+            'schema' => 'larena.link_public_link_policy_preview',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

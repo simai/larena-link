@@ -66,7 +66,7 @@ $connection->insert(
 
 $report = CmsPublicContentLinkReadModel::fromDatabase($connection, CmsPublicContentLinkReadModel::DEMO_ID);
 
-assert($report['schema'] === 'larena.cms_public_content_link_read_model.v1');
+assert($report['schema'] === 'larena.cms_public_content_link_read_model');
 assert($report['status'] === 'passed');
 assert($report['scenario'] === 'cms_public_content_link_database_read_model');
 assert($report['read_model']['id'] === CmsPublicContentLinkReadModel::DEMO_ID);

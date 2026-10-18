@@ -33,7 +33,7 @@ function boot_preview_database(): void
 }
 
 $operator = [
-    'schema' => 'larena.public_link_operator_lifecycle_management_foundation.v1',
+    'schema' => 'larena.public_link_operator_lifecycle_management_foundation',
     'status' => 'passed',
     'operator_registry' => [
         ['case_id' => 'active_link'],
@@ -102,7 +102,7 @@ $plans = [
 $outputPath = sys_get_temp_dir() . '/larena-link-admin-mutation-planning-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkGuardedAdminMutationPlanningPreview::run($operator, $plans, $outputPath);
 
-assert_true($report['schema'] === 'larena.public_link_guarded_admin_mutation_planning_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_guarded_admin_mutation_planning_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Guarded admin mutation planning preview must pass.');
 assert_true($report['scenario'] === 'public_link_guarded_admin_mutation_planning_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview must not mutate state.');
@@ -130,7 +130,7 @@ $composedOutputPath = sys_get_temp_dir() . '/larena-link-admin-mutation-planning
 boot_preview_database();
 $composedReport = PublicLinkGuardedAdminMutationPlanningPreview::preview($composedOutputPath);
 
-assert_true($composedReport['schema'] === 'larena.public_link_guarded_admin_mutation_planning_foundation.v1', 'Composed schema mismatch.');
+assert_true($composedReport['schema'] === 'larena.public_link_guarded_admin_mutation_planning_foundation', 'Composed schema mismatch.');
 assert_true($composedReport['status'] === 'passed', 'Composed guarded admin mutation planning preview must pass.');
 assert_true(count($composedReport['mutation_plan_registry']) === 3, 'Composed mutation registry must contain three plans.');
 assert_true($composedReport['checks']['operator_lifecycle_dependency']['status'] === 'passed', 'Composed operator dependency check must pass.');

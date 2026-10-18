@@ -16,7 +16,7 @@ function assert_true(bool $condition, string $message): void
 
 $report = PublicLinkPolicyPreview::run();
 
-assert_true($report['schema'] === 'larena.link_public_link_policy_preview.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.link_public_link_policy_preview', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Public link policy preview must pass.');
 assert_true($report['package'] === 'larena/link', 'Policy preview must be package-owned.');
 assert_true($report['checks']['package_owned_policy_runtime']['status'] === 'passed', 'Policy runtime must pass.');

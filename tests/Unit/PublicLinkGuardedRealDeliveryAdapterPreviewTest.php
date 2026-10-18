@@ -33,7 +33,7 @@ function boot_preview_database(): void
 }
 
 $lifecycle = [
-    'schema' => 'larena.public_link_one_time_consumption_lifecycle_foundation.v1',
+    'schema' => 'larena.public_link_one_time_consumption_lifecycle_foundation',
     'status' => 'passed',
     'scenario' => 'public_link_one_time_consumption_lifecycle_foundation',
     'mutates_state' => false,
@@ -158,7 +158,7 @@ $report = PublicLinkGuardedRealDeliveryAdapterPreview::run(
     $outputPath,
 );
 
-assert_true($report['schema'] === 'larena.public_link_guarded_real_delivery_adapter_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_guarded_real_delivery_adapter_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Guarded real delivery adapter preview must pass.');
 assert_true($report['scenario'] === 'public_link_guarded_real_delivery_adapter_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview must not mutate state.');
@@ -194,7 +194,7 @@ $composedOutputPath = sys_get_temp_dir() . '/larena-link-guarded-real-delivery-c
 boot_preview_database();
 $composed = PublicLinkGuardedRealDeliveryAdapterPreview::preview('active-preview-token', $composedOutputPath);
 
-assert_true($composed['schema'] === 'larena.public_link_guarded_real_delivery_adapter_foundation.v1', 'Unexpected composed schema.');
+assert_true($composed['schema'] === 'larena.public_link_guarded_real_delivery_adapter_foundation', 'Unexpected composed schema.');
 assert_true($composed['status'] === 'passed', 'Composed guarded real delivery adapter preview must pass.');
 assert_true($composed['adapter_decision']['adapter_state'] === 'adapter_ready_preview', 'Composed adapter must be preview-ready.');
 assert_true($composed['adapter_decision']['stream_now'] === false, 'Composed adapter must not stream now.');

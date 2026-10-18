@@ -38,22 +38,22 @@ function source_report(string $schema, string $scenario, string $state, bool $mu
 }
 
 $planning = source_report(
-    'larena.public_link_guarded_admin_mutation_planning_foundation.v1',
+    'larena.public_link_guarded_admin_mutation_planning_foundation',
     'public_link_guarded_admin_mutation_planning_foundation',
     'review_surface_ready'
 );
 $revoke = source_report(
-    'larena.public_link_revoke_action_foundation.v1',
+    'larena.public_link_revoke_action_foundation',
     'public_link_revoke_action_foundation',
     'developer_preview_accepted'
 );
 $regenerate = source_report(
-    'larena.public_link_regenerate_action_foundation.v1',
+    'larena.public_link_regenerate_action_foundation',
     'public_link_regenerate_action_foundation',
     'developer_preview_accepted'
 );
 $cleanup = source_report(
-    'larena.public_link_cleanup_action_foundation.v1',
+    'larena.public_link_cleanup_action_foundation',
     'public_link_cleanup_action_foundation',
     'dry_run_ready'
 );
@@ -63,7 +63,7 @@ $report = PublicLinkMutationLadderReviewPreview::run($planning, $revoke, $regene
 $previewOutputPath = sys_get_temp_dir() . '/larena-link-mutation-ladder-review-preview-' . bin2hex(random_bytes(4)) . '.json';
 $previewReport = PublicLinkMutationLadderReviewPreview::preview($planning, $previewOutputPath);
 
-assert_true($report['schema'] === 'larena.public_link_mutation_ladder_review_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_mutation_ladder_review_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Mutation ladder review preview must pass.');
 assert_true($report['scenario'] === 'public_link_mutation_ladder_review_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Review must not mutate state.');
@@ -106,7 +106,7 @@ assert_true(in_array('developer_testable_operator_review_only', $report['known_l
 assert_true(in_array('no_new_public_link_mutation_behavior', $report['known_limitations'], true), 'Mutation limitation missing.');
 assert_true(in_array('not_release_ready', $report['known_limitations'], true), 'Release limitation missing.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
-assert_true($previewReport['schema'] === 'larena.public_link_mutation_ladder_review_foundation.v1', 'Preview helper schema mismatch.');
+assert_true($previewReport['schema'] === 'larena.public_link_mutation_ladder_review_foundation', 'Preview helper schema mismatch.');
 assert_true($previewReport['status'] === 'passed', 'Preview helper must pass.');
 assert_true(count($previewReport['operator_action_matrix']) === 4, 'Preview helper must keep four action rows.');
 assert_true($previewReport['checks']['source_slice_composition']['status'] === 'passed', 'Preview helper source composition must pass.');

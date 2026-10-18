@@ -9,7 +9,7 @@ require_once __DIR__ . '/../bootstrap.php';
 $outputPath = sys_get_temp_dir() . '/larena-link-cms-public-content-link-read-model-' . bin2hex(random_bytes(4)) . '.json';
 $report = CmsPublicContentLinkReadModel::forId(CmsPublicContentLinkReadModel::DEMO_ID, $outputPath);
 
-assert($report['schema'] === 'larena.cms_public_content_link_read_model.v1');
+assert($report['schema'] === 'larena.cms_public_content_link_read_model');
 assert($report['status'] === 'passed');
 assert($report['owner_package'] === 'larena/link');
 assert($report['input_contract_owner'] === 'larena/rest');

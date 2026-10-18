@@ -15,7 +15,7 @@ function assert_true(bool $condition, string $message): void
 }
 
 $contentLinkFlow = [
-    'schema' => 'larena.public_content_link_flow_preview.v1',
+    'schema' => 'larena.public_content_link_flow_preview',
     'status' => 'passed',
     'scenario' => 'public_content_link_flow',
     'mutates_state' => false,
@@ -84,7 +84,7 @@ $linkSafety = [
 $outputPath = sys_get_temp_dir() . '/larena-link-public-link-runtime-planning-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkRuntimePlanningPreview::run($contentLinkFlow, $fileManagerLink, $linkSafety, $outputPath);
 
-assert_true($report['schema'] === 'larena.public_link_runtime_planning_preview.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_runtime_planning_preview', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Runtime planning preview must pass.');
 assert_true($report['scenario'] === 'guarded_public_link_runtime_planning', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Planning preview must not mutate state.');

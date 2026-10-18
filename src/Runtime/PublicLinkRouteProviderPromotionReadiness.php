@@ -104,7 +104,7 @@ final class PublicLinkRouteProviderPromotionReadiness
         ];
 
         $report = [
-            'schema' => 'larena.public_link_route_provider_promotion_readiness.v1',
+            'schema' => 'larena.public_link_route_provider_promotion_readiness',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

@@ -17,7 +17,7 @@ function assert_true(bool $condition, string $message): void
 $outputPath = sys_get_temp_dir() . '/larena-link-public-link-route-provider-promotion-readiness-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkRouteProviderPromotionReadiness::run($outputPath);
 
-assert_true($report['schema'] === 'larena.public_link_route_provider_promotion_readiness.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_route_provider_promotion_readiness', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Readiness report must pass.');
 assert_true($report['mutates_state'] === false, 'Readiness report must not mutate state.');
 assert_true($report['summary']['default_mount'] === 'entry_app_public_route', 'Default mount must remain the entry app public route.');

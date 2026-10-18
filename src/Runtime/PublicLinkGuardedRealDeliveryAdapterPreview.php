@@ -134,7 +134,7 @@ final class PublicLinkGuardedRealDeliveryAdapterPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_guarded_real_delivery_adapter_foundation.v1',
+            'schema' => 'larena.public_link_guarded_real_delivery_adapter_foundation',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

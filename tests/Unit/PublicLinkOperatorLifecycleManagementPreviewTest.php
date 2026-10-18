@@ -167,7 +167,7 @@ $actionPolicy = [
 $outputPath = sys_get_temp_dir() . '/larena-link-operator-lifecycle-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkOperatorLifecycleManagementPreview::run($registry, $actionPolicy, $outputPath);
 
-assert_true($report['schema'] === 'larena.public_link_operator_lifecycle_management_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_operator_lifecycle_management_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Operator lifecycle preview must pass.');
 assert_true($report['scenario'] === 'public_link_operator_lifecycle_management_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview must not mutate state.');
@@ -194,7 +194,7 @@ $composedOutputPath = sys_get_temp_dir() . '/larena-link-operator-lifecycle-comp
 boot_preview_database();
 $composedReport = PublicLinkOperatorLifecycleManagementPreview::preview($composedOutputPath);
 
-assert_true($composedReport['schema'] === 'larena.public_link_operator_lifecycle_management_foundation.v1', 'Composed preview schema mismatch.');
+assert_true($composedReport['schema'] === 'larena.public_link_operator_lifecycle_management_foundation', 'Composed preview schema mismatch.');
 assert_true($composedReport['status'] === 'passed', 'Composed preview must pass.');
 assert_true(count($composedReport['operator_registry']) === 6, 'Composed preview registry must contain six cases.');
 assert_true($composedReport['checks']['operator_registry']['status'] === 'passed', 'Composed registry check must pass.');

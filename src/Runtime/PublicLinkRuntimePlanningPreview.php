@@ -146,7 +146,7 @@ final class PublicLinkRuntimePlanningPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_runtime_planning_preview.v1',
+            'schema' => 'larena.public_link_runtime_planning_preview',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

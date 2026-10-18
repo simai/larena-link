@@ -14,7 +14,7 @@ final class FileManagerLinkSharingRuntimePreview
     public static function run(array $checks, array $safeTrace, ?string $outputPath = null): array
     {
         $report = [
-            'schema' => 'larena.file_manager_link_sharing_runtime_preview.v1',
+            'schema' => 'larena.file_manager_link_sharing_runtime_preview',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

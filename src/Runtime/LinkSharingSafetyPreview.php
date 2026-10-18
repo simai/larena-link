@@ -14,7 +14,7 @@ final class LinkSharingSafetyPreview
     public static function run(array $checks, array $safeTrace, ?string $outputPath = null): array
     {
         $report = [
-            'schema' => 'larena.link_file_sharing_safety_preview.v1',
+            'schema' => 'larena.link_file_sharing_safety_preview',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

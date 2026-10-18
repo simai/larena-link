@@ -193,7 +193,7 @@ final class PublicLinkRuntimeHardeningPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_runtime_hardening_foundation.v1',
+            'schema' => 'larena.public_link_runtime_hardening_foundation',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => $persistentMutatesState,

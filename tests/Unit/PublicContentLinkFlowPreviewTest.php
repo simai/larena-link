@@ -90,7 +90,7 @@ $fileManagerLink = [
 ];
 
 $linkSafety = [
-    'schema' => 'larena.link_file_sharing_safety_preview.v1',
+    'schema' => 'larena.link_file_sharing_safety_preview',
     'status' => 'passed',
     'scenario' => 'link_file_sharing_safety_workflow',
     'mutates_state' => false,
@@ -133,7 +133,7 @@ $linkSafety = [
 $outputPath = sys_get_temp_dir() . '/larena-link-public-content-link-flow-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicContentLinkFlowPreview::run($fileOperation, $fileManagerLink, $linkSafety, $outputPath);
 
-assert_true($report['schema'] === 'larena.public_content_link_flow_preview.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_content_link_flow_preview', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Public content link flow preview must pass.');
 assert_true($report['scenario'] === 'guarded_public_content_file_link_flow', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview must not mutate state.');

@@ -16,7 +16,7 @@ function assert_true(bool $condition, string $message): void
 
 $plan = PublicLinkRuntimePackagePublicScopePlan::build();
 
-assert_true($plan['schema'] === 'larena.link.public_link_runtime_package_public_scope_plan.v1', 'Unexpected schema.');
+assert_true($plan['schema'] === 'larena.link.public_link_runtime_package_public_scope_plan', 'Unexpected schema.');
 assert_true($plan['status'] === 'env_gated_provider_promotion_ready', 'Plan must reflect env-gated provider promotion readiness.');
 assert_true($plan['mutates_state'] === false, 'Plan must not mutate state.');
 assert_true($plan['current_state']['entry_app_public_route_retained'] === true, 'Entry-app public route must remain retained.');

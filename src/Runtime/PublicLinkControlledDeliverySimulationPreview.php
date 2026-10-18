@@ -138,7 +138,7 @@ final class PublicLinkControlledDeliverySimulationPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_controlled_delivery_simulation_foundation.v1',
+            'schema' => 'larena.public_link_controlled_delivery_simulation_foundation',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => $checks['scope_boundary']['mutates_state'],

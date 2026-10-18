@@ -95,7 +95,7 @@ $safeTrace = [
 $outputPath = sys_get_temp_dir() . '/larena-link-sharing-safety-' . bin2hex(random_bytes(4)) . '.json';
 $report = LinkSharingSafetyPreview::run($checks, $safeTrace, $outputPath);
 
-assert_true($report['schema'] === 'larena.link_file_sharing_safety_preview.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.link_file_sharing_safety_preview', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Safety preview must pass.');
 assert_true($report['mutates_state'] === false, 'Safety preview must not mutate state.');
 assert_true($report['scenario'] === 'link_file_sharing_safety_workflow', 'Unexpected scenario.');

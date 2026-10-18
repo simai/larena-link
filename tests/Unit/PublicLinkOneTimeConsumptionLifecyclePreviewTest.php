@@ -33,7 +33,7 @@ function boot_preview_database(): void
 }
 
 $deliverySimulation = [
-    'schema' => 'larena.public_link_controlled_delivery_simulation_foundation.v1',
+    'schema' => 'larena.public_link_controlled_delivery_simulation_foundation',
     'status' => 'passed',
     'scenario' => 'public_link_controlled_delivery_simulation_foundation',
     'mutates_state' => true,
@@ -123,7 +123,7 @@ $report = PublicLinkOneTimeConsumptionLifecyclePreview::run(
     $outputPath,
 );
 
-assert_true($report['schema'] === 'larena.public_link_one_time_consumption_lifecycle_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_one_time_consumption_lifecycle_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'One-time lifecycle preview must pass.');
 assert_true($report['scenario'] === 'public_link_one_time_consumption_lifecycle_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview must not mutate state.');
@@ -159,7 +159,7 @@ $composedOutputPath = sys_get_temp_dir() . '/larena-link-one-time-composed-' . b
 boot_preview_database();
 $composed = PublicLinkOneTimeConsumptionLifecyclePreview::preview('active-preview-token', $composedOutputPath);
 
-assert_true($composed['schema'] === 'larena.public_link_one_time_consumption_lifecycle_foundation.v1', 'Unexpected composed schema.');
+assert_true($composed['schema'] === 'larena.public_link_one_time_consumption_lifecycle_foundation', 'Unexpected composed schema.');
 assert_true($composed['status'] === 'passed', 'Composed one-time lifecycle preview must pass.');
 assert_true($composed['lifecycle_state']['state'] === 'simulated_consumption_planned', 'Composed preview must plan simulated consumption.');
 assert_true($composed['consumption_plan']['consume_now'] === false, 'Composed preview must not consume now.');

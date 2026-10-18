@@ -18,7 +18,7 @@ $candidateToken = 'active-preview-token';
 $outputPath = sys_get_temp_dir() . '/larena-link-public-link-token-storage-contract-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkTokenStorageContractPreview::run($candidateToken, $outputPath);
 
-assert_true($report['schema'] === 'larena.public_link_token_storage_contract_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_token_storage_contract_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Contract preview must pass.');
 assert_true($report['scenario'] === 'public_link_token_storage_contract_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Contract preview must not mutate state.');

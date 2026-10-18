@@ -42,7 +42,7 @@ final class CmsPublicContentLinkDatabaseReadSource
         $status = self::stringValue($payload['status'] ?? 'unknown');
 
         return [
-            'schema' => 'larena.cms_public_content_link_read_model.v1',
+            'schema' => 'larena.cms_public_content_link_read_model',
             'status' => 'passed',
             'generated_at' => gmdate('c'),
             'owner_package' => 'larena/link',
@@ -104,7 +104,7 @@ final class CmsPublicContentLinkDatabaseReadSource
     private static function failed(string $status, string $code, bool $databaseReadAttempted): array
     {
         return [
-            'schema' => 'larena.cms_public_content_link_read_model.v1',
+            'schema' => 'larena.cms_public_content_link_read_model',
             'status' => $status,
             'generated_at' => gmdate('c'),
             'owner_package' => 'larena/link',

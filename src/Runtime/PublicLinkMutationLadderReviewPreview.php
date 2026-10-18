@@ -82,7 +82,7 @@ final class PublicLinkMutationLadderReviewPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_mutation_ladder_review_foundation.v1',
+            'schema' => 'larena.public_link_mutation_ladder_review_foundation',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

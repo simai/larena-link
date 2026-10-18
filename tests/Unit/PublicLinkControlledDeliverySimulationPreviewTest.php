@@ -18,7 +18,7 @@ function assert_true(bool $condition, string $message): void
 }
 
 $deliveryReadiness = [
-    'schema' => 'larena.public_link_guarded_delivery_readiness_foundation.v1',
+    'schema' => 'larena.public_link_guarded_delivery_readiness_foundation',
     'status' => 'passed',
     'scenario' => 'public_link_guarded_delivery_readiness_foundation',
     'mutates_state' => true,
@@ -129,7 +129,7 @@ $report = PublicLinkControlledDeliverySimulationPreview::run(
     $outputPath,
 );
 
-assert_true($report['schema'] === 'larena.public_link_controlled_delivery_simulation_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_controlled_delivery_simulation_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Controlled delivery simulation preview must pass.');
 assert_true($report['scenario'] === 'public_link_controlled_delivery_simulation_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === true, 'Preview must preserve local-testing transition flag.');
@@ -176,7 +176,7 @@ Schema::swap($capsule->getConnection()->getSchemaBuilder());
 
 $composedReport = PublicLinkControlledDeliverySimulationPreview::preview('active-preview-token', $composedOutputPath);
 
-assert_true($composedReport['schema'] === 'larena.public_link_controlled_delivery_simulation_foundation.v1', 'Composed preview schema mismatch.');
+assert_true($composedReport['schema'] === 'larena.public_link_controlled_delivery_simulation_foundation', 'Composed preview schema mismatch.');
 assert_true($composedReport['status'] === 'passed', 'Composed preview must pass.');
 assert_true($composedReport['simulated_response']['simulation_state'] === 'simulated_ready', 'Composed preview must be simulated-ready.');
 assert_true($composedReport['component_reports']['public_link_guarded_delivery_readiness_foundation']['status'] === 'passed', 'Composed preview must include delivery readiness.');

@@ -12,7 +12,7 @@ final class PublicLinkRuntimePackagePublicScopePlan
     public static function build(): array
     {
         return [
-            'schema' => 'larena.link.public_link_runtime_package_public_scope_plan.v1',
+            'schema' => 'larena.link.public_link_runtime_package_public_scope_plan',
             'status' => 'env_gated_provider_promotion_ready',
             'mutates_state' => false,
             'track' => 'package_owned_route_provider_promotion_and_runtime_ownership_readiness',

@@ -134,7 +134,7 @@ final class PublicLinkGuardedDeliveryReadinessPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_guarded_delivery_readiness_foundation.v1',
+            'schema' => 'larena.public_link_guarded_delivery_readiness_foundation',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => $checks['scope_boundary']['mutates_state'],

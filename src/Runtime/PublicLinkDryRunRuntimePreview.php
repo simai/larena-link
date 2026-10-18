@@ -121,7 +121,7 @@ final class PublicLinkDryRunRuntimePreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_dry_run_runtime_preview.v1',
+            'schema' => 'larena.public_link_dry_run_runtime_preview',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => false,

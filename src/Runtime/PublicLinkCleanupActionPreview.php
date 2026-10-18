@@ -124,7 +124,7 @@ final class PublicLinkCleanupActionPreview
         ];
 
         $report = [
-            'schema' => 'larena.public_link_cleanup_action_foundation.v1',
+            'schema' => 'larena.public_link_cleanup_action_foundation',
             'status' => self::status($checks),
             'generated_at' => gmdate('c'),
             'mutates_state' => true,

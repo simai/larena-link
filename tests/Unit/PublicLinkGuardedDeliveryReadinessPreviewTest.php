@@ -33,7 +33,7 @@ function boot_preview_database(): void
 }
 
 $persistentLookup = [
-    'schema' => 'larena.public_link_persistent_lookup_foundation.v1',
+    'schema' => 'larena.public_link_persistent_lookup_foundation',
     'status' => 'passed',
     'scenario' => 'public_link_persistent_lookup_foundation',
     'mutates_state' => true,
@@ -95,7 +95,7 @@ $report = PublicLinkGuardedDeliveryReadinessPreview::run(
     $outputPath,
 );
 
-assert_true($report['schema'] === 'larena.public_link_guarded_delivery_readiness_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_guarded_delivery_readiness_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Guarded delivery readiness preview must pass.');
 assert_true($report['scenario'] === 'public_link_guarded_delivery_readiness_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === true, 'Preview must preserve local-testing transition flag.');
@@ -127,7 +127,7 @@ $composedOutputPath = sys_get_temp_dir() . '/larena-link-guarded-delivery-readin
 boot_preview_database();
 $composed = PublicLinkGuardedDeliveryReadinessPreview::preview('active-preview-token', $composedOutputPath);
 
-assert_true($composed['schema'] === 'larena.public_link_guarded_delivery_readiness_foundation.v1', 'Unexpected composed schema.');
+assert_true($composed['schema'] === 'larena.public_link_guarded_delivery_readiness_foundation', 'Unexpected composed schema.');
 assert_true($composed['status'] === 'passed', 'Composed guarded delivery readiness preview must pass.');
 assert_true($composed['delivery_state']['state'] === 'ready_but_blocked', 'Composed active lookup must become ready-but-blocked.');
 assert_true($composed['delivery_decision']['decision'] === 'would_allow', 'Composed active lookup must allow preview decision.');

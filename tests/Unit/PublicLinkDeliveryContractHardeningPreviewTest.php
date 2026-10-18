@@ -38,7 +38,7 @@ function delivery_source_report(string $schema, string $scenario): array
 function delivery_planning_report(): array
 {
     return [
-        'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation.v1',
+        'schema' => 'larena.public_link_guarded_admin_mutation_planning_foundation',
         'status' => 'passed',
         'scenario' => 'public_link_guarded_admin_mutation_planning_foundation',
         'mutates_state' => false,
@@ -62,16 +62,16 @@ function delivery_planning_report(): array
     ];
 }
 
-$runtime = delivery_source_report('larena.public_link_runtime_hardening_foundation.v1', 'public_link_runtime_hardening_foundation');
-$adapter = delivery_source_report('larena.public_link_guarded_real_delivery_adapter_foundation.v1', 'public_link_guarded_real_delivery_adapter_foundation');
-$mutation = delivery_source_report('larena.public_link_mutation_ladder_review_foundation.v1', 'public_link_mutation_ladder_review_foundation');
+$runtime = delivery_source_report('larena.public_link_runtime_hardening_foundation', 'public_link_runtime_hardening_foundation');
+$adapter = delivery_source_report('larena.public_link_guarded_real_delivery_adapter_foundation', 'public_link_guarded_real_delivery_adapter_foundation');
+$mutation = delivery_source_report('larena.public_link_mutation_ladder_review_foundation', 'public_link_mutation_ladder_review_foundation');
 
 $outputPath = sys_get_temp_dir() . '/larena-link-delivery-contract-hardening-' . bin2hex(random_bytes(4)) . '.json';
 $report = PublicLinkDeliveryContractHardeningPreview::run($runtime, $adapter, $mutation, $outputPath);
 $previewOutputPath = sys_get_temp_dir() . '/larena-link-delivery-contract-hardening-preview-' . bin2hex(random_bytes(4)) . '.json';
 $previewReport = PublicLinkDeliveryContractHardeningPreview::preview($runtime, $adapter, delivery_planning_report(), $previewOutputPath);
 
-assert_true($report['schema'] === 'larena.public_link_delivery_contract_hardening_foundation.v1', 'Unexpected schema.');
+assert_true($report['schema'] === 'larena.public_link_delivery_contract_hardening_foundation', 'Unexpected schema.');
 assert_true($report['status'] === 'passed', 'Delivery contract hardening preview must pass.');
 assert_true($report['scenario'] === 'public_link_delivery_contract_hardening_foundation', 'Unexpected scenario.');
 assert_true($report['mutates_state'] === false, 'Preview must not mutate state.');
@@ -109,9 +109,9 @@ assert_true($report['safe_trace']['file_content_returned'] === false, 'File cont
 assert_true($report['safe_trace']['file_download_executed'] === false, 'File download must stay false.');
 assert_true($report['safe_trace']['release_ready'] === false, 'Release-ready must stay false.');
 assert_true(is_file($outputPath), 'Preview must write JSON evidence when output path is provided.');
-assert_true($previewReport['schema'] === 'larena.public_link_delivery_contract_hardening_foundation.v1', 'Preview helper schema mismatch.');
+assert_true($previewReport['schema'] === 'larena.public_link_delivery_contract_hardening_foundation', 'Preview helper schema mismatch.');
 assert_true($previewReport['status'] === 'passed', 'Preview helper must pass.');
-assert_true($previewReport['source_reports']['mutation_ladder_review']['schema'] === 'larena.public_link_mutation_ladder_review_foundation.v1', 'Preview helper must compose mutation ladder source.');
+assert_true($previewReport['source_reports']['mutation_ladder_review']['schema'] === 'larena.public_link_mutation_ladder_review_foundation', 'Preview helper must compose mutation ladder source.');
 assert_true($previewReport['checks']['source_slice_composition']['status'] === 'passed', 'Preview helper source composition must pass.');
 assert_true(count($previewReport['delivery_decision_matrix']) === 8, 'Preview helper must keep eight delivery states.');
 assert_true($previewReport['safe_trace']['production_public_delivery'] === false, 'Preview helper must not enable production delivery.');
