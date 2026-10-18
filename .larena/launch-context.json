@@ -16,7 +16,8 @@
     "docs/project-management/launch-records/canonical-developer-alpha-integration.json",
     "docs/project-management/evidence/canonical-assembly/*",
     "module.yaml",
-    "tests/Unit/PublicLinkAdminSurfaceContributorTest.php"
+    "tests/Unit/PublicLinkAdminSurfaceContributorTest.php",
+    "assets.yaml"
   ],
   "forbidden_files": [
     "src/*",

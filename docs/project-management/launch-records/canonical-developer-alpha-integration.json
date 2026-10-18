@@ -13,9 +13,15 @@
     "docs/project-management/launch-records/canonical-developer-alpha-integration.json",
     "docs/project-management/evidence/canonical-assembly/*",
     "module.yaml",
-    "tests/Unit/PublicLinkAdminSurfaceContributorTest.php"
+    "tests/Unit/PublicLinkAdminSurfaceContributorTest.php",
+    "assets.yaml"
   ],
-  "non_goals": ["runtime behavior change", "new Link feature", "validator weakening", "production readiness"],
+  "non_goals": [
+    "runtime behavior change",
+    "new Link feature",
+    "validator weakening",
+    "production readiness"
+  ],
   "rollback": "Reset only this isolated integration branch to base_commit; no database or runtime state is touched.",
   "evidence": "docs/project-management/evidence/canonical-assembly/"
 }

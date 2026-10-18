@@ -1,5 +1,6 @@
 {
-  "schema": "larena.core_assets.set.v1",
+  "schema": "larena.core_assets.set",
+  "schema_version": 1,
   "asset_set": "link.internal.public_link_review",
   "owner_package": "larena/link",
   "activation_owner": "larena/core:core.assets",
