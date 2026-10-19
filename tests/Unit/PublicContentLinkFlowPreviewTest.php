@@ -15,7 +15,7 @@ function assert_true(bool $condition, string $message): void
 }
 
 $fileOperation = [
-    'schema' => 'larena.file_operation_guarded_flow_preview.v1',
+    'schema' => 'larena.file_operation_guarded_flow_preview',
     'status' => 'passed',
     'scenario' => 'file_operation_guarded_flow',
     'mutates_state' => false,
