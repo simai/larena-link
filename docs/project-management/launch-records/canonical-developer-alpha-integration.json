@@ -62,7 +62,13 @@
     "tests/Unit/PublicLinkRuntimeHardeningPreviewTest.php",
     "tests/Unit/PublicLinkRuntimePackagePublicScopePlanTest.php",
     "tests/Unit/PublicLinkRuntimePlanningPreviewTest.php",
-    "tests/Unit/PublicLinkTokenStorageContractPreviewTest.php"
+    "tests/Unit/PublicLinkTokenStorageContractPreviewTest.php",
+    "LICENSE",
+    "NOTICE",
+    "AUTHORS",
+    "CITATION.cff",
+    "REUSE.toml",
+    "composer.json"
   ],
   "non_goals": [
     "runtime behavior change",
