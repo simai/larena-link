@@ -6,8 +6,6 @@ namespace Larena\Link\Providers;
 
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
-use Larena\Link\Support\PreviewResponder;
 
 final class LinkServiceProvider extends ServiceProvider
 {
@@ -19,23 +17,10 @@ final class LinkServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-        $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'larena-link');
-        View::composer('larena-link::internal.*', static function ($view): void {
-            $view->with('publicLinkPreviewAssetTags', PreviewResponder::publicLinkPreviewAssetTags());
-        });
-
-        if ($this->shouldLoadInternalRoutes()) {
-            $this->loadRoutesFrom(__DIR__ . '/../../routes/internal.php');
-        }
 
         if ($this->shouldLoadPublicRoutes()) {
             $this->loadRoutesFrom(__DIR__ . '/../../routes/public.php');
         }
-    }
-
-    private function shouldLoadInternalRoutes(): bool
-    {
-        return $this->app->environment(['local', 'testing']);
     }
 
     private function shouldLoadPublicRoutes(): bool

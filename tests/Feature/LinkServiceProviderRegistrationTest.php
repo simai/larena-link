@@ -9,10 +9,12 @@ assert(in_array($provider, $composer['extra']['laravel']['providers'] ?? [], tru
 
 $source = (string) file_get_contents(__DIR__ . '/../../src/Providers/LinkServiceProvider.php');
 assert(str_contains($source, "mergeConfigFrom(__DIR__ . '/../../config/larena-link.php', 'larena-link')"));
-assert(str_contains($source, "loadRoutesFrom(__DIR__ . '/../../routes/internal.php')"));
+// The developer-preview screens under /larena/internal were removed (owner decision 2026-10-26).
+assert(!str_contains($source, 'routes/internal.php'));
+assert(!is_file(__DIR__ . '/../../routes/internal.php'));
 assert(str_contains($source, "loadRoutesFrom(__DIR__ . '/../../routes/public.php')"));
 assert(str_contains($source, "loadMigrationsFrom(__DIR__ . '/../../database/migrations')"));
-assert(str_contains($source, "loadViewsFrom(__DIR__ . '/../../resources/views', 'larena-link')"));
+assert(!str_contains($source, 'loadViewsFrom('));
 assert(str_contains($source, "environment(['local', 'testing'])"));
 assert(str_contains($source, 'ConfigRepository::class'));
 assert(str_contains($source, "get('larena-link.public_routes.enabled', false)"));
