@@ -147,7 +147,11 @@
     "tests/Feature/PublicLinkRuntimeHardeningRouteBoundaryTest.php",
     "tests/Feature/PublicLinkRuntimePlanningRouteBoundaryTest.php",
     "tests/Feature/PublicLinkTokenStorageContractRouteBoundaryTest.php",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "config/larena-link.php",
+    "routes/public.php",
+    "src/Http/Controllers/Public/CmsPublicContentLinkPreviewController.php",
+    "tests/Feature/PublicLinkPublicRouteRegistrationTest.php"
   ],
   "forbidden_files": [
     "src/*",
