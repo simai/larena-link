@@ -15,10 +15,6 @@
         "illuminate/http": "^13.0",
         "illuminate/support": "^13.0",
         "illuminate/view": "^13.0",
-        "larena/access": "dev-main",
-        "larena/audit": "dev-main",
-        "larena/core": "dev-main",
-        "larena/licensing": "dev-main",
         "php": "^8.3"
     },
     "autoload": {

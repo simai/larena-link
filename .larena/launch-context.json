@@ -151,7 +151,8 @@
     "config/larena-link.php",
     "routes/public.php",
     "src/Http/Controllers/Public/CmsPublicContentLinkPreviewController.php",
-    "tests/Feature/PublicLinkPublicRouteRegistrationTest.php"
+    "tests/Feature/PublicLinkPublicRouteRegistrationTest.php",
+    "composer.lock"
   ],
   "forbidden_files": [
     "src/*",
