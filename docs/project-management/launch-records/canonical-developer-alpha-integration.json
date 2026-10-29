@@ -68,7 +68,15 @@
     "AUTHORS",
     "CITATION.cff",
     "REUSE.toml",
-    "composer.json"
+    "composer.json",
+    "CHANGELOG.md",
+    "README.md",
+    "config/larena-link.php",
+    "routes/public.php",
+    "src/Contracts/PublicLinkDryRunRuntimeReportSource.php",
+    "src/Http/Controllers/Public/PublicLinkRuntimeResolveController.php",
+    "tests/Feature/PublicLinkPublicRouteRegistrationTest.php",
+    "tests/Unit/PublicLinkRuntimeResolveControllerContractTest.php"
   ],
   "non_goals": [
     "runtime behavior change",

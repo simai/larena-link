@@ -152,7 +152,10 @@
     "routes/public.php",
     "src/Http/Controllers/Public/CmsPublicContentLinkPreviewController.php",
     "tests/Feature/PublicLinkPublicRouteRegistrationTest.php",
-    "composer.lock"
+    "composer.lock",
+    "src/Contracts/PublicLinkDryRunRuntimeReportSource.php",
+    "src/Http/Controllers/Public/PublicLinkRuntimeResolveController.php",
+    "tests/Unit/PublicLinkRuntimeResolveControllerContractTest.php"
   ],
   "forbidden_files": [
     "src/*",

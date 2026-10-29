@@ -12,8 +12,6 @@ return [
             FILTER_VALIDATE_BOOL,
         ),
         'local_testing_only' => true,
-        'route' => '/larena/link/{token}',
-        'name' => 'larena.public-link-runtime-hardening.resolve',
         'content_link_preview_route' => '/larena/cms/content-links/{id}/preview',
         'content_link_preview_name' => 'larena.cms-public-content-link.preview',
         'middleware' => ['web'],
